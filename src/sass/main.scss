@@ -32,6 +32,7 @@ CONTENTS:
 ---------------------------------- */
 @import 'base/dom';
 @import 'base/utility';
+@import 'base/typography';
 
 /* 3.) LAYOUT
 ---------------------------------- */
@@ -44,7 +45,7 @@ CONTENTS:
 /* 5.) COMPONENTS
 ---------------------------------- */
 @import 'components/form';
-@import 'components/input';
+@import 'components/button';
 
 /* 6.) THEMES
 ---------------------------------- */

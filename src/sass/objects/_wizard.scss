@@ -1,22 +1,145 @@
 /* Wizard Object
 ---------------------------------- */
-.o-wizard {
-  padding: 2em 0;
-  &__view-control-wrapper {
-    float: right;
-  }
-  &__view-control--next-section {
-    display: none;
-  }
 
-  &__section {}
+.wizard {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
   &__inner {
-    width: 100%;
-    max-width: 700px;
+    max-width: 1170px;
     margin: 0 auto;
+    width: 100%;
+    padding: 0px 1em 0;
+    position: relative;
+    height: 100%;
+    display: table;
   }
 }
 
-.js-next-section {
-  background: lightgreen;
+section {
+  position: relative;
+  display: none;
+  &.active {
+    display: block;
+  }
 }
+
+fieldset,
+.subsection {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateX(1000%);
+  transition: 1s;
+  &.active,
+  .in-review &,
+  .in-review &.done {
+    transform: translateX(0%);
+    transition: 0.5s;
+  }
+  &.done {
+    transform: translateX(-1000%);
+    transition: 1s;
+  }
+  .in-review & {
+    position: relative;
+    transition: 0;
+  }
+}
+
+.get-next-subsection {
+  display: none;
+}
+
+// navigation
+.nav-section {
+  &.active {
+    .nav-section-title {
+      display: block;
+    }
+    .nav-subsection {
+      display: block;
+    }
+  }
+  &.active+& {
+    .nav-section-title {
+      display: block;
+    }
+  }
+}
+
+.nav-section-title {
+  font-size: 18px;
+  position: relative;
+  display: none;
+  color: grey(light);
+  font-weight: normal;
+  &:before {
+    content: '';
+    width: 19px;
+    height: 19px;
+    background: grey(x-light);
+    position: absolute;
+    bottom: 0;
+    left: -30px;
+    border-radius: 50%;
+  }
+  &.active {
+    color: grey(dark);
+    font-weight: bold;
+    &:before {
+      background: $color_primary;
+    }
+  }
+}
+
+.nav-subsection {
+  list-style: none;
+  font-size: 16px;
+  position: relative;
+  color: grey(light);
+  padding-left: 40px;
+  margin-left: -22px;
+  padding-top: 16px;
+  margin-top: -12px;
+  line-height: 24px;
+  display: none;
+  &:first-of-type {
+    margin-top: -18px;
+  }
+  &:last-of-type {
+    margin-bottom: -12px;
+    padding-bottom: 12px;
+  }
+  &:after {
+    content: '';
+    width: 3px;
+    height: 40px;
+    background: grey(x-light);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+  &.active {
+    position: relative;
+    color: grey(base);
+    font-weight: bold;
+    &:before {
+      content: '';
+      background: $color_primary;
+      width: 9px;
+      height: 9px;
+      position: absolute;
+      z-index: 1;
+      left: -3px;
+      bottom: 7px;
+      border-radius: 50%;
+    }
+    &:after {
+      background: $color_primary;
+    }
+  }
+}
+

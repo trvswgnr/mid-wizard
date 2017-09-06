@@ -1,0 +1,28 @@
+/* BUTTONS
+---------------------------------- */
+
+button {
+  margin-bottom: 24px;
+  background: $color_primary;
+  padding: 0 2em;
+  height: 2.5em;
+  line-height: 2.5em;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  margin-right: 0.5em;
+  border: none;
+  margin-bottom: 12px 0;
+}
+
+.get-prev-view {
+  background: grey(x-light);
+  color: grey(base);
+  font-weight: normal;
+  padding: 0 1.5em 0 1.4em;
+  &:before {
+    font-family: FontAwesome;
+    content: '\f053';
+  }
+}

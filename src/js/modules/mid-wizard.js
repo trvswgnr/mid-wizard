@@ -1,168 +1,148 @@
-var mid_wizard = (function () {
+(function () {
   "use strict";
-
-  function $data_find(x, y) {
-    return $("[data-" + x + '="' + y + '"]');
-  }
-
-  var settings = {};
-
-  function init(options) {
-    var $fieldset_tag,
-      $section_tag,
-      inputs = {},
-      current_view = 1,
-      previous_view = 0,
-      current_section = 1,
-      previous_section = 0,
-      is_last_fieldset = false,
-      fieldsets_in_section,
-      fieldset_number,
-      fieldsets_in_prev_section,
-      params;
-
-    function change_view(curr, prev) {
-      $data_find("view", curr).show().addClass("is-active");
-      $data_find("view", prev).hide().removeClass("is-active");
-    }
-
-    function change_section(curr, prev) {
-      $data_find("section", curr).addClass("is-active");
-      $data_find("section", prev).removeClass("is-active");
-    }
-
-    function replace_dynamic_text() {
-      var name;
-      name = inputs.first_name;
-      $(".js-dynamic-text-name").text(name);
-    }
-
-    settings = $.extend(settings, options);
-
-    $section_tag = $(".js-section");
-
-    $fieldset_tag = $(".js-fieldset");
-
-    $.each($section_tag, function (s_i) {
-      var $this_fieldset_tags;
-      $(this).attr("data-section", s_i + 1);
-      $this_fieldset_tags = $(this).find(".js-fieldset");
-      $.each($this_fieldset_tags, function (f_i) {
-        $(this).attr("data-fieldset", f_i + 1);
+  $("section").each(function (i) {
+    var subsections = $(this).find(".subsection");
+    $(this).attr("data-section", i + 1);
+    subsections.each(function (i) {
+      var fieldsets = $(this).find("fieldset");
+      $(this).attr("data-subsection", i + 1);
+      fieldsets.each(function (i) {
+        $(this).attr("data-fieldset", i + 1);
       });
     });
+  });
 
-    $.each($fieldset_tag, function (i) {
-      $(this).attr("data-view", i + 1);
-    });
+  $("fieldset").each(function (i) {
+    $(this).attr("data-view", i + 1);
+  });
 
-      $data_find("view", 1).show().addClass("is-active");
-      $data_find("section", 1).addClass("is-active");
-      $(".js-previous-view").hide();
+  $(".subsection").each(function (i) {
+    $(this).attr("data-subsection-order", i + 1);
+  });
 
+  $('[data-section="1"]').addClass("active");
 
+  $('[data-subsection="1"]').addClass("active");
 
-    /* CONTROL VIEW CLICK EVENTS
-    ------------------------------------------------- */
-    $(".js-next-view").click(function () {
-      $(this).text("Next Step").removeClass("js-next-section");
-      $(".js-previous-view").show();
-      previous_view = current_view;
-      current_view += 1;
-      current_section = $data_find("view", current_view)
-        .parents(".js-section")
-        .data("section");
-      previous_section = $data_find("view", current_view)
-        .parents(".js-section")
-        .prev(".js-section")
-        .data("section");
-      if (current_view > $fieldset_tag.length) {
-        current_view = $fieldset_tag.length;
-        previous_view = $fieldset_tag.length - 1;
-      }
-      if (current_section > $section_tag.length) {
-        current_section = $section_tag.length;
-        previous_section = $section_tag.length - 1;
-      }
-      fieldset_number = $data_find("view", current_view).data("fieldset");
-      fieldsets_in_section = $data_find("section", current_section).find(
-        ".js-fieldset"
-      );
-      fieldsets_in_prev_section = $data_find("section", previous_section).find(
-        ".js-fieldset"
-      );
-      is_last_fieldset = fieldset_number === fieldsets_in_section.length ? true : false;
-      fieldsets_in_prev_section.removeClass("u-block");
-      if (is_last_fieldset) {
-        $(this).hide();
-        $(".js-review-section").show();
-      }
-      change_section(current_section, previous_section);
-      change_view(current_view, previous_view);
-      params = get_form_data(document.getElementById("wizard_form"));
-      inputs = JSON.parse(JSON.stringify(params, null, " "));
-      replace_dynamic_text();
-    });
+  $('[data-view="1"]').addClass("active");
 
-    $(window).keypress(function (e) {
-      if (e.which === 13) {
-        e.preventDefault();
-        $(".js-next-view").click();
-      }
-    });
+  $(".review-subsection").after(
+    '<button class="get-next-subsection">Next Sub-Section</button>'
+  );
 
-    $(".js-previous-view").click(function () {
-      $(".js-guide-text").show();
-      previous_view = current_view;
-      current_view -= 1;
-      current_section = $data_find("view", current_view)
-        .parents(".js-section")
-        .data("section");
-      previous_section = $data_find("view", current_view)
-        .parents(".js-section")
-        .next(".js-section")
-        .data("section");
-      console.log(previous_section);
-      if (current_view <= 1) {
-        current_view = 1;
-        previous_view = 2;
-        $(this).hide();
-      }
-      if (current_section < 1) {
-        current_section = 1;
-        previous_section = 2;
-      }
-      fieldset_number = $data_find("view", current_view).data("fieldset");
-      fieldsets_in_section = $data_find("section", current_section).find(".js-fieldset");
-      fieldsets_in_prev_section = $data_find("section", previous_section).find(".js-fieldset");
-      is_last_fieldset = fieldset_number === fieldsets_in_section.length ? true : false;
-      fieldsets_in_section.removeClass("u-block");
-      if (is_last_fieldset) {
-        $(".js-next-view").hide();
-        $(".js-review-section").show();
-      } else {
-        $(".js-next-view").show();
-        $(".js-review-section").hide();
-      }
-      change_view(current_view, previous_view);
-      change_section(current_section, previous_section);
-    });
-
-    $(".js-review-section").click(function () {
-      fieldsets_in_section.addClass("u-block");
-      $(".js-guide-text").hide();
-      $(this).hide();
-      $(".js-previous-view").hide();
-      $(".js-next-view")
-        .show()
-        .text("Next Section")
-        .addClass("js-next-section");
-    });
-  }
-
-  return {
-    init: init
-  };
+  $(".review-section").after(
+    '<button class="get-next-section">Next Section</button>'
+  );
 })();
 
-mid_wizard.init();
+
+/* ADD NAV
+------------------------------------------------- */
+$('section').each(function () {
+  var s = $(this);
+  var s_d = s.data('section');
+  var s_n = s.attr('title'),
+    ss, ss_d, ss_n;
+  $('.wizard-nav').append('<ul class="nav-section active" data-section="' + s_d + '"><h4 class="nav-section-title active" data-section-order="' + s_d + '">' + s_n + '</h4></ul>');
+  $('.subsection').each(function () {
+    ss = $(this);
+    ss_d = ss.data('subsection-order');
+    ss_n = ss.attr('title');
+    $('[data-section="' + s_d + '"]').append('<li>' + ss_n + '</li>');
+  });
+});
+
+/* CLICK EVENTS
+------------------------------------------------- */
+(function () {
+  "use strict";
+
+  function $data(data, val) {
+    return $("[data-" + data + '="' + val + '"]');
+  }
+  // c - current, n - next, p - previous
+  var section = {
+      el: $("section")
+    },
+    subsection = {
+      el: $(".subsection")
+    },
+    view = {
+      el: $("fieldset")
+    },
+    btns = $("button"),
+    input = {};
+  btns.click(function (e) {
+    e.preventDefault();
+  });
+
+  // go to next view
+  $("button.get-next-view").click(function () {
+    $(".get-next-section").hide(); //here because bug?
+    view.c = $(this).closest("fieldset");
+    view.n = view.c.next("fieldset");
+    view.c.removeClass("active").addClass("done");
+    view.n.removeClass("done").addClass("active");
+    view.count = view.n.data("view");
+    input.values = $("#wizard").serializeArray();
+    $('#intro').addClass('u-hidden');
+  });
+
+  // go to previous view
+  $("button.get-prev-view").click(function () {
+    view.c = $(this).closest("fieldset");
+    view.p = view.c.prev("fieldset");
+    view.c.removeClass("active");
+    view.p.removeClass("done").addClass("active");
+    view.count = view.p.data("view");
+  });
+
+  // review the current subsection
+  $("button.review-subsection").click(function () {
+    subsection.c = $data("view", view.count).closest(".subsection");
+    subsection.n = subsection.c.next(".subsection");
+    subsection.c.addClass("in-review");
+    $(this).hide();
+    btns.hide();
+    $("button.get-next-subsection").show();
+  });
+
+  // go to the next subsection
+  $("button.get-next-subsection").click(function () {
+    setTimeout(function () {
+      btns.show();
+    }, 300);
+    $("button.get-next-subsection").hide();
+    subsection.c = $data("view", view.count).closest(".subsection");
+    subsection.n = subsection.c.next(".subsection");
+    subsection.c.removeClass("active in-review").addClass("done");
+    subsection.n.addClass("active");
+    subsection.count = subsection.n.data('subsection');
+    console.log(subsection.count);
+    view.n = subsection.n.find('[data-view="' + (view.count + 1) + '"]');
+    view.c.removeClass("active");
+    view.n.addClass("active");
+    view.count = view.n.data("view");
+  });
+
+  // go to previous subsection
+  $("button.get-prev-subsection").click(function () {
+    $("button.get-next-subsection").hide();
+    subsection.c = $data("view", view.count).closest(".subsection");
+    subsection.p = subsection.c.prev(".subsection");
+    subsection.c.removeClass("active");
+    subsection.p.addClass("active").removeClass("done");
+    view.p = subsection.p.find('[data-view="' + (view.count - 1) + '"]');
+    view.c.removeClass("active");
+    view.p.addClass("active").removeClass("done");
+    view.count = view.p.data("view");
+  });
+
+  $('input').on('focus', function () {
+    $(this).addClass('is-focused');
+  });
+  $('input').on('blur', function () {
+    $(this).removeClass('is-focused');
+  });
+
+})();

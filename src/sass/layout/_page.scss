@@ -1,7 +1,23 @@
 /* Page Layout
 ---------------------------------- */
-.l-page {
-  position: absolute;
+
+main {
+  display: table-cell;
   width: 100%;
-  height: 100%;
+  padding-top: 80px;
+  padding-right: 2em;
+  overflow-x: hidden;
+}
+
+aside {
+  display: table-cell;
+  min-width: 320px;
+  padding-top: 90px;
+  padding-left: 2em;
+  border-left: 1px solid grey(x-light);
+  border-right: 1px solid grey(x-light);
+  background: grey(lightest);
+  h4 {
+    font-weight: bold;
+  }
 }

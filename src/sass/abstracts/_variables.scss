@@ -1,0 +1,27 @@
+// SASS VARIABLES
+// ---------------------------------- //
+
+// colors
+$color_red: #c80000;
+
+// brand_colors
+$color_primary: $color_red;
+
+$grey: (
+  darkest: #121212,
+  x-dark: #333333,
+  dark: #454545,
+  base: #757575,
+  light: #afafaf,
+  lighter: #cccccc,
+  x-light: #dddddd,
+  lightest: #fafafa
+);
+
+@function grey($x) {
+  @return map-get($grey,$x);
+}
+
+@function gray($x) {
+  @return map-get($grey,$x);
+}
