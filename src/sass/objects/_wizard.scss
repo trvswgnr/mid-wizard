@@ -1,0 +1,22 @@
+/* Wizard Object
+---------------------------------- */
+.o-wizard {
+  padding: 2em 0;
+  &__view-control-wrapper {
+    float: right;
+  }
+  &__view-control--next-section {
+    display: none;
+  }
+
+  &__section {}
+  &__inner {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+}
+
+.js-next-section {
+  background: lightgreen;
+}

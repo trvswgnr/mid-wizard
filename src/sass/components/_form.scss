@@ -1,0 +1,19 @@
+/* Form Component
+---------------------------------- */
+.c-form {
+  position: relative;
+  &__fieldset {
+    margin: 2em 0;
+    display: none; // hide by default, switch on with js
+    top: 0;
+    width: 100%;
+  }
+  &__legend {
+    margin-bottom: 0.75em;
+  }
+  &__check {
+    position: relative;
+    display: block;
+    margin-bottom: 0.5em;
+  }
+}

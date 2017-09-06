@@ -1,0 +1,14 @@
+.o-wizard__section.js-section#section_account
+  fieldset.c-form__fieldset.js-fieldset#fieldset_name
+    legend.c-form__legend Name
+    label(for='exampleInputFirstName').c-input__label First Name
+    input#first_name.js-input.c-input(name='firstname' type='text', placeholder='Your First Name')
+    label(for='exampleInputLastName').c-input__label Last Name
+    input#last_name.js-input.c-input(type='text', placeholder='Your Last Name')
+
+  fieldset.c-form__fieldset.js-fieldset#fieldset_email
+    h3.js-guide-text Alright <span class="js-dynamic-text-name">[[name]]</span>, what is your email address?
+    legend.c-form__legend Email
+    label(for='exampleInputEmail').c-input__label Email address
+    input#exampleInputEmail.js-input.c-input(type='email', aria-describedby='emailHelp', placeholder='Your email')
+    small#emailHelp.c-form-text.text-muted We'll never share your email with anyone else.

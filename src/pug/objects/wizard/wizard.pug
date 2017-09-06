@@ -1,0 +1,11 @@
+.o-wizard#mid_wizard
+  .o-wizard__inner
+    form.c-form#wizard_form
+      include sections/account.pug
+      include sections/billing.pug
+      include sections/data-types.pug
+      include sections/submit.pug
+    .o-wizard__view-control-wrapper
+      button.btn.o-wizard__view-control.o-wizard__view-control--previous-view.js-previous-view Previous Step
+      button.btn.o-wizard__view-control.o-wizard__view-control--next-view.js-next-view Next Step
+      button.btn.o-wizard__view-control.o-wizard__view-control--next-section.js-review-section Review This Section

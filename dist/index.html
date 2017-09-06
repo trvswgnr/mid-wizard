@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html class="cb" lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="MID Wizard">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="MID Wizard">
+    <meta property="og:description" content="MID Wizard">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="robots" content="index, follow">
+    <meta property="fb:pages" content="276577305793221">
+    <title>MID Wizard</title>
+    <link href="https://fonts.googleapis.com/css?family=Hind:400,700|Source+Sans+Pro:300,400,400i,600,600i" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://localhost:3000/css/main.min.css"><!--inject:style--><!--endinject-->
+  </head>
+</html>
+<body>
+  <div id="page">
+    <div class="l-page" id="app">
+      <div class="o-wizard" id="mid_wizard">
+        <div class="o-wizard__inner">
+          <form class="c-form" id="wizard_form">
+            <div class="o-wizard__section js-section" id="section_account">
+              <fieldset class="c-form__fieldset js-fieldset" id="fieldset_name">
+                <legend class="c-form__legend">Name</legend>
+                <label class="c-input__label" for="exampleInputFirstName">First Name</label>
+                <input class="js-input c-input" id="first_name" name="firstname" type="text" placeholder="Your First Name">
+                <label class="c-input__label" for="exampleInputLastName">Last Name</label>
+                <input class="js-input c-input" id="last_name" type="text" placeholder="Your Last Name">
+              </fieldset>
+              <fieldset class="c-form__fieldset js-fieldset" id="fieldset_email">
+                <h3 class="js-guide-text">Alright <span class="js-dynamic-text-name">[[name]]</span>, what is your email address?</h3>
+                <legend class="c-form__legend">Email</legend>
+                <label class="c-input__label" for="exampleInputEmail">Email address</label>
+                <input class="js-input c-input" id="exampleInputEmail" type="email" aria-describedby="emailHelp" placeholder="Your email"><small class="c-form-text text-muted" id="emailHelp">We'll never share your email with anyone else.</small>
+              </fieldset>
+            </div>
+            <div class="o-wizard__section js-section" id="section_billing">
+              <fieldset class="c-form__fieldset js-fieldset" id="fieldset_select">
+                <legend class="c-form__legend">Select</legend>
+                <label class="c-input__label" for="exampleSelect1">Example select</label>
+                <select class="js-input c-input" id="exampleSelect1">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+                <label class="c-input__label" for="exampleSelect2">Example multiple select</label>
+                <select class="js-input c-input" id="exampleSelect2" multiple="">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+              </fieldset>
+            </div>
+            <div class="o-wizard__section js-section" id="section_data_types">
+              <fieldset class="c-form__fieldset js-fieldset" id="fieldset_textarea">
+                <label class="c-input__label" for="exampleTextarea">Example textarea</label>
+                <textarea class="js-input c-input" id="exampleTextarea" rows="3"></textarea>
+              </fieldset>
+              <fieldset class="c-form__fieldset js-fieldset" id="fieldset_upload">
+                <label class="c-input__label" for="exampleInputFile">File input</label>
+                <input class="js-input c-input c-input--file" id="exampleInputFile" type="file" aria-describedby="fileHelp"><small class="c-form-text text-muted" id="fileHelp">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+              </fieldset>
+              <fieldset class="c-form__fieldset js-fieldset" id="fieldset_radios">
+                <legend>Radio buttons</legend>
+                <div class="c-form__check">
+                  <label class="c-input__label c-input__label--check">
+                    <input class="js-input c-input c-input--check" id="optionsRadios1" type="radio" name="optionsRadios" value="option1" checked=""> Option one is this and that—be sure to include why it's great
+                  </label>
+                </div>
+                <div class="c-form__check">
+                  <label class="c-input__label c-input__label--check">
+                    <input class="js-input c-input c-input--check" id="optionsRadios2" type="radio" name="optionsRadios" value="option2"> Option two can be something else and selecting it will deselect option one
+                  </label>
+                </div>
+                <div class="c-form__check is-disabled">
+                  <label class="c-input__label c-input__label--check">
+                    <input class="js-input c-input c-input--check" id="optionsRadios3" type="radio" name="optionsRadios" value="option3" disabled=""> Option three is disabled
+                  </label>
+                </div>
+              </fieldset>
+            </div>
+            <div class="o-wizard__section js-section" id="section_submit">
+              <fieldset class="c-form__fieldset js-fieldset" id="fieldset_submit">
+                <input class="c-btn c-btn--primary js-input" id="formSubmit" type="submit" value="SUBMIT">
+              </fieldset>
+            </div>
+          </form>
+          <div class="o-wizard__view-control-wrapper">
+            <button class="btn o-wizard__view-control o-wizard__view-control--previous-view js-previous-view">Previous Step</button>
+            <button class="btn o-wizard__view-control o-wizard__view-control--next-view js-next-view">Next Step</button>
+            <button class="btn o-wizard__view-control o-wizard__view-control--next-section js-review-section">Review This Section</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="http://localhost:3000/js/main.min.js"></script>
+</body>
