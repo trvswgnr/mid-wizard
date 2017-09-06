@@ -38,17 +38,18 @@
 
 /* ADD NAV
 ------------------------------------------------- */
-$('section').each(function () {
+$('section').each(function(){
   var s = $(this);
   var s_d = s.data('section');
   var s_n = s.attr('title'),
-    ss, ss_d, ss_n;
-  $('.wizard-nav').append('<ul class="nav-section active" data-section="' + s_d + '"><h4 class="nav-section-title active" data-section-order="' + s_d + '">' + s_n + '</h4></ul>');
-  $('.subsection').each(function () {
+      ss,ss_d,ss_n;
+  $('.wizard-nav').append('<ul class="nav-section active" data-section-order="'+s_d+'"><h4 class="nav-section-title active">' + s_n + '</h4></ul>');
+  var ss_in_s = $(this).find('.subsection');
+  ss_in_s.each(function(){
     ss = $(this);
     ss_d = ss.data('subsection-order');
-    ss_n = ss.attr('title');
-    $('[data-section="' + s_d + '"]').append('<li>' + ss_n + '</li>');
+    ss_n =ss.attr('title');
+    $('[data-section-order="'+s_d+'"]').append('<li>'+ss_n+'</li>');
   });
 });
 
