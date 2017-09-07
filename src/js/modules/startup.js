@@ -1,5 +1,5 @@
-// add data attributes and active classes to initialize
-
+/* STARTUP FUNCTIONS
+------------------------------------------------- */
 wizard.startup = function () {
   "use strict";
   $("section").each(function (i) {
@@ -33,11 +33,11 @@ wizard.startup = function () {
   );
 
   /* ADD NAV
-------------------------------------------------- */
+  ------------------------------------------------- */
   $("section").each(function () {
     var s = $(this),
       s_d = s.data("section"),
-      s_n = s.attr("title"),
+      s_n = s.data("title"),
       ss,
       ss_d,
       ss_n,
@@ -54,13 +54,13 @@ wizard.startup = function () {
     ss_in_s.each(function () {
       ss = $(this);
       ss_d = ss.data("subsection-order");
-      ss_n = ss.attr("title");
+      ss_n = ss.data('title');
       $('[data-nav-section="' + s_d + '"]').append(
         '<li class="nav-subsection" data-nav-subsection="' +
         ss_d +
         '">' +
         ss_n +
-        "</li>"
+        "<div class='nav-active-dot'></div></li>"
       );
     });
   });

@@ -188,6 +188,25 @@ fieldset,
   }
 }
 
+.nav-active-dot {
+  width: 3px;
+  height: 3px;
+  position: absolute;
+  top: 27px;
+  left: 0px;
+  background: white;
+  z-index: 5;
+  border-radius: 5px;
+  display: none;
+  .active > & {
+    display: block;
+  }
+  .done & {
+    display: none;
+  }
+}
+
+
 // edit field input symbol
 .edit-field {
   display: inline-block;
@@ -197,6 +216,12 @@ fieldset,
     content: '\f040';
     font-family: FontAwesome;
     color: grey(light);
+  }
+}
+
+.in-review {
+  .guide-text {
+    display: none;
   }
 }
 

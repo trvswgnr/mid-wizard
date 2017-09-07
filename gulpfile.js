@@ -24,7 +24,7 @@
     production: !!$.util.env.production,
     // set different asset paths for development and production
     assets: {
-      dev: 'http://localhost:3000/',
+      dev: 'http://172.16.1.8:3000/',
       pro: 'https://chargebacks911.com/mid-wizard/',
       // this tag will be replaced throughout the files with the appropriate asset path
       tag: '{{path}}'
