@@ -23,15 +23,11 @@ wizard.startup = function () {
   });
 
   $('[data-section="1"]').addClass("active");
-
   $('[data-subsection="1"]').addClass("active");
-
   $('[data-view="1"]').addClass("active");
-
   $(".review-subsection").after(
     '<button class="get-next-subsection">Next Sub-Section</button>'
   );
-
   $(".review-section").after(
     '<button class="get-next-section">Next Section</button>'
   );
@@ -39,12 +35,14 @@ wizard.startup = function () {
   /* ADD NAV
 ------------------------------------------------- */
   $("section").each(function () {
-    var s = $(this);
-    var s_d = s.data("section");
-    var s_n = s.attr("title"),
+    var s = $(this),
+      s_d = s.data("section"),
+      s_n = s.attr("title"),
       ss,
       ss_d,
-      ss_n;
+      ss_n,
+      ss_in_s = $(this).find(".subsection");
+
     $(".wizard__nav").append(
       '<ul class="nav-section" data-nav-section="' +
       s_d +
@@ -52,7 +50,7 @@ wizard.startup = function () {
       s_n +
       "</h4></ul>"
     );
-    var ss_in_s = $(this).find(".subsection");
+
     ss_in_s.each(function () {
       ss = $(this);
       ss_d = ss.data("subsection-order");

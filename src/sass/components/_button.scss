@@ -2,7 +2,6 @@
 ---------------------------------- */
 
 button {
-  margin-bottom: 24px;
   background: $color_primary;
   padding: 0 2em;
   height: 2.5em;
@@ -12,8 +11,8 @@ button {
   font-weight: bold;
   letter-spacing: 0.1em;
   margin-right: 0.5em;
+  margin: 12px 0.5em 12px 0;
   border: none;
-  margin-bottom: 12px 0;
   outline: none;
   &:focus {
     outline: none;

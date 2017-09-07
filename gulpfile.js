@@ -61,7 +61,8 @@
         'vendor/**/*.js',
         'abstracts/**/*.js',
         'functions/**/*.js',
-        'modules/**/*.js'
+        'modules/**/*.js',
+        'main.js'
       ]
     },
     pug: {

@@ -2,21 +2,15 @@
 ------------------------------------------------- */
 wizard.events = function() {
   "use strict";
-  function $data(data, val) {
-    return $("[data-" + data + '="' + val + '"]');
-  }
+
   // @NOTE: c - current, n - next, p - previous
-  var section = {
-    el: $("section")
-  },
-    subsection = {
-      el: $(".subsection")
-    },
-    view = {
-      el: $("fieldset")
-    },
-    btns = $("button"),
-    input = {};
+  var section = {},
+    subsection = {},
+    view = {},
+    input = {},
+    btns = $("button");
+
+  // prevent default button functionality
   btns.click(function(e) {
     e.preventDefault();
   });
@@ -79,7 +73,6 @@ wizard.events = function() {
     });
   }
 
-  var guide_text = $('.guide-text');
   // review the current subsection
   $("button.review-subsection").click(function() {
     subsection.c = $data("view", view.count).closest(".subsection");
@@ -88,13 +81,11 @@ wizard.events = function() {
     $(this).hide();
     btns.hide();
     $("button.get-next-subsection").show();
-    guide_text.hide();
     change_label_text(true);
   });
 
   // go to the next subsection
   $("button.get-next-subsection").click(function() {
-    guide_text.show();
     setTimeout(function() {
       btns.show();
     }, 300);
