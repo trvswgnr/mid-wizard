@@ -1,0 +1,2 @@
+wizard.startup();
+wizard.events();

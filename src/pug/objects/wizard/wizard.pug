@@ -5,7 +5,7 @@
         include sections/create-your-account.pug
 
         section(title='Add a Merchant')
-          .subsection
+          .subsection(title='Some Subsection')
             fieldset
               input#email(type="email" name='email' placeholder='your email')
               button.get-prev-section Prev Section
@@ -13,14 +13,15 @@
             fieldset
               input#textarea(type="textarea" name='textarea' placeholder='your text')
               button.get-prev-view
+              button.get-next-subsection
+          .subsection(title='Some Other Subsection')
+            fieldset
+              input#email(type="email" name='email' placeholder='your email')
+              button.get-prev-subsection Prev Section
+              button.get-next-view Next
+            fieldset
+              input#textarea(type="textarea" name='textarea' placeholder='your text')
+              button.get-prev-view
 
     aside
-      .wizard-nav
-        //-ul.nav-section.active
-          h4.nav-section-title.active 1. Create Your Account
-          li.nav-subsection.active User Details
-          li.nav-subsection Company Information
-          li.nav-subsection Business Details
-          li.nav-subsection Evidence Fields
-        //-ul.nav-section
-          h4.nav-section-title 2. Add a Merchant
+      .wizard__nav

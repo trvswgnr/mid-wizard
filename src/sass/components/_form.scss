@@ -8,6 +8,7 @@ label {
 
 label[for] {
   width: auto;
+  position: relative;
 }
 
 input {
@@ -28,6 +29,7 @@ input {
     border-color: grey(x-light);
     padding: 6px 12px;
     transition: 0.2s;
+    cursor: initial;
   }
 }
 
@@ -47,7 +49,7 @@ input[type="radio"] {
   }
 }
 
-.checkboxes {
+.checkboxes,.radios {
   overflow: hidden;
   width: 100%;
   margin-bottom: 12px;

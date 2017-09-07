@@ -1,70 +1,14 @@
-(function () {
-  "use strict";
-  $("section").each(function (i) {
-    var subsections = $(this).find(".subsection");
-    $(this).attr("data-section", i + 1);
-    subsections.each(function (i) {
-      var fieldsets = $(this).find("fieldset");
-      $(this).attr("data-subsection", i + 1);
-      fieldsets.each(function (i) {
-        $(this).attr("data-fieldset", i + 1);
-      });
-    });
-  });
-
-  $("fieldset").each(function (i) {
-    $(this).attr("data-view", i + 1);
-  });
-
-  $(".subsection").each(function (i) {
-    $(this).attr("data-subsection-order", i + 1);
-  });
-
-  $('[data-section="1"]').addClass("active");
-
-  $('[data-subsection="1"]').addClass("active");
-
-  $('[data-view="1"]').addClass("active");
-
-  $(".review-subsection").after(
-    '<button class="get-next-subsection">Next Sub-Section</button>'
-  );
-
-  $(".review-section").after(
-    '<button class="get-next-section">Next Section</button>'
-  );
-})();
-
-
-/* ADD NAV
+/* CLICK / EVENT ACTIONS
 ------------------------------------------------- */
-$('section').each(function(){
-  var s = $(this);
-  var s_d = s.data('section');
-  var s_n = s.attr('title'),
-      ss,ss_d,ss_n;
-  $('.wizard-nav').append('<ul class="nav-section active" data-section-order="'+s_d+'"><h4 class="nav-section-title active">' + s_n + '</h4></ul>');
-  var ss_in_s = $(this).find('.subsection');
-  ss_in_s.each(function(){
-    ss = $(this);
-    ss_d = ss.data('subsection-order');
-    ss_n =ss.attr('title');
-    $('[data-section-order="'+s_d+'"]').append('<li>'+ss_n+'</li>');
-  });
-});
-
-/* CLICK EVENTS
-------------------------------------------------- */
-(function () {
+wizard.events = function() {
   "use strict";
-
   function $data(data, val) {
     return $("[data-" + data + '="' + val + '"]');
   }
-  // c - current, n - next, p - previous
+  // @NOTE: c - current, n - next, p - previous
   var section = {
-      el: $("section")
-    },
+    el: $("section")
+  },
     subsection = {
       el: $(".subsection")
     },
@@ -73,12 +17,23 @@ $('section').each(function(){
     },
     btns = $("button"),
     input = {};
-  btns.click(function (e) {
+  btns.click(function(e) {
     e.preventDefault();
   });
 
+  // apply dynamic text for things like {{name}}, etc...
+  function dynamic_text() {
+    var el, this_data, input_val;
+    $(".js-dynamic-text").each(function() {
+      el = $(this);
+      this_data = el.data("dynamic");
+      input_val = $('[name="' + this_data + '"]').val();
+      $data("dynamic", this_data).text(input_val);
+    });
+  }
+
   // go to next view
-  $("button.get-next-view").click(function () {
+  $("button.get-next-view").click(function() {
     $(".get-next-section").hide(); //here because bug?
     view.c = $(this).closest("fieldset");
     view.n = view.c.next("fieldset");
@@ -86,11 +41,14 @@ $('section').each(function(){
     view.n.removeClass("done").addClass("active");
     view.count = view.n.data("view");
     input.values = $("#wizard").serializeArray();
-    $('#intro').addClass('u-hidden');
+    setTimeout(function() {
+      $("#intro").remove();
+    }, 800);
+    dynamic_text();
   });
 
   // go to previous view
-  $("button.get-prev-view").click(function () {
+  $("button.get-prev-view").click(function() {
     view.c = $(this).closest("fieldset");
     view.p = view.c.prev("fieldset");
     view.c.removeClass("active");
@@ -98,19 +56,46 @@ $('section').each(function(){
     view.count = view.p.data("view");
   });
 
+  // change the labels when the subsection is under review
+  function change_label_text(x) {
+    var label = $("input").not('[type="radio"]').prev("label");
+
+    $.each(label, function() {
+      var og_text,
+        new_text,
+        el = $(this),
+        attr_for = el.attr("for");
+      if (x === true) {
+        (og_text = el.text()), (new_text = $("#" + attr_for).attr(
+          "placeholder"
+        ));
+        el.text(new_text).attr("data-guide-text", og_text);
+        el.append('<div class="edit-field"></div>');
+      } else {
+        new_text = el.data("guide-text");
+        el.text(new_text);
+        $(".edit-field").remove();
+      }
+    });
+  }
+
+  var guide_text = $('.guide-text');
   // review the current subsection
-  $("button.review-subsection").click(function () {
+  $("button.review-subsection").click(function() {
     subsection.c = $data("view", view.count).closest(".subsection");
     subsection.n = subsection.c.next(".subsection");
     subsection.c.addClass("in-review");
     $(this).hide();
     btns.hide();
     $("button.get-next-subsection").show();
+    guide_text.hide();
+    change_label_text(true);
   });
 
   // go to the next subsection
-  $("button.get-next-subsection").click(function () {
-    setTimeout(function () {
+  $("button.get-next-subsection").click(function() {
+    guide_text.show();
+    setTimeout(function() {
       btns.show();
     }, 300);
     $("button.get-next-subsection").hide();
@@ -118,16 +103,18 @@ $('section').each(function(){
     subsection.n = subsection.c.next(".subsection");
     subsection.c.removeClass("active in-review").addClass("done");
     subsection.n.addClass("active");
-    subsection.count = subsection.n.data('subsection');
+    subsection.count = subsection.n.data("subsection");
     console.log(subsection.count);
     view.n = subsection.n.find('[data-view="' + (view.count + 1) + '"]');
     view.c.removeClass("active");
     view.n.addClass("active");
     view.count = view.n.data("view");
+    change_label_text(false);
+    $('[data-nav-subsection="' + subsection.count + '"]').addClass("active");
   });
 
   // go to previous subsection
-  $("button.get-prev-subsection").click(function () {
+  $("button.get-prev-subsection").click(function() {
     $("button.get-next-subsection").hide();
     subsection.c = $data("view", view.count).closest(".subsection");
     subsection.p = subsection.c.prev(".subsection");
@@ -139,11 +126,11 @@ $('section').each(function(){
     view.count = view.p.data("view");
   });
 
-  $('input').on('focus', function () {
-    $(this).addClass('is-focused');
+  // add focus class (for review subsection)
+  $("input").on("focus", function() {
+    $(this).addClass("is-focused");
   });
-  $('input').on('blur', function () {
-    $(this).removeClass('is-focused');
+  $("input").on("blur", function() {
+    $(this).removeClass("is-focused");
   });
-
-})();
+}
