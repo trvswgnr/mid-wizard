@@ -11,7 +11,7 @@ label[for] {
   position: relative;
 }
 
-input {
+input,select {
   border: 1px solid grey(x-light);
   padding: 6px 12px;
   display: block;
@@ -19,19 +19,23 @@ input {
   margin-bottom: 1.5em;
   outline: none;
   transition: 0.2s;
+  &:focus{outline: none;}
   .in-review & {
+    margin-bottom: 1.25em;
     border-color: transparent;
-    padding: 0;
     cursor: pointer;
+    padding: 0;
     transition: 0.2s;
+    max-width: 400px;
   }
-  .in-review &.is-focused {
+  .in-review &:focus {
     border-color: grey(x-light);
     padding: 6px 12px;
     transition: 0.2s;
     cursor: initial;
   }
 }
+
 
 input[type="checkbox"],
 input[type="radio"] {
@@ -49,8 +53,16 @@ input[type="radio"] {
   }
 }
 
+option {
+  height: 24px;
+}
+
 .checkboxes,.radios {
   overflow: hidden;
   width: 100%;
   margin-bottom: 12px;
+}
+
+select option[disabled][value=''] {
+  display: none;
 }

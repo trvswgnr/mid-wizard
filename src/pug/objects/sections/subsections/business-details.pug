@@ -1,0 +1,27 @@
+.subsection#business_details(data-title="Business Details")
+  fieldset(data-title="Currencies")
+    .guide-text
+      h3 Let's talk money.
+      p What currencies does <span data-dynamic-text="company_name">[[company]]</span> transact in?
+    .field
+      label(for="currencies") What is the name of your company?
+      select#currencies(name="currencies" placeholder="Currencies")
+        option(value="" disabled selected) Currencies
+        option(value="usd") USD ($)
+        option(value="eur") EUR (€)
+        option(value="jpy") JPY (¥)
+    button.get-next-view Continue
+
+  fieldset(data-title="Offers")
+    .guide-text
+      h3 Offers
+      p Which types of offers do you sell?
+    .field
+      label(for="offer_types") Select all the offer types you may accept from the choices below.
+      select#offer_types(name="offer_types" placeholder="Offers" multiple)
+        option(value="" disabled selected) Offers
+        option(value="free_trial") Free Trial
+        option(value="single_order") Single Order
+        option(value="recurring") Recurring
+      button.get-prev-view
+      button.review-subsection Review

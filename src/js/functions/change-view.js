@@ -4,7 +4,6 @@ wizard.change_view = function (view, input) {
 
   // go to next view
   $("button.get-next-view").click(function () {
-    $(".get-next-section").hide(); //here because bug?
     view.c = $(this).closest("fieldset");
     view.n = view.c.next("fieldset");
     view.c.removeClass("active").addClass("done");
@@ -22,7 +21,7 @@ wizard.change_view = function (view, input) {
     view.c = $(this).closest("fieldset");
     view.p = view.c.prev("fieldset");
     view.c.removeClass("active");
-    view.p.removeClass("done").addClass("active");
+    view.p.addClass("active slide-in-left");
     view.count = view.p.data("view");
   });
 }

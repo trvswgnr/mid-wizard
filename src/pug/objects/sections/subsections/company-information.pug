@@ -1,13 +1,35 @@
-.subsection(data-title="Company Information")
-  fieldset
-    .checkboxes
-      input#vehicle1(type="checkbox" name="vehicle" value="Bike")
-      label(for="check1") Checkbox 2
-      input#vehicle2(type="checkbox" name="vehicle" value="Car")
-      label(for="check2") Checkbox 1
+.subsection#company_information(data-title="Company Information")
+  fieldset(data-title="Name & Industry")
+    .guide-text
+      h3 Tell us about your company.
+      p Alright <span data-dynamic-text="firstname">{{name}}</span>, now we need to know some basic information about your company.
+    .field
+      label(for="company_name") What is the name of your company?
+      input#company_name(type="text" name="company_name" placeholder="Company Name")
+    .block
+      label(for="company_type") Which industry best describes your business?
+      select#company_type(name="company_type" placeholder='Industry')
+        option(value="" disabled selected) Select Industry
+        option(value="Agriculture & Mining") Agriculture & Mining
+        option(value="Business Services") Business Services
     button.get-next-view Next
 
-  fieldset#alias
-    input(type="text" name='alias' placeholder='your alias')
+  fieldset(data-title="Company Location")
+    .guide-text
+      h3 Where is <span data-dynamic-text="company_name">[[company]]</span> located?
+      p What is the primary headquarters for your company?
+    .block
+      //- not adding every country...
+      select#company_type(name="company_country" placeholder='Company Country')
+        option(value="" disabled selected) Company Country
+        option(value="United States") United States
+        option(value="Afghanistan") Afghanistan
+        option(value="Albania") Albania
+      .field
+        label(for="company_street_address") What is the street address?
+        input#company_street_address(type="text" name="company_street_address" placeholder="Street Address")
+      .field
+        label(for="company_city_state") What is the city, state, and postal code?
+        input#company_city_state(type="text" name="company_city_state" placeholder="City/State/Zip")
     button.get-prev-view
-    button.review-section Review Section
+    button.review-subsection Review

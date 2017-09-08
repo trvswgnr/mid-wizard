@@ -2,6 +2,9 @@
 ------------------------------------------------- */
 wizard.startup = function () {
   "use strict";
+
+  // add data-attribute matching the order of sections,
+  // subsections in each section, and views(fieldsets) in each subsection
   $("section").each(function (i) {
     var subsections = $(this).find(".subsection");
     $(this).attr("data-section", i + 1);
@@ -14,19 +17,25 @@ wizard.startup = function () {
     });
   });
 
+  // add data attribute for view(fieldset) order in document
   $("fieldset").each(function (i) {
     $(this).attr("data-view", i + 1);
   });
 
+  // add data attribute for section order in document
   $(".subsection").each(function (i) {
     $(this).attr("data-subsection-order", i + 1);
   });
 
+
+  // add active class to first of each
   $('[data-section="1"]').addClass("active");
   $('[data-subsection="1"]').addClass("active");
   $('[data-view="1"]').addClass("active");
+
+  // lazy add next subsection and next section after the review buttons
   $(".review-subsection").after(
-    '<button class="get-next-subsection">Next Sub-Section</button>'
+    '<button class="get-next-subsection">Confirm & Continue</button>'
   );
   $(".review-section").after(
     '<button class="get-next-section">Next Section</button>'
@@ -35,6 +44,8 @@ wizard.startup = function () {
   /* ADD NAV
   ------------------------------------------------- */
   $("section").each(function () {
+
+    // @TODO: these variable names suck
     var s = $(this),
       s_d = s.data("section"),
       s_n = s.data("title"),
@@ -43,6 +54,9 @@ wizard.startup = function () {
       ss_n,
       ss_in_s = $(this).find(".subsection");
 
+
+
+    // match section data attr in nav
     $(".wizard__nav").append(
       '<ul class="nav-section" data-nav-section="' +
       s_d +
@@ -55,6 +69,13 @@ wizard.startup = function () {
       ss = $(this);
       ss_d = ss.data("subsection-order");
       ss_n = ss.data('title');
+      // add subsection review text
+      ss.prepend(
+      '<div class="review-guide-text">' +
+      '<h3>Verify ' + ss.data('title') + '.</h3>' +
+      '</div>'
+      );
+      // match subsection data attr in nav
       $('[data-nav-section="' + s_d + '"]').append(
         '<li class="nav-subsection" data-nav-subsection="' +
         ss_d +
@@ -63,6 +84,16 @@ wizard.startup = function () {
         "<div class='nav-active-dot'></div></li>"
       );
     });
+  });
+
+  // add fieldset title for in-review
+  $('fieldset').each(function(){
+    var this_title = $(this).data('title');
+      this_title = this_title != undefined ? this_title : false;
+
+    if (this_title) {
+      $(this).prepend('<div class="review-fieldset-label">' + this_title + '</div>');
+    }
   });
 
   // add initial active classes and identify first for styling

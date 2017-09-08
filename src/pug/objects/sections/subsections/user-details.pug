@@ -4,33 +4,63 @@
     p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis ipsum exercitationem illum voluptatem animi. Illo nulla libero praesentium blanditiis eveniet rerum tempore ea sequi quo, ducimus, voluptatibus. At, quis, nesciunt!
     button.get-next-view Let's Begin
 
-  fieldset#about
+  fieldset#about(data-title="You")
     .guide-text
       h3 Tell us about yourself.
       p Let us know your name and preferred email address.
-    label(for="first_name") What is your first name?
-    input#first_name(type="text" name='firstname' placeholder='First Name')
-    label(for="last_name") What is your last name?
-    input#last_name(type="text" name='lastname' placeholder='Last Name')
-    label(for="email") What is your email?
-    input#email(type="email" name='email' placeholder='Your Email')
+    .field
+      label(for="first_name") What is your first name?
+      input#first_name(type="text" name='firstname' placeholder='First Name')
+    .field
+      label(for="last_name") What is your last name?
+      input#last_name(type="text" name='lastname' placeholder='Last Name')
+    div
+      label(for="email") What is your email?
+      input#email(type="email" name='email' placeholder='Email')
     button.get-next-view Continue
 
-  fieldset#primary_billing
+  fieldset#primary_and_billing
     .guide-text
       h3 Who should we contact?
-      p <span class="js-dynamic-text" data-dynamic="firstname">{{firstname}}</span>, should we contact you directly with any account issues, status reports, and billing inquiries?
-    .radios
+      p <span data-dynamic-text="firstname">[[firstname]]</span>, should we contact you directly with any account issues, status reports, and billing inquiries?
+    .radios.hidden-review
       label Are you the <strong>primary</strong> contact for your company?
       input#primary_contact_no(type="radio" name='is_primary_contact' value='no' checked='')
       label(for="primary_contact_no") No
       input#primary_contact_yes(type="radio" name='is_primary_contact' value='yes')
       label(for="primary_contact_yes") Yes
-    .radios
+    .radios.hidden-review
       label Are you the <strong>billing</strong> contact for your company?
       input#billing_contact_no(type="radio" name='is_billing_contact' value='no' checked='')
       label(for="billing_contact_no") No
       input#billing_contact_yes(type="radio" name='is_billing_contact' value='yes')
       label(for="billing_contact_yes") Yes
     button.get-prev-view
-    button.review-subsection Review & Confirm
+    button.get-next-view Continue
+
+  fieldset#billing_contact(data-title="Primary Contact")
+    .guide-text
+      h3 Who is the primary contact?
+      p Let us know who we should contact with general questions or issues.
+    .field
+      label(for="primary_contact_firstname") What is their first name?
+      input#primary_contact_firstname(type="text" name="primary_contact_firstname" placeholder="First Name")
+    .field
+      label(for="primary_contact_lastname") What is their last name?
+      input#primary_contact_lastname(type="text" name="primary_contact_lastname" placeholder= "Last Name")
+    button.get-prev-view
+    button.get-next-view Continue
+
+  fieldset#billing_contact(data-title="Billing Contact")
+    .guide-text
+      h3 Who should we contact, with billing inquiries?
+      p Let us know who we should send invoices and notify about any billing issues.
+    .field
+      label(for="billing_contact_firstname") What is their first name?
+      input#billing_contact_firstname(type="text" name="billing_contact_firstname" placeholder="First Name")
+    .field
+      label(for="billing_contact_lastname") What is their last name?
+      input#billing_contact_lastname(type="text" name="billing_contact_lastname" placeholder= "Last Name")
+    button.get-prev-view
+    button.review-subsection Review
+
