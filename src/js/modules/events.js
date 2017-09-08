@@ -28,6 +28,5 @@ wizard.events = function () {
 
   });
 
-  focus_inputs();
 
 }
