@@ -20,7 +20,8 @@
       p What is the primary headquarters for your company?
     .block
       //- not adding every country...
-      select#company_type(name="company_country" placeholder='Company Country')
+      label(for="company_country")
+      select#company_country(name="company_country" placeholder='Company Country')
         option(value="" disabled selected) Company Country
         option(value="United States") United States
         option(value="Afghanistan") Afghanistan
