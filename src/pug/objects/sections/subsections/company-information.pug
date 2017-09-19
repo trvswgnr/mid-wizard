@@ -17,10 +17,10 @@
   fieldset(data-title="Company Location")
     .guide-text
       h3 Where is <span data-dynamic-text="company_name">[[company]]</span> located?
-      p What is the primary headquarters for your company?
+      p Where is the primary headquarters for your company?
     .block
       //- not adding every country...
-      label(for="company_country")
+      label(for="company_country") What country is <span data-dynamic-text="company_name">[[company]]</span> in?
       select#company_country(name="company_country" placeholder='Company Country')
         option(value="" disabled selected) Company Country
         option(value="United States") United States

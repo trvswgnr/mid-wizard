@@ -19,17 +19,26 @@ input,select {
   margin-bottom: 1.5em;
   outline: none;
   transition: 0.2s;
-  &:focus{outline: none;}
+  &:focus { outline: none }
   .in-review & {
-    margin-bottom: 1.25em;
+    margin-bottom: 1em;
     border-color: transparent;
     cursor: pointer;
     padding: 0;
+    padding-bottom: 0.5em;
     transition: 0.2s;
     max-width: 400px;
   }
   .in-review &:focus {
     border-color: grey(x-light);
+    transition: 0.2s;
+    cursor: initial;
+  }
+}
+
+input {
+  .in-review &:focus {
+    border-bottom-color: grey(x-light);
     padding: 6px 12px;
     transition: 0.2s;
     cursor: initial;

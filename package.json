@@ -32,6 +32,7 @@
     "imagemin-pngquant": "^5.0.1",
     "jstransformer-markdown-it": "^2.0.0",
     "merge-stream": "^1.0.1",
-    "pug-bemify": "^1.0.4"
+    "pug-bemify": "^1.0.4",
+    "vinyl-paths": "^2.1.0"
   }
 }

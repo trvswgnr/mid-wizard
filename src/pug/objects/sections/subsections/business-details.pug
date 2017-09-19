@@ -4,7 +4,7 @@
       h3 Let's talk money.
       p What currencies does <span data-dynamic-text="company_name">[[company]]</span> transact in?
     .field
-      label(for="currencies") What is the name of your company?
+      label(for="currencies") Select currencies you accept:
       select#currencies(name="currencies" placeholder="Currencies")
         option(value="" disabled selected) Currencies
         option(value="usd") USD ($)
@@ -17,11 +17,13 @@
       h3 Offers
       p Which types of offers do you sell?
     .field
-      label(for="offer_types") Select all the offer types you may accept from the choices below.
-      select#offer_types(name="offer_types" placeholder="Offers" multiple)
-        option(value="" disabled selected) Offers
-        option(value="free_trial") Free Trial
-        option(value="single_order") Single Order
-        option(value="recurring") Recurring
-      button.get-prev-view
-      button.review-subsection Review
+      label.hidden-review Select all the offer types you may accept from the choices below.
+      .multiselect
+        input#offersFree(type="checkbox" class="multiselect__input" name="offers" value="Free Trial")
+        label(for="offersFree") Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed pariatur totam a minus unde hic officiis debitis cupiditate ipsam quas ratione rem quibusdam, est doloremque ea animi praesentium, suscipit iure.
+        input#offersSingle(type="checkbox" class="multiselect__input" name="offers" value="Single Order")
+        label(for="offersSingle") Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed pariatur totam a minus unde hic officiis debitis cupiditate ipsam quas ratione rem quibusdam.
+        input#offersRecurring(type="checkbox" class="multiselect__input" name="offers" value="Recurring")
+        label(for="offersRecurring") Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed pariatur totam a minus unde hic officiis debitis cupiditate ipsam quas ratione rem quibusdam.
+        button.get-prev-view
+        button.review-subsection Review

@@ -71,9 +71,9 @@ wizard.startup = function () {
       ss_n = ss.data('title');
       // add subsection review text
       ss.prepend(
-      '<div class="review-guide-text">' +
-      '<h3>Verify ' + ss.data('title') + '.</h3>' +
-      '</div>'
+        '<div class="review-guide-text">' +
+        '<h3>Verify ' + ss.data('title') + '.</h3>' +
+        '</div>'
       );
       // match subsection data attr in nav
       $('[data-nav-section="' + s_d + '"]').append(
@@ -87,9 +87,9 @@ wizard.startup = function () {
   });
 
   // add fieldset title for in-review
-  $('fieldset').each(function(){
+  $('fieldset').each(function () {
     var this_title = $(this).data('title');
-      this_title = this_title != undefined ? this_title : false;
+    this_title = this_title != undefined ? this_title : false;
 
     if (this_title) {
       $(this).prepend('<div class="review-fieldset-label">' + this_title + '</div>');
@@ -100,5 +100,13 @@ wizard.startup = function () {
   $(".wizard__nav .nav-section:first," +
     ".wizard__nav .nav-subsection:first," +
     ".wizard__nav .nav-section-title:first").addClass("active is-first");
+
+  // add input fields from localStorage
+  input = localStorage.getItem("input_fields1");
+  input = JSON.parse(input);
+  for (var key in input) {
+    $('[name="' + key + '"]').not('[type="radio"], [type="checkbox"]').val(input[key]);
+  }
+  console.log(input);
 
 }

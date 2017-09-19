@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html class="cb" lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="MID Wizard">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="MID Wizard">
+    <meta property="og:description" content="MID Wizard">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="robots" content="index, follow">
+    <meta property="fb:pages" content="276577305793221">
+    <title>MID Wizard</title>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://localhost:3000/css/main.min.css"><!--inject:style--><!--endinject-->
+  </head>
+</html>
+<body>
+  <div class="wizard" id="wizard">
+    <div class="wizard__inner">
+      <main>
+        <form id="wizard_form">
+          <section id="create_your_account" data-title="Create Your Account">
+            <div class="subsection" id="user_details" data-title="User Details">
+              <fieldset class="introduction" id="intro">
+                <h3>Welcome! Let's start recovering your revenue.</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis ipsum exercitationem illum voluptatem animi. Illo nulla libero praesentium blanditiis eveniet rerum tempore ea sequi quo, ducimus, voluptatibus. At, quis, nesciunt!</p>
+                <button class="get-next-view">Let's Begin</button>
+              </fieldset>
+              <fieldset id="about" data-title="You">
+                <div class="guide-text">
+                  <h3>Tell us about yourself.</h3>
+                  <p>Let us know your name and preferred email address.</p>
+                </div>
+                <div class="field">
+                  <label for="first_name">What is your first name?</label>
+                  <input id="first_name" type="text" name="firstname" placeholder="First Name">
+                </div>
+                <div class="field">
+                  <label for="last_name">What is your last name?</label>
+                  <input id="last_name" type="text" name="lastname" placeholder="Last Name">
+                </div>
+                <div>
+                  <label for="email">What is your email?</label>
+                  <input id="email" type="email" name="email" placeholder="Email">
+                </div>
+                <button class="get-next-view">Continue</button>
+              </fieldset>
+              <fieldset id="primary_and_billing">
+                <div class="guide-text">
+                  <h3>Who should we contact?</h3>
+                  <p><span data-dynamic-text="firstname">[[firstname]]</span>, should we contact you directly with any account issues, status reports, and billing inquiries?</p>
+                </div>
+                <div class="radios hidden-review">
+                  <label>Are you the <strong>primary</strong> contact for your company?</label>
+                  <input id="primary_contact_no" type="radio" name="is_primary_contact" value="no" checked="">
+                  <label for="primary_contact_no">No</label>
+                  <input id="primary_contact_yes" type="radio" name="is_primary_contact" value="yes">
+                  <label for="primary_contact_yes">Yes</label>
+                </div>
+                <div class="radios hidden-review">
+                  <label>Are you the <strong>billing</strong> contact for your company?</label>
+                  <input id="billing_contact_no" type="radio" name="is_billing_contact" value="no" checked="">
+                  <label for="billing_contact_no">No</label>
+                  <input id="billing_contact_yes" type="radio" name="is_billing_contact" value="yes">
+                  <label for="billing_contact_yes">Yes</label>
+                </div>
+                <button class="get-prev-view"></button>
+                <button class="get-next-view">Continue</button>
+              </fieldset>
+              <fieldset id="billing_contact" data-title="Primary Contact">
+                <div class="guide-text">
+                  <h3>Who is the primary contact?</h3>
+                  <p>Let us know who we should contact with general questions or issues.</p>
+                </div>
+                <div class="field">
+                  <label for="primary_contact_firstname">What is their first name?</label>
+                  <input id="primary_contact_firstname" type="text" name="primary_contact_firstname" placeholder="First Name">
+                </div>
+                <div class="field">
+                  <label for="primary_contact_lastname">What is their last name?</label>
+                  <input id="primary_contact_lastname" type="text" name="primary_contact_lastname" placeholder="Last Name">
+                </div>
+                <button class="get-prev-view"></button>
+                <button class="get-next-view">Continue</button>
+              </fieldset>
+              <fieldset id="billing_contact" data-title="Billing Contact">
+                <div class="guide-text">
+                  <h3>Who should we contact, with billing inquiries?</h3>
+                  <p>Let us know who we should send invoices and notify about any billing issues.</p>
+                </div>
+                <div class="field">
+                  <label for="billing_contact_firstname">What is their first name?</label>
+                  <input id="billing_contact_firstname" type="text" name="billing_contact_firstname" placeholder="First Name">
+                </div>
+                <div class="field">
+                  <label for="billing_contact_lastname">What is their last name?</label>
+                  <input id="billing_contact_lastname" type="text" name="billing_contact_lastname" placeholder="Last Name">
+                </div>
+                <button class="get-prev-view"></button>
+                <button class="review-subsection">Review</button>
+              </fieldset>
+            </div>
+            <div class="subsection" id="company_information" data-title="Company Information">
+              <fieldset data-title="Name &amp; Industry">
+                <div class="guide-text">
+                  <h3>Tell us about your company.</h3>
+                  <p>Alright <span data-dynamic-text="firstname">{{name}}</span>, now we need to know some basic information about your company.</p>
+                </div>
+                <div class="field">
+                  <label for="company_name">What is the name of your company?</label>
+                  <input id="company_name" type="text" name="company_name" placeholder="Company Name">
+                </div>
+                <div class="block">
+                  <label for="company_type">Which industry best describes your business?</label>
+                  <select id="company_type" name="company_type" placeholder="Industry">
+                    <option value="" disabled selected>Select Industry</option>
+                    <option value="Agriculture &amp; Mining">Agriculture & Mining</option>
+                    <option value="Business Services">Business Services</option>
+                  </select>
+                </div>
+                <button class="get-next-view">Next</button>
+              </fieldset>
+              <fieldset data-title="Company Location">
+                <div class="guide-text">
+                  <h3>Where is <span data-dynamic-text="company_name">[[company]]</span> located?</h3>
+                  <p>What is the primary headquarters for your company?</p>
+                </div>
+                <div class="block">
+                  <label for="company_country"></label>
+                  <select id="company_country" name="company_country" placeholder="Company Country">
+                    <option value="" disabled selected>Company Country</option>
+                    <option value="United States">United States</option>
+                    <option value="Afghanistan">Afghanistan</option>
+                    <option value="Albania">Albania</option>
+                  </select>
+                  <div class="field">
+                    <label for="company_street_address">What is the street address?</label>
+                    <input id="company_street_address" type="text" name="company_street_address" placeholder="Street Address">
+                  </div>
+                  <div class="field">
+                    <label for="company_city_state">What is the city, state, and postal code?</label>
+                    <input id="company_city_state" type="text" name="company_city_state" placeholder="City/State/Zip">
+                  </div>
+                </div>
+                <button class="get-prev-view"></button>
+                <button class="review-subsection">Review</button>
+              </fieldset>
+            </div>
+            <div class="subsection" id="business_details" data-title="Business Details">
+              <fieldset data-title="Currencies">
+                <div class="guide-text">
+                  <h3>Let's talk money.</h3>
+                  <p>What currencies does <span data-dynamic-text="company_name">[[company]]</span> transact in?</p>
+                </div>
+                <div class="field">
+                  <label for="currencies">What is the name of your company?</label>
+                  <select id="currencies" name="currencies" placeholder="Currencies">
+                    <option value="" disabled selected>Currencies</option>
+                    <option value="usd">USD ($)</option>
+                    <option value="eur">EUR (€)</option>
+                    <option value="jpy">JPY (¥)</option>
+                  </select>
+                </div>
+                <button class="get-next-view">Continue</button>
+              </fieldset>
+              <fieldset data-title="Offers">
+                <div class="guide-text">
+                  <h3>Offers</h3>
+                  <p>Which types of offers do you sell?</p>
+                </div>
+                <div class="field">
+                  <label for="offer_types">Select all the offer types you may accept from the choices below.</label>
+                  <select id="offer_types" name="offer_types" placeholder="Offers" multiple>
+                    <option value="" disabled selected>Offers</option>
+                    <option value="free_trial">Free Trial</option>
+                    <option value="single_order">Single Order</option>
+                    <option value="recurring">Recurring</option>
+                  </select>
+                  <button class="get-prev-view"></button>
+                  <button class="review-subsection">Review</button>
+                </div>
+              </fieldset>
+            </div>
+          </section>
+          <section data-title="Add a Merchant">
+            <div class="subsection" data-title="Some Subsection">
+              <fieldset>
+                <input id="email3" type="email" name="email_3" placeholder="your email">
+                <button class="get-prev-section">Prev Section</button>
+                <button class="get-next-view">Next</button>
+              </fieldset>
+              <fieldset>
+                <input id="textarea" type="textarea" name="textarea" placeholder="your text">
+                <button class="get-prev-view"></button>
+                <button class="get-next-subsection"></button>
+              </fieldset>
+            </div>
+            <div class="subsection" data-title="Some Other Subsection">
+              <fieldset>
+                <input id="email5" type="email" name="email5" placeholder="your email">
+                <button class="get-prev-subsection">Prev Section</button>
+                <button class="get-next-view">Next</button>
+              </fieldset>
+              <fieldset>
+                <input id="textarea" type="textarea" name="textarea" placeholder="your text">
+                <button class="get-prev-view"></button>
+              </fieldset>
+            </div>
+          </section>
+        </form>
+      </main>
+      <aside>
+        <div class="wizard__nav"></div>
+      </aside>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="http://localhost:3000/js/main.min.js"></script>
+</body>

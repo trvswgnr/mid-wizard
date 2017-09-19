@@ -24,8 +24,8 @@
     production: !!$.util.env.production,
     // set different asset paths for development and production
     assets: {
-      dev: 'http://172.16.1.8:3000/',
-      pro: 'https://chargebacks911.com/mid-wizard/',
+      dev: 'http://localhost:3000/',
+      pro: 'http://test.chargebacks911.com/mid-wizard/',
       // this tag will be replaced throughout the files with the appropriate asset path
       tag: '{{path}}'
     },
@@ -322,7 +322,7 @@
     if (settings.production) {
       console.log($.util.colors.red('\nProduction Build.\n'));
       run();
-      inject_style();
+//      inject_style();
       setTimeout(function () {
         console.log($.util.colors.green('\nBuild Complete.\n'));
       }, 2000);

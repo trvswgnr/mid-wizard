@@ -1,5 +1,5 @@
-wizard.change_section = function (section, subsection, view, btns) {
-
+wizard.change_section = function (section, subsection, view) {
+  'use strict';
   // go to the next subsection
   $("button.get-next-section").click(function () {
     // section

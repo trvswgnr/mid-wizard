@@ -10,11 +10,15 @@
   "nonbsp"    : true,
   "strict"    : true,
   "undef"     : true,
-  "unused"    : true,
   "-W041"     : false,
   "globals"   : {
     "console": false,
     "JSON": false,
-    "require": false
+    "require": false,
+    "change_label_text": false,
+    "wizard": true,
+    "input": true,
+    "get_form_data": false,
+    "dynamic_text": false
   }
 }

@@ -1,0 +1,106 @@
+/* FORM MODIFIERS
+---------------------------------- */
+
+// Pug example usage:
+//.multiselect
+//  input#offersFree(type="checkbox" class="multiselect__input" name="offers" value="Free Trial")
+//  label(for="offersFree") Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed pariatur totam a minus unde hic officiis debitis cupiditate ipsam quas ratione rem quibusdam, est doloremque ea animi praesentium, suscipit iure.
+//  input#offersSingle(type="checkbox" class="multiselect__input" name="offers" value="Single Order")
+//  label(for="offersSingle") Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed pariatur totam a minus unde hic officiis debitis cupiditate ipsam quas ratione rem quibusdam.
+//  input#offersRecurring(type="checkbox" class="multiselect__input" name="offers" value="Recurring")
+//  label(for="offersRecurring") Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed pariatur totam a minus unde hic officiis debitis cupiditate ipsam quas ratione rem quibusdam.
+
+.multiselect {
+  margin-top: 1em;
+
+  &__input {
+    height: 0 !important;
+    width: 0 !important;
+    float: left;
+    overflow: hidden;
+    margin: 0;
+  }
+  label[for] {
+    display: none;
+  }
+  label.multiselect__option {
+    display: block;
+
+    .in-review & p {
+      display: none;
+    }
+  }
+  &__option {
+    position: relative;
+    padding: 1em 4em 1em 1em;
+    background: white;
+    font-weight: 700;
+    width: 100%;
+    max-width: 600px;
+    color: grey(light);
+    border: 2px solid grey(light);
+    margin-bottom: 1em;
+    border-radius: 3px;
+    font-size: 1.3em;
+    transition: 0.1s ease-in-out;
+    .in-review & {
+      padding: 0.5em 2em 0.5em 0.5em;
+      width: 200px;
+      font-size: 1em;
+      margin-bottom: 0.5em;
+      display: inline-block !important;
+      &:after {
+        right: 0.5em;
+        font-size: 16px;
+        height: 16px;
+        width: 16px;
+      }
+    }
+    &:after {
+      font-family: FontAwesome;
+      position: absolute;
+      content: '';
+      right: 1em;
+      top: 0;
+      bottom: 0;
+      height: 24px;
+      width: 24px;
+      line-height: 1;
+      font-size: 24px;
+      margin: auto;
+      background: grey(x-light);
+      text-align: center;
+      border-radius: 3px;
+      transition: 0.1s ease-in-out;
+    }
+    &.is-active {
+      background: $color_primary;
+      color: white;
+      border-color: $color_primary;
+      transition: 0.1s ease-in-out;
+      &:after {
+        content: '\F046';
+        background: transparent;
+        color: white;
+        animation: pop 0.2s ease-in-out normal 1 forwards;
+      }
+    }
+  }
+  &__option p {
+    font-size: 0.8em;
+    font-weight: normal;
+    margin: 0;
+  }
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

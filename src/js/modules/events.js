@@ -4,10 +4,13 @@ wizard.events = function () {
   "use strict";
 
   // @NOTE: c - current, n - next, p - previous
-  var section = {},
-    subsection = {},
-    view = {},
-    input = {},
+  var section,
+    subsection = {
+      count: 1
+    },
+    view = {
+      count: 1
+    },
     btns = $("button");
 
   // prevent default button functionality
@@ -15,18 +18,41 @@ wizard.events = function () {
     e.preventDefault();
   });
 
+  section = {};
+
   wizard.change_view(view, input);
 
-  wizard.review_subsection(subsection, view, btns);
+  wizard.review_subsection(subsection, view);
 
   wizard.change_subsection(subsection, view, btns);
 
-//  wizard.change_section(section, subsection, view, btns);
+  wizard.nav_subsection(subsection, view);
+
+  //  wizard.change_section(section, subsection, view, btns);
 
   // change section
-  $('button.review-section').click(function(){
+//  $('button.review-section').click(function () {
+//
+//  });
 
+$('input').on('change', function () {
+  input = get_form_data(document.getElementById('wizard_form'));
+  localStorage.setItem("input_fields1", JSON.stringify(input));
+});
+
+
+  /* FORM MODIFIERS (affect hidden fields, etc...)
+  ------------------------------------------------- */
+  // multiselect with hidden checkboxes
+  $('.multiselect__input').each(function () {
+    var el = $(this),
+      id = el.attr('id');
+    el.after('<label for="' + id + '" class="multiselect__option">' + el.val() + '<p>' + $('label[for="' + id + '"]').text() + '</p></label>');
   });
 
+  $('.multiselect__option').click(function () {
+    var el = $(this);
+    el.toggleClass('is-active');
+  });
 
 }

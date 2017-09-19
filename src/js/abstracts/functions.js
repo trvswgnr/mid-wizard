@@ -1,10 +1,16 @@
+/* GLOBAL FUNCTIONS
+------------------------------------------------- */
+// @NOTE: Make sure these are added to the jshint/jslint config file
+
 // get element(s) by data attribute and value
 function $data(data, val) {
+  'use strict';
   return $("[data-" + data + '="' + val + '"]');
 }
 
 // apply dynamic text for things like {{name}}, etc...
 function dynamic_text() {
+  'use strict';
   var el, this_data, input_val;
   $("[data-dynamic-text]").each(function () {
     el = $(this);
@@ -16,6 +22,7 @@ function dynamic_text() {
 
 // change the labels when the subsection is under review
 function change_label_text(x) {
+  'use strict';
   var label = $("input, select").not('[type="radio"], [type="checkbox"]').prev("label");
 
   $.each(label, function () {
@@ -36,4 +43,3 @@ function change_label_text(x) {
     }
   });
 }
-
