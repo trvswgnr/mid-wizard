@@ -1,28 +1,3 @@
-Object.assign = function () {
-  for (var i = 1; i < arguments.length; i++)
-    for (var key in arguments[i])
-      if (arguments[i].hasOwnProperty(key)) {
-        if (typeof arguments[0][key] === 'object' &&
-          typeof arguments[i][key] === 'object')
-          Object.assign(arguments[0][key], arguments[i][key]);
-        else
-          arguments[0][key] = arguments[i][key];
-      }
-  return arguments[0];
-}
-
-function babel_test(x = 1, z = 2) {
-  let n = {
-      a: 5
-    },
-    b = {
-      a: 6
-    };
-  Object.assign(n, b);
-  console.log(n)
-}
-
-babel_test();
 /* GLOBAL FUNCTIONS
 ------------------------------------------------- */
 // @NOTE: Make sure these are added to the jshint/jslint config file

@@ -167,7 +167,7 @@
       .pipe($.replace(settings.assets.tag, $path))
       .pipe($.concat(settings.js.name + '.js')).on('error', settings.error)
       .pipe($.babel({
-        presets: ['env']
+        presets: [['env', {modules:false}]]
       }));
 
     // minify javascript file

@@ -20,6 +20,7 @@
     "input": true,
     "get_form_data": false,
     "dynamic_text": false,
-    "$data": false
+    "$data": false,
+    "Cookies": false
   }
 }

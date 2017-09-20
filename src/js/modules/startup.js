@@ -97,9 +97,9 @@ wizard.startup = function () {
     ".wizard__nav .nav-subsection:first," +
     ".wizard__nav .nav-section-title:first").addClass("active is-first");
 
-  // add inputs fields from localStorage
-  input = localStorage.getItem("input_fields1");
-  input = JSON.parse(input);
+  // add inputs fields from cookie
+  input = Cookies.get("input_fields");
+  input = !input ? {} : JSON.parse(input);
   for (var key in input) {
     $('[name="' + key + '"]').not('[type="radio"], [type="checkbox"]').val(input[key]);
   }
