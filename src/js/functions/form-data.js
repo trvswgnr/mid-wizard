@@ -3,7 +3,6 @@
 // @NOTE: Make sure this is added to the jshint/jslint config file
 function get_form_data(form) {
 
-
   function set_or_push(target, val) {
     var result = val;
     if (target) {
@@ -30,9 +29,11 @@ function get_form_data(form) {
         break;
       case "checkbox":
         if (elem.checked) {
-          form_params[elem.name] = set_or_push(
-            form_params[elem.name],
-            elem.value
+          form_params[elem.name] = flatten_array(
+            set_or_push(
+              form_params[elem.name],
+              elem.value
+            )
           );
         }
         break;

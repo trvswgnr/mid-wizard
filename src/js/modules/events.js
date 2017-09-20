@@ -46,8 +46,10 @@ $('input').on('change', function () {
   // multiselect with hidden checkboxes
   $('.multiselect__input').each(function () {
     var el = $(this),
-      id = el.attr('id');
+      id = el.attr('id'),
+        label = $('label[for="'+id+'"]');
     el.after('<label for="' + id + '" class="multiselect__option">' + el.val() + '<p>' + $('label[for="' + id + '"]').text() + '</p></label>');
+    label.remove();
   });
 
   $('.multiselect__option').click(function () {

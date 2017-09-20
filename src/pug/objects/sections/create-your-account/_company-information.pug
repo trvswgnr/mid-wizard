@@ -2,7 +2,7 @@
   fieldset(data-title="Name & Industry")
     .guide-text
       h3 Tell us about your company.
-      p Alright <span data-dynamic-text="firstname">{{name}}</span>, now we need to know some basic information about your company.
+      p Alright <span data-dynamic-text="user_first_name">[[name]]</span>, now we need to know some basic information about your company.
     .field
       label(for="company_name") What is the name of your company?
       input#company_name(type="text" name="company_name" placeholder="Company Name")

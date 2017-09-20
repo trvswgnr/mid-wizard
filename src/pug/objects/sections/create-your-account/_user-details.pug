@@ -10,10 +10,10 @@
       p Let us know your name and preferred email address.
     .field
       label(for="first_name") What is your first name?
-      input#first_name(type="text" name='firstname' placeholder='First Name')
+      input#user_first_name(type="text" name='user_first_name' placeholder='First Name')
     .field
       label(for="last_name") What is your last name?
-      input#last_name(type="text" name='lastname' placeholder='Last Name')
+      input#user_last_name(type="text" name='user_last_name' placeholder='Last Name')
     div
       label(for="email") What is your email?
       input#email(type="email" name='email' placeholder='Email')
@@ -22,7 +22,7 @@
   fieldset#primary_and_billing
     .guide-text
       h3 Who should we contact?
-      p <span data-dynamic-text="firstname">[[firstname]]</span>, should we contact you directly with any account issues, status reports, and billing inquiries?
+      p <span data-dynamic-text="user_first_name">[[name]]</span>, should we contact you directly with any account issues, status reports, and billing inquiries?
     .radios.hidden-review
       label Are you the <strong>primary</strong> contact for your company?
       input#primary_contact_no(type="radio" name='is_primary_contact' value='no' checked='')

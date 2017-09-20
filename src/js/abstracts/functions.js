@@ -43,3 +43,17 @@ function change_label_text(x) {
     }
   });
 }
+
+// Flatten nested array
+function flatten_array(arr) {
+  var is_array = Object.prototype.toString.call(arr) === '[object Array]';
+
+  if (is_array && arr.length > 0) {
+    var head = arr[0];
+    var tail = arr.slice(1);
+
+    return flatten_array(head).concat(flatten_array(tail));
+  } else {
+    return [].concat(arr);
+  }
+}
