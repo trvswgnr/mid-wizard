@@ -97,7 +97,7 @@ wizard.startup = function () {
     ".wizard__nav .nav-subsection:first," +
     ".wizard__nav .nav-section-title:first").addClass("active is-first");
 
-  // add input fields from localStorage
+  // add inputs fields from localStorage
   input = localStorage.getItem("input_fields1");
   input = JSON.parse(input);
   for (var key in input) {

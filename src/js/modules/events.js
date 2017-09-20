@@ -33,7 +33,7 @@ wizard.events = function () {
 //  });
 
 
-/* Set LocalStorage / Cookie
+/* Set LocalStorage
 ------------------------------------------------- */
 $('input').on('change', function () {
   input = get_form_data(document.getElementById('wizard_form'));
