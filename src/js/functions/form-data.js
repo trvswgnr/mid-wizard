@@ -2,7 +2,7 @@
 ------------------------------------------------- */
 // @NOTE: Make sure this is added to the jshint/jslint config file
 function get_form_data(form) {
-  'use strict';
+
 
   function set_or_push(target, val) {
     var result = val;

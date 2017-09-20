@@ -3,12 +3,12 @@
   "browser"   : true,
   "devel"     : true,
   "eqnull"    : true,
-  "es3"       : true,
+  "esversion" : 6,
   "expr"      : true,
   "jquery"    : true,
   "latedef"   : true,
   "nonbsp"    : true,
-  "strict"    : true,
+  "strict"    : "implied",
   "undef"     : true,
   "-W041"     : false,
   "globals"   : {
@@ -19,6 +19,7 @@
     "wizard": true,
     "input": true,
     "get_form_data": false,
-    "dynamic_text": false
+    "dynamic_text": false,
+    "$data": false
   }
 }

@@ -1,16 +1,41 @@
+Object.assign = function () {
+  for (var i = 1; i < arguments.length; i++)
+    for (var key in arguments[i])
+      if (arguments[i].hasOwnProperty(key)) {
+        if (typeof arguments[0][key] === 'object' &&
+          typeof arguments[i][key] === 'object')
+          Object.assign(arguments[0][key], arguments[i][key]);
+        else
+          arguments[0][key] = arguments[i][key];
+      }
+  return arguments[0];
+}
+
+function babel_test(x = 1, z = 2) {
+  let n = {
+      a: 5
+    },
+    b = {
+      a: 6
+    };
+  Object.assign(n, b);
+  console.log(n)
+}
+
+babel_test();
 /* GLOBAL FUNCTIONS
 ------------------------------------------------- */
 // @NOTE: Make sure these are added to the jshint/jslint config file
 
 // get element(s) by data attribute and value
 function $data(data, val) {
-  'use strict';
+
   return $("[data-" + data + '="' + val + '"]');
 }
 
 // apply dynamic text for things like {{name}}, etc...
 function dynamic_text() {
-  'use strict';
+
   var el, this_data, input_val;
   $("[data-dynamic-text]").each(function () {
     el = $(this);
@@ -22,7 +47,7 @@ function dynamic_text() {
 
 // change the labels when the subsection is under review
 function change_label_text(x) {
-  'use strict';
+
   var label = $("input, select").not('[type="radio"], [type="checkbox"]').prev("label");
 
   $.each(label, function () {

@@ -1,7 +1,6 @@
 /* STARTUP FUNCTIONS
 ------------------------------------------------- */
 wizard.startup = function () {
-  "use strict";
 
   // add data-attribute matching the order of sections,
   // subsections in each section, and views(fieldsets) in each subsection
@@ -26,7 +25,6 @@ wizard.startup = function () {
   $(".subsection").each(function (i) {
     $(this).attr("data-subsection-order", i + 1);
   });
-
 
   // add active class to first of each
   $('[data-section="1"]').addClass("active");
@@ -58,11 +56,9 @@ wizard.startup = function () {
 
     // match section data attr in nav
     $(".wizard__nav").append(
-      '<ul class="nav-section" data-nav-section="' +
-      s_d +
-      '"><h4 class="nav-section-title">' +
-      s_n +
-      "</h4></ul>"
+      '<ul class="nav-section" data-nav-section="' + s_d + '">' +
+        '<h4 class="nav-section-title">' + s_n + "</h4>" +
+      "</ul>"
     );
 
     ss_in_s.each(function () {
@@ -76,7 +72,7 @@ wizard.startup = function () {
         '</div>'
       );
       // match subsection data attr in nav
-      $('[data-nav-section="' + s_d + '"]').append(
+      $data('nav-section', s_d).append(
         '<li class="nav-subsection" data-nav-subsection="' +
         ss_d +
         '">' +

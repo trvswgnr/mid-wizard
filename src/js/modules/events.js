@@ -1,7 +1,6 @@
 /* CLICK / EVENT ACTIONS
 ------------------------------------------------- */
 wizard.events = function () {
-  "use strict";
 
   // @NOTE: c - current, n - next, p - previous
   var section,
@@ -18,8 +17,6 @@ wizard.events = function () {
     e.preventDefault();
   });
 
-  section = {};
-
   wizard.change_view(view, input);
 
   wizard.review_subsection(subsection, view);
@@ -35,6 +32,9 @@ wizard.events = function () {
 //
 //  });
 
+
+/* Set LocalStorage / Cookie
+------------------------------------------------- */
 $('input').on('change', function () {
   input = get_form_data(document.getElementById('wizard_form'));
   localStorage.setItem("input_fields1", JSON.stringify(input));

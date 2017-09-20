@@ -1,13 +1,18 @@
 /* CHANGE VIEW
 ------------------------------------------------- */
 wizard.change_view = function (view, input) {
-  'use strict';
+
+
+  view.activate = function() {
+    view.c.removeClass("active slide-in-left").addClass("done");
+    view.n.removeClass("done").addClass("active");
+  }
+
   // go to next view
   $("button.get-next-view").click(function () {
     view.c = $('[data-view="'+view.count+'"]');
     view.n = $('[data-view="'+(view.count+1)+'"]');
-    view.c.removeClass("active slide-in-left").addClass("done");
-    view.n.removeClass("done").addClass("active");
+    view.activate();
     view.count = view.n.data("view");
 
 

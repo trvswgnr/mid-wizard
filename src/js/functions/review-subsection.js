@@ -1,7 +1,7 @@
 /* REVIEW SUBSECTION
 ------------------------------------------------- */
 wizard.review_subsection = function(subsection,view) {
-  'use strict';
+
   // review the current subsection
   $("button.review-subsection, button.review-section").click(function() {
     subsection.c = $('[data-subsection-order="'+subsection.count+'"]');

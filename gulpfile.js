@@ -3,9 +3,7 @@
 
 (function () {
 
-  'use strict';
-
-  /* GLOBAL VARIABLES
+  /* REQUIRE
   ------------------------------------------------- */
   var gulp = require('gulp'),
     merge = require('merge-stream'),
@@ -17,6 +15,8 @@
     png_quant = require('imagemin-pngquant'),
     del = require('del');
 
+  /* SETTINGS
+  ------------------------------------------------- */
   var settings = {
     // set the name of the production build folder
     build_folder: 'dist',
@@ -59,6 +59,8 @@
       name: 'main',
       files: [
         'vendor/**/*.js',
+        'abstracts/variables.js',
+        'abstracts/functions.js',
         'abstracts/**/*.js',
         'functions/**/*.js',
         'modules/**/*.js',
@@ -159,11 +161,14 @@
       return arr;
     }());
 
-    // combine all js files in folder, starting alphabetically
+    // compile Babel & combine all js files in folder, starting alphabetically
     var concat = gulp.src(js_import)
       .pipe($.sourcemaps.init())
       .pipe($.replace(settings.assets.tag, $path))
-      .pipe($.concat(settings.js.name + '.js')).on('error', settings.error);
+      .pipe($.concat(settings.js.name + '.js')).on('error', settings.error)
+      .pipe($.babel({
+        presets: ['env']
+      }));
 
     // minify javascript file
     var ugly = concat.pipe($.clone())
@@ -181,7 +186,6 @@
   gulp.task('js', function () {
     process_js();
   });
-
 
 
   /* COMPILE Pug
@@ -322,7 +326,7 @@
     if (settings.production) {
       console.log($.util.colors.red('\nProduction Build.\n'));
       run();
-//      inject_style();
+      //      inject_style();
       setTimeout(function () {
         console.log($.util.colors.green('\nBuild Complete.\n'));
       }, 2000);

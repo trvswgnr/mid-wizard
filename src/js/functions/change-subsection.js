@@ -1,7 +1,14 @@
 /* CHANGE SUBSECTION
 ------------------------------------------------- */
 wizard.change_subsection = function (subsection, view, btns) {
-  'use strict';
+
+
+  // activate subsection by adding class to next and removing from current
+  subsection.activate = function() {
+    subsection.c.removeClass("active").addClass('subsection-done');
+    subsection.n.addClass("active").removeClass('subsection-done');
+  }
+
   // go to the next subsection
   $("button.get-next-subsection").click(function (e) {
     e.preventDefault();
@@ -13,16 +20,14 @@ wizard.change_subsection = function (subsection, view, btns) {
     //subsection
     subsection.c = $('.subsection.active');
     subsection.n = $('[data-subsection-order="' + (subsection.count + 1) + '"]');
-    subsection.c.removeClass("active");
-    subsection.n.addClass("active").removeClass('subsection-done');
+    subsection.activate();
     subsection.count = subsection.n.data("subsection-order");
 
     // view
     view.c = subsection.c.find('fieldset:last');
     view.count = view.c.data("view");
     view.n = $('[data-view="' + (view.count + 1) + '"]');
-    view.c.removeClass("active").addClass('done');
-    view.n.addClass("active");
+    view.activate();
     view.count = view.n.data("view");
 
     // nav
