@@ -18,12 +18,29 @@
       p Which types of offers do you sell?
     .field
       label.hidden-review Select all the offer types you may accept from the choices below.
-      .multiselect
-        input#offersFree(type="checkbox" class="multiselect__input" name="offers" value="Free Trial")
+      .pills.pills--checkboxes
+        input#offersFree(type="checkbox" class="pills__input" name="offers" value="Free Trial")
         label(for="offersFree") Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed pariatur totam a minus unde hic officiis debitis cupiditate ipsam quas ratione rem quibusdam, est doloremque ea animi praesentium, suscipit iure.
-        input#offersSingle(type="checkbox" class="multiselect__input" name="offers" value="Single Order")
+        input#offersSingle(type="checkbox" class="pills__input" name="offers" value="Single Order")
         label(for="offersSingle") Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed pariatur totam a minus unde hic officiis debitis cupiditate ipsam quas ratione rem quibusdam.
-        input#offersRecurring(type="checkbox" class="multiselect__input" name="offers" value="Recurring")
+        input#offersRecurring(type="checkbox" class="pills__input" name="offers" value="Recurring")
         label(for="offersRecurring") Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed pariatur totam a minus unde hic officiis debitis cupiditate ipsam quas ratione rem quibusdam.
+        button.get-prev-view
+        button.get-next-view Continue
+
+  fieldset(data-title="Number of Chargebacks")
+    .guide-text
+      h3 Number of Chargebacks
+      p What is your estimated number of chargebacks per month?
+    .field
+      label Select a range from one of the options below:
+      .pills.pills--radios
+        input#number_chargebacks_10(type="radio" class="pills__input" name="number_of_chargebacks" value="Less than 10 Chargebacks")
+        input#number_chargebacks_25(type="radio" class="pills__input" name="number_of_chargebacks" value="10 to 25 Chargebacks")
+        input#number_chargebacks_50(type="radio" class="pills__input" name="number_of_chargebacks" value="25 to 50 Chargebacks")
+        input#number_chargebacks_100(type="radio" class="pills__input" name="number_of_chargebacks" value="50 to 100 Chargebacks")
+        input#number_chargebacks_250(type="radio" class="pills__input" name="number_of_chargebacks" value="100 to 250 Chargebacks")
+        input#number_chargebacks_500(type="radio" class="pills__input" name="number_of_chargebacks" value="250 to 500 Chargebacks")
+        input#number_chargebacks_more(type="radio" class="pills__input" name="number_of_chargebacks" value="500+ Chargebacks")
         button.get-prev-view
         button.review-subsection Review

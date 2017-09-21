@@ -1,4 +1,4 @@
-wizard.change_section = function (section, subsection, view) {
+Wizard.change_section = function (section, subsection, view) {
 
   // go to the next subsection
   $("button.get-next-section").click(function () {

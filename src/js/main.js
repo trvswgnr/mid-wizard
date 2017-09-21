@@ -1,9 +1,9 @@
 /* MAIN / INIT
 ------------------------------------------------- */
-wizard.init = function() {
+Wizard.init = function() {
 
-  wizard.startup();
-  wizard.events();
+  Wizard.startup();
+  Wizard.events();
 }
 
-wizard.init();
+Wizard.init();

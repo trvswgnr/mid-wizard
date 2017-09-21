@@ -1,6 +1,6 @@
 /* STARTUP FUNCTIONS
 ------------------------------------------------- */
-wizard.startup = function () {
+Wizard.startup = function () {
 
   // add data-attribute matching the order of sections,
   // subsections in each section, and views(fieldsets) in each subsection
@@ -97,12 +97,6 @@ wizard.startup = function () {
     ".wizard__nav .nav-subsection:first," +
     ".wizard__nav .nav-section-title:first").addClass("active is-first");
 
-  // add inputs fields from cookie
-  input = Cookies.get("input_fields");
-  input = !input ? {} : JSON.parse(input);
-  for (var key in input) {
-    $('[name="' + key + '"]').not('[type="radio"], [type="checkbox"]').val(input[key]);
-  }
+  Wizard.cookies();
   console.log(input);
-
 }

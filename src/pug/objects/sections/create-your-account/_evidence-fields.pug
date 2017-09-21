@@ -1,0 +1,68 @@
+.subsection#evidence_fields(data-title="Evidence Fields")
+  fieldset(data-title="Basic")
+    .guide-text
+      h3 Basic Evidence Fields
+      p What types of data do you have access to from your transactions?
+    .field
+      label.hidden-review Below are evidence fields for basic transaction information. Toggle the fields that are available to you:
+      .pills.pills--checkboxes.pills--inline
+        input#basic_evidence_first_name(type="checkbox" class="pills__input" name="evidence_basic" value="First Name")
+        input#basic_evidence_last_name(type="checkbox" class="pills__input" name="evidence_basic" value="Last Name")
+        input#basic_evidence_email(type="checkbox" class="pills__input" name="evidence_basic" value="Email Address")
+        input#basic_evidence_billing_address(type="checkbox" class="pills__input" name="evidence_basic" value="Billing Address")
+        input#basic_evidence_shipping_address(type="checkbox" class="pills__input" name="evidence_basic" value="Shipping Address")
+        input#basic_evidence_cc_exp_date(type="checkbox" class="pills__input" name="evidence_basic" value="CC Expiration Date")
+        .block
+          button.get-prev-view
+          button.get-next-view Continue
+
+  fieldset(data-title="Advanced")
+    .guide-text
+      h3 Advanced Evidence Fields
+      p What types of data do you have access to from your transactions?
+    .field
+      label.hidden-review Below are evidence fields for advanced transaction information. Toggle the fields that are available to you:
+      .pills.pills--checkboxes.pills--inline
+        input#advanced_evidence_location_address(type="checkbox" class="pills__input" name="evidence_advanced" value="Location Address")
+        input#advanced_evidence_terminal_id(type="checkbox" class="pills__input" name="evidence_advanced" value="Terminal ID")
+        input#advanced_evidence_auth_number(type="checkbox" class="pills__input" name="evidence_advanced" value="Authorization Number")
+        input#advanced_evidence_avs_code(type="checkbox" class="pills__input" name="evidence_advanced" value="AVS Code")
+        input#advanced_evidence_customer_notes(type="checkbox" class="pills__input" name="evidence_advanced" value="Customer Notes")
+        input#advanced_evidence_order_number(type="checkbox" class="pills__input" name="evidence_advanced" value="Order Number")
+        input#advanced_evidence_phone_number(type="checkbox" class="pills__input" name="evidence_advanced" value="Phone Number")
+        input#advanced_evidence_login_name(type="checkbox" class="pills__input" name="evidence_advanced" value="Profile/Login Name")
+        input#advanced_evidence_chat_log(type="checkbox" class="pills__input" name="evidence_advanced" value="Profile Chat Log")
+        input#advanced_evidence_somed_account(type="checkbox" class="pills__input" name="evidence_advanced" value="Social Media Account")
+        input#advanced_evidence_transaction_number(type="checkbox" class="pills__input" name="evidence_advanced" value="Transaction Number")
+        input#advanced_evidence_visa_verified(type="checkbox" class="pills__input" name="evidence_advanced" value="Verified by Visa")
+        .block
+          button.get-prev-view
+          button.get-next-view Continue
+
+  fieldset(data-title="Sales Method")
+    .guide-text
+      h3 Advanced Evidence Fields
+      p What types of data do you have access to from your transactions?
+    .field
+      label.hidden-review Using your sales method choices, we've selected a few more evidence fields that might be obtainable. Toggle the fields that are available to you:
+      .pills.pills--checkboxes.pills--inline
+        input#sales_evidence_address(type="checkbox" class="pills__input" name="evidence_sales" value="Digital Download")
+        input#sales_evidence_last_name(type="checkbox" class="pills__input" name="evidence_sales" value="Last Name")
+        input#sales_evidence_email(type="checkbox" class="pills__input" name="evidence_sales" value="Email Address")
+        input#sales_evidence_billing(type="checkbox" class="pills__input" name="evidence_sales" value="Billing")
+        button.get-prev-view
+        button.get-next-view Continue
+
+  fieldset(data-title="Industry Specific")
+    .guide-text
+      h3 Industry Specific Evidence Fields
+      p What types of data do you have access to from your transactions?
+    .field
+      label.hidden-review Below are specific evidence fields that could be on hand due to your business' industry. Toggle the fields that are available to you:
+      .pills.pills--checkboxes.pills--inline
+        input#industry_evidence_address(type="checkbox" class="pills__input" name="evidence_industry" value="Location Address")
+        input#industry_evidence_last_name(type="checkbox" class="pills__input" name="evidence_industry" value="Last Name")
+        input#industry_evidence_email(type="checkbox" class="pills__input" name="evidence_industry" value="Email Address")
+        input#industry_evidence_billing(type="checkbox" class="pills__input" name="evidence_industry" value="Billing")
+        button.get-prev-view
+        button.review-subsection Review

@@ -16,7 +16,7 @@
     "JSON": false,
     "require": false,
     "change_label_text": false,
-    "wizard": true,
+    "Wizard": true,
     "input": true,
     "get_form_data": false,
     "dynamic_text": false,

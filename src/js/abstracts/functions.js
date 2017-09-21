@@ -2,27 +2,40 @@
 ------------------------------------------------- */
 // @NOTE: Make sure these are added to the jshint/jslint config file
 
-// get element(s) by data attribute and value
-function $data(data, val) {
-
-  return $("[data-" + data + '="' + val + '"]');
+/**
+ * Get element(s) using jQuery by data attribute and value.
+ * @arg {string} data - the data-attribute (don't include 'data-', just the attribute.)
+ * @arg {string} [val=''] = the value for the data attribute.
+ */
+function $data(data, val = '') {
+  var x = val === '' ? $("[data-" + data + "]") : $("[data-" + data + '="' + val + '"]');
+  return x;
 }
 
-// apply dynamic text for things like {{name}}, etc...
-function dynamic_text() {
-
+/**
+ * Change text inside an element with a matching 'name' attribute from input tag
+ * @arg {string} [data_attribute='dynamic-text'] - the data-attribute to look for a matching name attribute for and replace text (don't include 'data-', just the attribute.)
+ * @example
+ * // Will replace span tag with input value
+ * <input type="text" name="firstname" value="John Doe">
+ * <span data-dynamic-text="firstname">{{firstname}} (doesn't matter what's in here)</span>
+ * // Result is <span data-dynamic-text="firstname">John Doe</span>
+ */
+function dynamic_text(data_attribute = 'dynamic-text') {
   var el, this_data, input_val;
-  $("[data-dynamic-text]").each(function () {
+  $("[data-"+data_attribute+"]").each(function () {
     el = $(this);
-    this_data = el.data("dynamic-text");
+    this_data = el.data(data_attribute);
     input_val = $('[name="' + this_data + '"]').val();
-    $data("dynamic-text", this_data).text(input_val);
+    $data(data_attribute, this_data).text(input_val);
   });
 }
 
-// change the labels when the subsection is under review
+/**
+ * Change the labels when the subsection is under review
+ * @arg {boolean} x - specify whether the label text should match the placeholder of the input (true) or match the regular label text (false).
+ */
 function change_label_text(x) {
-
   var label = $("input, select").not('[type="radio"], [type="checkbox"]').prev("label");
 
   $.each(label, function () {
@@ -44,7 +57,13 @@ function change_label_text(x) {
   });
 }
 
-// Flatten nested array
+/**
+ * Flatten a nested array with recursion.
+ * @arg {Array} arr An array containing nested arrays.
+ * @example
+ * // returns ["A", "B", "C", "D", "E", "F"]
+ * flatten_array(["A", ["B", ["C", "D"], "E"], "F"]);
+ */
 function flatten_array(arr) {
   var is_array = Object.prototype.toString.call(arr) === '[object Array]';
 

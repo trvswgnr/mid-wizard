@@ -167,7 +167,9 @@
       .pipe($.replace(settings.assets.tag, $path))
       .pipe($.concat(settings.js.name + '.js')).on('error', settings.error)
       .pipe($.babel({
-        presets: [['env', {modules:false}]]
+        presets: [['env', {
+          modules: false
+        }]]
       }));
 
     // minify javascript file
@@ -336,5 +338,9 @@
       setTimeout(watch_files, 2000);
     }
   });
+
+  /* GENERATE JS DOCUMENTS
+  ------------------------------------------------- */
+  gulp.task('jsdoc', $.shell.task(['.\\node_modules\\.bin\\jsdoc --readme .\\README.md ' + settings.js.dest + '\\' + settings.js.name + '.js' + ' -r -d docs']));
 
 }());

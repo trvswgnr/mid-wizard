@@ -1,7 +1,7 @@
-/* CHANGE SUBSECTION
-------------------------------------------------- */
-wizard.change_subsection = function (subsection, view, btns) {
-
+/**
+ * Advance to the next subsection.
+ */
+Wizard.change_subsection = function () {
 
   // activate subsection by adding class to next and removing from current
   subsection.activate = function() {
@@ -12,6 +12,7 @@ wizard.change_subsection = function (subsection, view, btns) {
   // go to the next subsection
   $("button.get-next-subsection").click(function (e) {
     e.preventDefault();
+
     //show buttons after animation
     setTimeout(function () {
       btns.show();
