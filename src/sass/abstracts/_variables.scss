@@ -18,10 +18,10 @@ $grey: (
   lightest: #fafafa
 );
 
-@function grey($x) {
+@function grey($x:base) {
   @return map-get($grey,$x);
 }
 
-@function gray($x) {
+@function gray($x:base) {
   @return map-get($grey,$x);
 }

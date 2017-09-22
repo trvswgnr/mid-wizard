@@ -6,7 +6,7 @@ main {
   width: 100%;
   padding-top: 80px;
   padding-right: 2em;
-  overflow-x: hidden;
+//  overflow-x: hidden;
 }
 
 aside {
@@ -17,7 +17,20 @@ aside {
   border-left: 1px solid grey(x-light);
   border-right: 1px solid grey(x-light);
   background: grey(lightest);
+  z-index: 1;
+  position: relative;
   h4 {
     font-weight: bold;
   }
+
+}
+
+.clip-cover {
+  position: absolute;
+  width: 800px;
+  height: 100%;
+  left: 100%;
+  top: 0;
+  border-left: 1px solid grey(x-light);
+  background: white;
 }

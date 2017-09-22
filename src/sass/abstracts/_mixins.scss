@@ -1,0 +1,10 @@
+/* SASS MIXINS
+---------------------------------- */
+
+@mixin triangle($thickness:10px, $direction: top, $color: black) {
+  border: $thickness solid transparent;
+  border-#{$direction}-color: $color;
+  height: 0;
+  width: 0;
+  #{$direction}: 100%;
+}

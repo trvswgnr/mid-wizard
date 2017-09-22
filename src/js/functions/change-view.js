@@ -1,12 +1,12 @@
+view.activate = function () {
+  view.c.removeClass("active slide-in-left").addClass("done");
+  view.n.removeClass("done").addClass("active");
+}
+
 /**
  * Change the current view
  */
 Wizard.change_view = function () {
-
-  view.activate = function () {
-    view.c.removeClass("active slide-in-left").addClass("done");
-    view.n.removeClass("done").addClass("active");
-  }
 
   // go to next view
   $("button.get-next-view").click(function () {

@@ -34,10 +34,12 @@ fieldset,
   background: white;
   transform: translateX(1000%);
   transition: 1s;
+  animation: fadeOut 0.6s ease-in-out normal 1 forwards;
   &.active,
   .in-review & {
     transform: translateX(0%);
-    transition: 0.5s;
+    transition: transform 0.5s;
+    animation: fadeIn 0.6s ease-in-out normal 1 forwards
   }
   .in-review &.done {
     animation: inLeft 0.6s ease-in-out normal 1 forwards;
@@ -145,5 +147,29 @@ fieldset,
   }
   100% {
     transform: scale(1) translateX(0%);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
   }
 }

@@ -1,5 +1,6 @@
-/* CLICK / EVENT ACTIONS
-------------------------------------------------- */
+/**
+ * Initialize Click / Action Events
+ */
 Wizard.events = function () {
 
   // prevent default button functionality
@@ -13,8 +14,7 @@ Wizard.events = function () {
 
   Wizard.change_subsection();
 
-  Wizard.nav_subsection();
-
-  //  Wizard.change_section(section, subsection, view, btns);
-
+  Wizard.change_section();
+//  Wizard.nav_subsection();
+  Wizard.devnav();
 }

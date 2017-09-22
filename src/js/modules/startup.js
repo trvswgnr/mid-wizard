@@ -1,5 +1,7 @@
-/* STARTUP FUNCTIONS
-------------------------------------------------- */
+/**
+ * Add classes, data-attributes, navigation and other automated startup functions.
+ */
+
 Wizard.startup = function () {
 
   // add data-attribute matching the order of sections,
@@ -57,7 +59,7 @@ Wizard.startup = function () {
     // match section data attr in nav
     $(".wizard__nav").append(
       '<ul class="nav-section" data-nav-section="' + s_d + '">' +
-        '<h4 class="nav-section-title">' + s_n + "</h4>" +
+      '<h4 class="nav-section-title">' + s_n + "</h4>" +
       "</ul>"
     );
 
@@ -97,6 +99,4 @@ Wizard.startup = function () {
     ".wizard__nav .nav-subsection:first," +
     ".wizard__nav .nav-section-title:first").addClass("active is-first");
 
-  Wizard.cookies();
-  console.log(input);
 }

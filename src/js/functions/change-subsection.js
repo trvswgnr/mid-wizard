@@ -1,13 +1,14 @@
+// activate subsection by adding class to next and removing from current
+subsection.activate = function () {
+  subsection.c.removeClass("active").addClass('subsection-done');
+  subsection.n.addClass("active").removeClass('subsection-done');
+}
+
 /**
  * Advance to the next subsection.
  */
 Wizard.change_subsection = function () {
 
-  // activate subsection by adding class to next and removing from current
-  subsection.activate = function() {
-    subsection.c.removeClass("active").addClass('subsection-done');
-    subsection.n.addClass("active").removeClass('subsection-done');
-  }
 
   // go to the next subsection
   $("button.get-next-subsection").click(function (e) {
@@ -40,16 +41,16 @@ Wizard.change_subsection = function () {
 
 
   // go to previous subsection
-  $("button.get-prev-subsection").click(function () {
-    $("button.get-next-subsection").hide();
-    subsection.c = $('[data-subsection-order="' + subsection.count + '"]');
-    subsection.p = $('[data-subsection-order="' + (subsection.count - 1) + '"]');
-    subsection.c.removeClass("active");
-    subsection.p.addClass("active").removeClass("done");
-    view.p = subsection.p.find('[data-view="' + (view.count - 1) + '"]');
-    view.c.removeClass("active");
-    view.p.addClass("active");
-    view.count = view.p.data("view");
-  });
+//  $("button.get-prev-subsection").click(function () {
+//    $("button.get-next-subsection").hide();
+//    subsection.c = $('[data-subsection-order="' + subsection.count + '"]');
+//    subsection.p = $('[data-subsection-order="' + (subsection.count - 1) + '"]');
+//    subsection.c.removeClass("active");
+//    subsection.p.addClass("active").removeClass("done");
+//    view.p = subsection.p.find('[data-view="' + (view.count - 1) + '"]');
+//    view.c.removeClass("active");
+//    view.p.addClass("active");
+//    view.count = view.p.data("view");
+//  });
 
 }

@@ -13,7 +13,9 @@ var Wizard = function () {}
  */
 var input = {},
   /** @namespace */
-  section,
+  section = {
+    count: 1
+  },
   /** @namespace */
   subsection = {
     count: 1
@@ -22,4 +24,7 @@ var input = {},
   view = {
     count: 1
   },
+
   btns = $("button");
+
+

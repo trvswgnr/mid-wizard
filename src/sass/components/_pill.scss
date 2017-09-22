@@ -24,7 +24,7 @@
   label[for] {
     display: none;
   }
-  label.pills__option {
+  .pills__option {
     display: block;
 
     .in-review & p {
@@ -41,18 +41,25 @@
     background: white;
     font-weight: 700;
     width: 100%;
+    cursor: pointer;
     max-width: 600px;
-    color: grey(light);
+    color: grey();
     border: 2px solid grey(light);
     margin-bottom: 1em;
     border-radius: 3px;
     font-size: 1.3em;
     transition: 0.1s ease-in-out;
+    &:hover {
+      border-color: darken(grey(light),10%);
+      transition: 0.2s;
+    }
     .in-review &, .pills--inline & {
       padding: 0.5em 2em 0.5em 0.5em;
       width: 185px;
-      font-size: 0.9em;
+      font-weight: normal;
+      font-size: 1em;
       margin-bottom: 0.5em;
+      margin-right: 0.5em;
       display: inline-block !important;
       &:after {
         right: 0.5em;
@@ -61,6 +68,9 @@
         width: 16px;
       }
     }
+      .pills--inline & {
+        margin-bottom: 0.8em;
+      }
     &:after {
       font-family: FontAwesome;
       position: absolute;
@@ -73,25 +83,26 @@
       line-height: 1;
       font-size: 24px;
       margin: auto;
-      background: grey(x-light);
       text-align: center;
       border-radius: 3px;
       transition: 0.1s ease-in-out;
     }
-    &.is-active {
-      background: $color_primary;
-      color: white;
+
+  }
+  &__option.is-active,.saved-active + .pills__option {
+      background: rgba($color_primary,0.03);
+      color: $color_primary;
       border-color: $color_primary;
       transition: 0.1s ease-in-out;
       &:after {
         content: '\F046';
         background: transparent;
-        color: white;
+        color: $color_primary;
         animation: pop 0.2s ease-in-out normal 1 forwards;
       }
     }
-  }
   &__option p {
+    cursor: pointer;
     font-size: 0.8em;
     font-weight: normal;
     margin: 0;

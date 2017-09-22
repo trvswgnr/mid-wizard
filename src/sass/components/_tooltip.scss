@@ -1,0 +1,83 @@
+/* TOOLTIPS
+---------------------------------- */
+
+.tooltip {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  bottom: calc(100% + 13px);
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0 auto;
+  $tt-bg: rgba(black, 0.85);
+  background: $tt-bg;
+  padding: 1em;
+  font-size: 1em;
+  line-height: 1.43;
+  letter-spacing: 0.02em;
+  word-spacing: 0.04em;
+  color: white;
+  width: 5000%;
+  max-width: 400px;
+  text-align: center;
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0 auto;
+    @include triangle($color: $tt-bg);
+  }
+
+}
+
+.tooltip__icon {
+  .in-review &, .is-active & {
+    display: none;
+  }
+  &:after {
+    content: '\f128';
+    font-family: FontAwesome;
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    font-size: 1.2em;
+    line-height: 1;
+  }
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  right: 0.5em;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  border-radius: 3px;
+  z-index: 1;
+  &:hover {
+    color: $color_primary;
+    .tooltip {
+      display: block;
+      animation: tooltip-in 0.2s ease-in-out normal 1 forwards
+    }
+  }
+}
+
+@keyframes tooltip-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes tooltip-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
