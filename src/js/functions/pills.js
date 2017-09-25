@@ -38,3 +38,53 @@ $('.pills--radios').each(function () {
     el.toggleClass('is-active');
   });
 });
+
+
+
+/** Pills -> Select2 */
+var pills_to_select2 = function () {
+  function init(this_button) {
+    let closest_subsection = this_button.closest('.subsection'),
+      selects_in_subsection = closest_subsection.find('.js-pills-select2');
+    $.each(selects_in_subsection, function () {
+      let el = $(this),
+        el_html = el.prop('outerHTML'),
+        inputs = $(this).find("input"),
+        name = inputs.first().attr("name"),
+        i,
+        options = '';
+      $.each(inputs, function () {
+        let el = $(this),
+          selected = $(this).prop('checked') ? ' selected' : '';
+        options += '<option value="' + $(this).val() + '"' + selected + '>' + $(this).val() + '</option>'
+      });
+      el.replaceWith(
+        '<div id="' + name + '_select2_wrapper" class="js-select2-wrapper"><select class="js-select2" id="' + name + '_select2" name="' + name + '" multiple="multiple">' + options + '</select></div>'
+      );
+    });
+    /** Select2 Initialize */
+    $(".js-select2").select2();
+  }
+  return {
+    init: init
+  };
+}();
+
+$(".review-subsection").click(function (e) {
+  let this_button = $(this);
+  e.preventDefault();
+  pills_to_select2.init(this_button);
+
+});
+
+$(document).on('change', '.select2', function () {
+  let matching_select = $(this).prev('select'),
+    name = matching_select.attr('name'),
+    selected = $(this).find('.select2-selection__choice'),
+    options = matching_select.find('option');
+  console.log(options);
+  $.each(selected,function(){
+    $('option[value="'+$(this).attr('title')+'"]').addClass('test');
+  });
+  console.log(name);
+});

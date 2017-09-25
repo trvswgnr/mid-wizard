@@ -57,8 +57,8 @@
       src: 'src/js/',
       dest: 'dist/js',
       name: 'main',
+      vendor: 'vendor/**/*.js',
       files: [
-        'vendor/**/*.js',
         'abstracts/variables.js',
         'abstracts/functions.js',
         'abstracts/**/*.js',
@@ -84,7 +84,7 @@
   ------------------------------------------------- */
   function clean_dist() {
     $.util.log($.util.colors.grey("Cleaning out the production folder...\n"));
-    return del(['./dist/*/**', './dist/index.html']);
+    return del(['dist/*/**', 'dist/index.html']);
   }
   gulp.task('clean', [], function () {
     clean_dist();
@@ -185,8 +185,18 @@
       .pipe(browser_sync.stream());
   }
 
+
   gulp.task('js', function () {
     process_js();
+  });
+  function concat_vendor_js() {
+    return gulp.src(settings.js.src + settings.js.vendor)
+      .pipe($.concat('vendor.js'))
+      .pipe(gulp.dest('./dist/js'))
+      .pipe(browser_sync.stream());
+  }
+  gulp.task('vendor-js',function(){
+    concat_vendor_js();
   });
 
 
@@ -306,6 +316,7 @@
     });
     gulp.watch(settings.css.src + '**/*.scss', ['css']);
     gulp.watch(settings.js.src + '**/*.js', ['js']);
+    gulp.watch(settings.js.src + settings.js.vendor, ['vendor-js']);
     gulp.watch(settings.pug.src + '**/*.pug', ['pug']);
     gulp.watch(settings.img.src + '*', ['img']);
     gulp.watch(["./dist/index.html"]).on('change', function () {
@@ -324,7 +335,7 @@
 
   /* DEFAULT TASK
   ------------------------------------------------- */
-  gulp.task('default', function () {
+  gulp.task('default', ['vendor-js'],function () {
     if (settings.production) {
       console.log($.util.colors.red('\nProduction Build.\n'));
       run();

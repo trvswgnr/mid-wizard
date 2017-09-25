@@ -75,3 +75,8 @@ option {
 select option[disabled][value=''] {
   display: none;
 }
+
+
+.js-select2 {
+  width: 100%;
+}

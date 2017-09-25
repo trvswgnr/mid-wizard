@@ -103,6 +103,11 @@ fieldset,
   .get-next-subsection, .get-next-section {
     display: block !important;
   }
+
+  .last-view-in-section .get-next-subsection {
+    display: none !important;
+  }
+
   .guide-text {
     display: none;
   }

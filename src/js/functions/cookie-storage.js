@@ -4,14 +4,15 @@
 Wizard.cookies = function () {
   // set cookie on input change
 
+  var cookie_name = 'input_storage_taw';
   /**
    * Set/update values of input object from form and store in cookie.
    */
   function set() {
     input = get_form_data(document.getElementById('wizard_form'));
-    Cookies.set("input_fields", JSON.stringify(input));
+    Cookies.set(cookie_name, JSON.stringify(input));
   }
-  $('input').on('change', function () {
+  $('input, select').on('change', function () {
     set();
   });
 
@@ -24,7 +25,7 @@ Wizard.cookies = function () {
       matching_checkbox = '',
       matching_radio = '';
 
-    input = Cookies.get("input_fields");
+    input = Cookies.get(cookie_name);
     input = !input ? {} : JSON.parse(input);
 
     for (var key in input) {

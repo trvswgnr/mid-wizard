@@ -54,8 +54,6 @@ Wizard.startup = function () {
       ss_n,
       ss_in_s = $(this).find(".subsection");
 
-
-
     // match section data attr in nav
     $(".wizard__nav").append(
       '<ul class="nav-section" data-nav-section="' + s_d + '">' +
