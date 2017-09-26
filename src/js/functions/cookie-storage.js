@@ -4,7 +4,7 @@
 Wizard.cookies = function () {
   // set cookie on input change
 
-  var cookie_name = 'input_storage_taw';
+  var cookie_name = 'input_taw';
   /**
    * Set/update values of input object from form and store in cookie.
    */
@@ -12,7 +12,7 @@ Wizard.cookies = function () {
     input = get_form_data(document.getElementById('wizard_form'));
     Cookies.set(cookie_name, JSON.stringify(input));
   }
-  $('input, select').on('change', function () {
+  $(document).on('change','input, select', function () {
     set();
   });
 
@@ -29,6 +29,7 @@ Wizard.cookies = function () {
     input = !input ? {} : JSON.parse(input);
 
     for (var key in input) {
+      input[key] = $.isEmptyObject(input[key]) ? '' : input[key];
       // all inputs except radios and checks get their values changed
       $('[name="' + key + '"]').not('[type="radio"], [type="checkbox"]').val(input[key]);
 
@@ -43,7 +44,6 @@ Wizard.cookies = function () {
         matching_checkbox.attr('checked', 'checked');
         matching_checkbox.next('.pills__option').addClass('is-active');
       }
-
     }
     console.log(input);
   }
