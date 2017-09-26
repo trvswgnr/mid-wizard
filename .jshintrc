@@ -22,6 +22,10 @@
     "dynamic_text": false,
     "$data": false,
     "Cookies": false,
-    "flatten_array": false
+    "subsection": true,
+    "view": true,
+    "section": true,
+    "flatten_array": false,
+    "btns": true
   }
 }
