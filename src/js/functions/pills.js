@@ -77,13 +77,3 @@ $(".review-subsection").click(function (e) {
 
 });
 
-//$(document).on('change', '.select2', function () {
-//  let matching_select = $(this).prev('select'),
-//    name = matching_select.attr('name'),
-//    selected = $(this).find('.select2-selection__choice'),
-//    options = matching_select.find('option');
-//  $('select[name="' + name + '"] option').removeAttr('selected');
-//  $.each(selected, function () {
-//    $('option[value="' + $(this).attr('title') + '"]').createAttribute('selected');
-//  });
-//});
