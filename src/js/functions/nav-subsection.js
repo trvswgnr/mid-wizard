@@ -26,7 +26,7 @@ Wizard.nav_subsection = function () {
   });
 }
 
-/* DEV NAV
+/* --DEV-- NAV
 ------------------------------------------------- */
 Wizard.devnav = function () {
 
@@ -51,8 +51,28 @@ Wizard.devnav = function () {
     view.n = subsection.n.find('fieldset:first');
     view.n.addClass('active').removeClass('done');
     view.count = view.n.data("view");
-
-    // change label text for review
-//    change_label_text(true);
   });
+
+  $(document).on('click', '.nav-section-title', function () {
+      let el = $(this),
+      this_section = el.closest('.nav-section').data('nav-section');
+     Wizard.go_section(this_section);
+
+    });
 }
+
+/**
+ * --DEV-- CHANGE VIEW
+ * @arg {string} view - The 'data-title' string, or the 'data-view' Number, of the desired view.
+ */
+Wizard.dev_view = function(view) {
+  $('.subsection').removeClass('in-review');
+  let is_integer = isNaN(view);
+  let view_num = !is_integer ? $data('view',view).data('view') : $data('title',view).data('view');
+  Wizard.go_to_view(view_num);
+}
+
+$(document).on('click','#dev_nav_btn', function(){
+  var val = $('#dev_nav_input').val();
+  Wizard.dev_view(val);
+})
