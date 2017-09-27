@@ -60,9 +60,9 @@
       vendor: 'vendor/**/*.js',
       files: [
         'abstracts/variables.js',
-        'abstracts/functions.js',
+        'abstracts/functions/**/*.js',
         'abstracts/**/*.js',
-        'functions/**/*.js',
+        'methods/**/*.js',
         'modules/**/*.js',
         'main.js'
       ]
@@ -170,7 +170,7 @@
         presets: [['env', {
           modules: false
         }]]
-      }));
+      })).on('error', settings.error);
 
     // minify javascript file
     var ugly = concat.pipe($.clone())
@@ -185,13 +185,15 @@
       .pipe(browser_sync.stream());
   }
 
-
   gulp.task('js', function () {
     process_js();
   });
+
   function concat_vendor_js() {
     return gulp.src(settings.js.src + settings.js.vendor)
+      .pipe($.sourcemaps.init())
       .pipe($.concat('vendor.js'))
+      .pipe($.sourcemaps.write('.'))
       .pipe(gulp.dest('./dist/js'))
       .pipe(browser_sync.stream());
   }
