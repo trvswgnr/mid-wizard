@@ -25,3 +25,5 @@ $grey: (
 @function gray($x:base) {
   @return map-get($grey,$x);
 }
+
+$transition: 0.2s ease-in-out;
