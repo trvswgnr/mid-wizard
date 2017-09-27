@@ -40,8 +40,9 @@ $('.pills--radios').each(function () {
 });
 
 
-
-/** Pills -> Select2 */
+/**
+ * Convert checkbox 'pills' to Select2 object.
+ */
 var pills_to_select2 = function () {
   function init(this_button) {
     let closest_subsection = this_button.closest('.subsection'),
@@ -49,19 +50,23 @@ var pills_to_select2 = function () {
     $.each(selects_in_subsection, function () {
       let el = $(this),
         el_html = el.prop('outerHTML'),
-        inputs = $(this).find("input"),
+        inputs = el.find("input"),
         name = inputs.first().attr("name"),
+        placeholder = el.attr('placeholder'),
         i,
-        options = '';
+        options = '',
+        multiple = el.is('[multiple]') ? 'multiple="multiple"' : '';
       $.each(inputs, function () {
         let el = $(this),
-          selected = $(this).prop('checked') ? ' selected' : '';
-        options += '<option value="' + $(this).val() + '"' + selected + '>' + $(this).val() + '</option>'
+          selected = el.prop('checked') ? ' selected' : '';
+        options += '<option value="' + el.val() + '"' + selected + '>' + el.val() + '</option>'
       });
       el.replaceWith(
-        '<div id="' + name + '_select2_wrapper" class="js-select2-wrapper"><select class="js-select2" id="' + name + '_select2" name="' + name + '" multiple="multiple">' + options + '</select></div>'
+        '<div id="' + name + '_select2_wrapper" class="js-select2-wrapper"><select placeholder="'+placeholder+'" class="js-select2" id="' + name + '_select2" name="' + name + '"' + multiple + '>' + options + '</select></div>'
       );
+      $('label[for="'+name+'_select2"]').html(placeholder +' <div class="edit-field"></div>');
     });
+
     /** Select2 Initialize */
     $(".js-select2").select2();
   }
@@ -71,9 +76,11 @@ var pills_to_select2 = function () {
 }();
 
 $(".review-subsection").click(function (e) {
-  let this_button = $(this);
+  let $this = $(this);
   e.preventDefault();
-  pills_to_select2.init(this_button);
+  setTimeout(function(){
+  pills_to_select2.init($this);
+
+  },animation_time);
 
 });
-
