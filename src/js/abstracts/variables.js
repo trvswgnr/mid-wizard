@@ -27,4 +27,5 @@ var input = {},
 
   btns = $("button");
 
+let animation_time = 400;
 
