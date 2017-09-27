@@ -148,7 +148,7 @@
   /* CONCAT and MINIFY JavaScript
   ------------------------------------------------- */
   function process_js() {
-    $.util.log($.util.colors.yellow("Combining and minifying JavaScript files\n"));
+    $.util.log($.util.colors.yellow("Combining, transpiling, and minifying JavaScript files\n"));
     // get js files and attach src to beginning
     var js_import = (function () {
       var js_src = settings.js.src,
@@ -316,12 +316,12 @@
     });
     gulp.watch(settings.css.src + '**/*.scss', ['css']);
     gulp.watch(settings.js.src + '**/*.js', ['js']);
+    gulp.watch(settings.js.dest + '**/*.js', ['jsdoc']);
     gulp.watch(settings.js.src + settings.js.vendor, ['vendor-js']);
     gulp.watch(settings.pug.src + '**/*.pug', ['pug']);
     gulp.watch(settings.img.src + '*', ['img']);
     gulp.watch(["./dist/index.html"]).on('change', function () {
       browser_sync.reload;
-      console.log($.util.colors.grey('\nWatching for Changes...\n'));
     });
     console.log($.util.colors.grey('\nWatching for Changes...\n'));
   }
@@ -348,10 +348,14 @@
       run();
       setTimeout(watch_files, 2000);
     }
+    setTimeout(function(){
+      gulp.start('jsdoc');
+    }, 3000);
+
   });
 
   /* GENERATE JS DOCUMENTS
   ------------------------------------------------- */
-  gulp.task('jsdoc', $.shell.task(['.\\node_modules\\.bin\\jsdoc --readme .\\README.md ' + settings.js.dest + '\\' + settings.js.name + '.js' + ' -r -d docs']));
+  gulp.task('jsdoc', $.shell.task(['.\\node_modules\\.bin\\jsdoc --readme .\\README.md ' + 'dist\\js\\main.js' + ' -r -d docs']));
 
 }());
