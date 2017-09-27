@@ -9,7 +9,6 @@ subsection.activate = function () {
  */
 Wizard.change_subsection = function () {
 
-
   // go to the next subsection
   $("button.get-next-subsection").click(function (e) {
     e.preventDefault();
@@ -17,7 +16,7 @@ Wizard.change_subsection = function () {
     //show buttons after animation
     setTimeout(function () {
       btns.show();
-    }, 300);
+    }, animation_time);
 
     //subsection
     subsection.c = $('.subsection.active');
