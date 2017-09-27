@@ -5,8 +5,6 @@ Wizard.init = function() {
 
   Wizard.startup();
 
-  Wizard.cookies();
-
   Wizard.events();
 }
 
