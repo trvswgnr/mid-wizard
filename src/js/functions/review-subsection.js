@@ -15,9 +15,10 @@ Wizard.review_subsection = function() {
     // @TODO: should probably use jQuery Animate for moving the element, then add transitions in css (to detect end of animation)
     setTimeout(function(){
       subsection.c.addClass("in-review")
-    }, 400);
-
-    // change label text for review
+      // change label text for review
     change_label_text(true);
+    }, animation_time);
+
+
   });
 }
