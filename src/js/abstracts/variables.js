@@ -6,12 +6,18 @@
  * Primary Wizard Object
  * @class
  */
-var Wizard = function () {}
+var Wizard = {
+  settings: {
+    section_el: "section",
+    subsection_el: ".subsection",
+    view_el: "fieldset"
+  }
+};
 
 /**
  * Input Object (stores in cookie)
  */
-var input = {},
+let input = {},
   /** @namespace */
   section = {
     count: 1
@@ -28,4 +34,3 @@ var input = {},
   btns = $("button");
 
 let animation_time = 400;
-
