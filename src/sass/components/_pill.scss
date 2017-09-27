@@ -12,12 +12,9 @@
 */
 
 .pills {
-  margin-top: 1em;
+  margin-top: 0.25em;
 
   .pills__input {
-//    height: 0 !important;
-//    width: 0 !important;
-//    float: left;
     display: none;
     overflow: hidden;
     margin: 0;
@@ -56,10 +53,10 @@
     }
     .in-review &, .pills--inline & {
       padding: 0.5em 2em 0.5em 0.5em;
-      width: 185px;
+      width: 191px;
       font-weight: normal;
       font-size: 1em;
-      margin-bottom: 0.5em;
+      margin-bottom: 1em;
       margin-right: 0.5em;
       display: inline-block !important;
       &:after {
