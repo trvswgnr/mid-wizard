@@ -2,15 +2,17 @@
   fieldset(data-title="Currencies")
     .guide-text
       h3 Let's talk money.
-      p What currencies does <span data-dynamic-text="company_name">[[company]]</span> transact in?
+      p What currencies does <span data-dynamic-text="company_name">your business</span> transact in?
     .field
       label(for="currencies") Select currencies you accept:
-      select#currencies(name="currencies" placeholder="Currencies")
-        option(value="" disabled selected) Currencies
+      select#currencies(name="currencies" placeholder="Enter Currencies You Accept" multiple)
+        //- include empty <option> for Select2 placeholder
+        option
         option(value="usd") USD ($)
         option(value="eur") EUR (€)
         option(value="jpy") JPY (¥)
-    button.get-next-view Continue
+    .controller-wrapper
+      button.get-next-view Continue
 
   fieldset(data-title="Offers")
     .guide-text
@@ -25,22 +27,24 @@
         label(for="offersSingle") Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed pariatur totam a minus unde hic officiis debitis cupiditate ipsam quas ratione rem quibusdam.
         input#offersRecurring(type="checkbox" class="pills__input" name="offers" value="Recurring")
         label(for="offersRecurring") Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed pariatur totam a minus unde hic officiis debitis cupiditate ipsam quas ratione rem quibusdam.
-        button.get-prev-view
-        button.get-next-view Continue
+        .controller-wrapper
+          button.get-prev-view
+          button.get-next-view Continue
 
   fieldset(data-title="Number of Chargebacks")
     .guide-text
       h3 Number of Chargebacks
       p What is your estimated number of chargebacks per month?
-    .field
+    .block
       label Select a range from one of the options below:
-      .pills.pills--radios
-        input#number_chargebacks_10(type="radio" class="pills__input" name="number_of_chargebacks" value="Less than 10 Chargebacks")
+      .pills.pills--radios.js-pills-select2
+        input#number_chargebacks_10(type="radio" class="pills__input" name="number_of_chargebacks" value="Less than 10 Chargebacks" checked)
         input#number_chargebacks_25(type="radio" class="pills__input" name="number_of_chargebacks" value="10 to 25 Chargebacks")
         input#number_chargebacks_50(type="radio" class="pills__input" name="number_of_chargebacks" value="25 to 50 Chargebacks")
         input#number_chargebacks_100(type="radio" class="pills__input" name="number_of_chargebacks" value="50 to 100 Chargebacks")
         input#number_chargebacks_250(type="radio" class="pills__input" name="number_of_chargebacks" value="100 to 250 Chargebacks")
         input#number_chargebacks_500(type="radio" class="pills__input" name="number_of_chargebacks" value="250 to 500 Chargebacks")
         input#number_chargebacks_more(type="radio" class="pills__input" name="number_of_chargebacks" value="500+ Chargebacks")
+      .controller-wrapper
         button.get-prev-view
         button.review-subsection Review
