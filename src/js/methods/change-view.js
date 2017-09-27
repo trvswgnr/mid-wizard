@@ -26,7 +26,7 @@ Wizard.go_to_view = function (view_number) {
 }
 
 view.activate = function () {
-  $(Wizard.settings.view_el).removeClass("active slide-in-left").addClass("done");
+  view.c.removeClass("active slide-in-left").addClass("done");
   view.n.removeClass("done").addClass("active");
 }
 
@@ -37,8 +37,8 @@ Wizard.change_view = function () {
 
   // go to next view
   $("button.get-next-view").click(function () {
-    view.c = $(Wizard.settings.view_el+'.active');
-    view.n = $data('view', (view.count + 1))
+    view.c = $data('view', view.count);
+    view.n = $data('view', (view.count + 1));
     view.activate();
     view.count = view.n.data("view");
 
@@ -53,10 +53,10 @@ Wizard.change_view = function () {
 
   // go to previous view
   $("button.get-prev-view").click(function () {
-    view.c = $(Wizard.settings.view_el+'.active');
-    view.p = $data('view', (view.count - 1))
-    view.c.removeClass("active");
+    view.c = $data('view', view.count);
+    view.p = $data('view', (view.count - 1));
+    $(Wizard.settings.view_el).removeClass('active');
     view.p.addClass("active slide-in-left");
-    view.count = view.p.data("view");
+    view.count = view.count - 1
   });
 }

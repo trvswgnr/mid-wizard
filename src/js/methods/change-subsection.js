@@ -26,7 +26,7 @@ Wizard.change_subsection = function () {
     // view
     view.c = subsection.c.find(Wizard.settings.view_el + ':last');
     view.count = view.c.data("view");
-    view.n = $('[data-view="' + (view.count + 1) + '"]');
+    view.n = $data('view', (view.count + 1))
     view.activate();
     view.count = view.n.data("view");
 

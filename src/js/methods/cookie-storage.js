@@ -14,7 +14,8 @@ Wizard.cookies = function () {
     Cookies.set(cookie_name_view_count, view.count);
   }
   // store the view count on view change
-  $(document).on('click', '.get-next-view', function () {
+  $(document).on('click', '.get-next-view, .get-prev-view, .get-next-subsection', function () {
+    view.count = $(Wizard.settings.view_el+'.active').data('view');
     set_view_count()
   });
 
@@ -26,11 +27,11 @@ Wizard.cookies = function () {
     if (!view_count) {
       return;
     } else {
-      Wizard.go_to_view(view_count);
+      Wizard.dev_view(view_count);
     }
   }
   // go to most recent view on page load
-  $(document).ready(function(){
+  $(document).ready(function () {
     get_view_count();
   });
 

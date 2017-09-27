@@ -27,7 +27,7 @@ Wizard.change_section = function () {
   $("button.get-next-section").click(function () {
     // section
     section.c = $(Wizard.settings.section_el + '.active');
-    section.n = $('[data-section="' + (section.count + 1) + '"]');
+    section.n = $data('section', (section.count + 1));
     section.c.removeClass('active');
     section.n.addClass('active');
     section.count = section.n.data('section');
