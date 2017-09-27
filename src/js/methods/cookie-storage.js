@@ -3,12 +3,41 @@
  */
 Wizard.cookies = function () {
 
-  var cookie_name = 'input_taw';
+  let cookie_name_inputs = 'input_taw',
+    cookie_name_view_count = 'view_count';
+
+  /**
+   * Set the current view count as cookie to keep track of form progress.
+   */
+  function set_view_count() {
+    // store the input as a cookie
+    Cookies.set(cookie_name_view_count, view.count);
+  }
+  // store the view count on view change
+  $(document).on('click', '.get-next-view', function () {
+    set_view_count()
+  });
+
+  /**
+   * Get the current view count from cookie
+   */
+  function get_view_count() {
+    let view_count = Cookies.get(cookie_name_view_count);
+    if (!view_count) {
+      return;
+    } else {
+      Wizard.go_to_view(view_count);
+    }
+  }
+  // go to most recent view on page load
+  $(document).ready(function(){
+    get_view_count();
+  });
 
   /**
    * Set/update values of input object from form and store in cookie.
    */
-  function set() {
+  function set_input() {
     input = get_form_data(document.getElementById('wizard_form'));
 
     for (let key in input) {
@@ -18,24 +47,24 @@ Wizard.cookies = function () {
     }
 
     // store the input as a cookie
-    Cookies.set(cookie_name, JSON.stringify(input));
+    Cookies.set(cookie_name_inputs, JSON.stringify(input));
   }
 
   // set cookie on input change
   $(document).on('change', 'input, select', function () {
-    set();
+    set_input();
   });
 
   /**
    * Get the stored cookie and prepopulate input fields.
    */
-  function get() {
+  function get_input() {
 
     let arr_length = 0,
       matching_checkbox = '',
       matching_radio = '';
 
-    input = Cookies.get(cookie_name);
+    input = Cookies.get(cookie_name_inputs);
     input = !input ? {} : JSON.parse(input);
 
     for (var key in input) {
@@ -65,5 +94,5 @@ Wizard.cookies = function () {
   }
 
   // get cookie and pre-fill form on page ready
-  $(document).ready(get());
+  $(document).ready(get_input());
 }
