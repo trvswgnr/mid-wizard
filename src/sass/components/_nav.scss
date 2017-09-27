@@ -50,6 +50,7 @@
   display: none;
   color: grey(light);
   font-weight: normal;
+  cursor: pointer;
   &:before {
     z-index: 5;
     content: '';
