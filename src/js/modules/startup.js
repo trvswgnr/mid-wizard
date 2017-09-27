@@ -6,11 +6,11 @@ Wizard.startup = function () {
 
   // add data-attribute matching the order of sections,
   // subsections in each section, and views(fieldsets) in each subsection
-  $("section").each(function (i) {
-    var subsections = $(this).find(".subsection");
+  $(Wizard.settings.section_el).each(function (i) {
+    var subsections = $(this).find(Wizard.settings.subsection_el);
     $(this).attr("data-section", i + 1);
     subsections.each(function (i) {
-      var fieldsets = $(this).find("fieldset");
+      var fieldsets = $(this).find(Wizard.settings.view_el);
       $(this).attr("data-subsection", i + 1);
       fieldsets.each(function (i) {
         $(this).attr("data-fieldset", i + 1);
@@ -19,12 +19,12 @@ Wizard.startup = function () {
   });
 
   // add data attribute for view(fieldset) order in document
-  $("fieldset").each(function (i) {
+  $('fieldset').each(function (i) {
     $(this).attr("data-view", i + 1);
   });
 
   // add data attribute for section order in document
-  $(".subsection").each(function (i) {
+  $('.subsection').each(function (i) {
     $(this).attr("data-subsection-order", i + 1);
   });
 
@@ -43,7 +43,7 @@ Wizard.startup = function () {
 
   /* ADD NAV
   ------------------------------------------------- */
-  $("section").each(function () {
+  $(Wizard.settings.section_el).each(function () {
 
     // @TODO: these variable names suck
     var s = $(this),
@@ -52,7 +52,7 @@ Wizard.startup = function () {
       ss,
       ss_d,
       ss_n,
-      ss_in_s = $(this).find(".subsection");
+      ss_in_s = $(this).find(Wizard.settings.subsection_el);
 
     // match section data attr in nav
     $(".wizard__nav").append(
@@ -83,7 +83,7 @@ Wizard.startup = function () {
   });
 
   // add fieldset title for in-review
-  $('fieldset').each(function () {
+  $(Wizard.settings.view_el).each(function () {
     var this_title = $(this).data('title');
     this_title = this_title != undefined ? this_title : false;
 
