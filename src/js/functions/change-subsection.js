@@ -32,24 +32,11 @@ Wizard.change_subsection = function () {
     view.count = view.n.data("view");
 
     // nav
-    $('[data-nav-subsection="' + subsection.count + '"]').addClass("active");
-    $('[data-nav-subsection="' + (subsection.count - 1) + '"]').addClass("done");
+    $data('nav-subsection', subsection.count).addClass("active");
+    $data('nav-subsection', (subsection.count - 1)).addClass("done");
 
+    // change label texts back to normal
     change_label_text(false);
   });
-
-
-  // go to previous subsection
-//  $("button.get-prev-subsection").click(function () {
-//    $("button.get-next-subsection").hide();
-//    subsection.c = $('[data-subsection-order="' + subsection.count + '"]');
-//    subsection.p = $('[data-subsection-order="' + (subsection.count - 1) + '"]');
-//    subsection.c.removeClass("active");
-//    subsection.p.addClass("active").removeClass("done");
-//    view.p = subsection.p.find('[data-view="' + (view.count - 1) + '"]');
-//    view.c.removeClass("active");
-//    view.p.addClass("active");
-//    view.count = view.p.data("view");
-//  });
 
 }
