@@ -1,7 +1,37 @@
+/**
+ * Go to a specific view number.
+ */
+
+Wizard.go_to_view = function (view_number) {
+  let this_view = $data('view',view_number);
+
+  // fieldset
+  $('fieldset').removeClass('active');
+  view.count = view_number;
+  view.n = $data('view', view.count);
+  view.n.addClass('active').removeClass('done');
+  view.count = view.n.data('view');
+
+  // subsection
+  $('.subsection').removeClass('active');
+  subsection.count = this_view.closest('.subsection').data('subsection-order');
+  subsection.n =  $data('subsection-order',subsection.count);
+  subsection.n.addClass('active').removeClass('subsection-done');
+
+  //section
+  $('section').removeClass('active');
+  section.count = this_view.closest('section').data('section');
+  section.c = $('section.active');
+  section.n = $data('section', section.count);
+  section.n.addClass('active');
+}
+
 view.activate = function () {
   view.c.removeClass("active slide-in-left").addClass("done");
   view.n.removeClass("done").addClass("active");
 }
+
+
 
 /**
  * Change the current view
@@ -18,7 +48,7 @@ Wizard.change_view = function () {
 
     setTimeout(function () {
       $("#intro").remove();
-    }, 800);
+    }, (animation_time*2));
 
     dynamic_text();
 
