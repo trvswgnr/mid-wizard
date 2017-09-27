@@ -72,6 +72,10 @@ fieldset,
 
 .review-guide-text {
   transform: translateX(1000%);
+  display: none;
+  .in-review & {
+    display: block;
+  }
 }
 
 
