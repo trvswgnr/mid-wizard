@@ -1,4 +1,9 @@
 .subsection#user_details(data-title="Merchant Details")
+  fieldset#mid_intro.introduction
+    h3 Now we need your Merchant ID
+    p To add you to our system, we need at least one merchant account (you'll be able to add additional accounts later).
+    p This information can usually be found on your statement.
+    button.get-next-view Let's Begin
   fieldset#about(data-title="MID Details")
     .guide-text
       h3 MID Details
@@ -10,3 +15,13 @@
       label(for="mid_alias") Do you have an alias for this MID?
       input#mid_alias(type="text" name='mid_alias' placeholder='MID Alias')
     button.get-next-view Continue
+  fieldset#about(data-title="MID Currencies")
+    .guide-text
+      h3 MID Currencies
+      p Which currencies are used with this MID?
+    .block
+      label(for="mid_currencies") Select the currencies you accept for this MID.
+      #mid_currencies(name='mid_currencies' placeholder='MID Currencies' data-values="currencies")
+    .controls-wrapper
+      button.get-prev-view
+      button.get-next-view Continue
