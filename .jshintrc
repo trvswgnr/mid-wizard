@@ -21,12 +21,15 @@
     "get_form_data": false,
     "dynamic_text": false,
     "$data": false,
-    "$attr": false,
+    "$attr": true,
     "Cookies": false,
     "subsection": true,
     "view": true,
     "section": true,
     "flatten_array": false,
+    "cookie_storage": true,
+    "conditionals": false,
+    "dev_tools": false,
     "btns": true,
     "animation_time": true
   }
