@@ -81,7 +81,7 @@ fieldset,
 
 // edit field input symbol
 .edit-field {
-  display: inline-block;
+  display: none;
   margin-left: 8px;
   cursor: pointer;
   &:before {
@@ -97,6 +97,10 @@ fieldset,
 }
 
 .in-review {
+
+  .edit-field {
+    display: inline-block;
+  }
 
   .hidden-review {
     display: none;
