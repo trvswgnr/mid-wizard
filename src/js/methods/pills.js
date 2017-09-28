@@ -27,7 +27,7 @@ function custom_checkboxes(block_class = 'pills') {
   });
 
   // checkbox pills active toggle
-  $('.' + block_class + '--checkboxes .'+block_class+'__option').on('click', function () {
+  $('.' + block_class + '--checkboxes .' + block_class + '__option').on('click', function () {
     var el = $(this);
     el.toggleClass('is-active');
     var this_input = el.prev('input');
@@ -52,44 +52,40 @@ custom_checkboxes('pills');
 
 /**
  * Convert checkbox 'pills' to Select2 object.
+ * @arg {Object} $this - Pass $(this) from jQuery event.
  */
-var pills_to_select2 = function () {
-  function init(this_button) {
-    let closest_subsection = this_button.closest(Wizard.settings.subsection_el),
-      selects_in_subsection = closest_subsection.find('.js-pills-select2');
-    $.each(selects_in_subsection, function () {
+function pills_to_select2($this) {
+  let closest_subsection = $this.closest(Wizard.settings.subsection_el),
+    selects_in_subsection = closest_subsection.find('.js-pills-select2');
+  $.each(selects_in_subsection, function () {
+    let el = $(this),
+      el_html = el.prop('outerHTML'),
+      inputs = el.find("input"),
+      name = inputs.first().attr("name"),
+      placeholder = el.attr('placeholder'),
+      i,
+      options = '',
+      multiple = el.is('[multiple]') ? 'multiple="multiple"' : '';
+    $.each(inputs, function () {
       let el = $(this),
-        el_html = el.prop('outerHTML'),
-        inputs = el.find("input"),
-        name = inputs.first().attr("name"),
-        placeholder = el.attr('placeholder'),
-        i,
-        options = '',
-        multiple = el.is('[multiple]') ? 'multiple="multiple"' : '';
-      $.each(inputs, function () {
-        let el = $(this),
-          selected = el.prop('checked') ? ' selected' : '';
-        options += '<option value="' + el.val() + '"' + selected + '>' + el.val() + '</option>'
-      });
-      el.replaceWith(
-        '<div id="' + name + '_select2_wrapper" class="js-select2-wrapper"><select class="js-select2" id="' + name + '_select2" name="' + name + '"' + multiple + '>' + options + '</select></div>'
-      );
-      $('label[for="' + name + '_select2"]').html(placeholder + ' <div class="edit-field"></div>');
+        selected = el.prop('checked') ? ' selected' : '';
+      options += '<option value="' + el.val() + '"' + selected + '>' + el.val() + '</option>'
     });
+    el.replaceWith(
+      '<div id="' + name + '_select2_wrapper" class="js-select2-wrapper"><select class="js-select2" id="' + name + '_select2" name="' + name + '"' + multiple + '>' + options + '</select></div>'
+    );
+    $('label[for="' + name + '_select2"]').html(placeholder + ' <div class="edit-field"></div>');
+  });
 
-    /** Select2 Initialize */
-    $(".js-select2").select2();
-  }
-  return {
-    init: init
-  };
-}();
+  /** Select2 Initialize */
+  $(".js-select2").select2();
+}
 
 $(".review-subsection").click(function (e) {
-  let $this = $(this);
+  let el = $(this);
   e.preventDefault();
   setTimeout(function () {
-    pills_to_select2.init($this);
+    pills_to_select2(el);
 
   }, animation_time);
 
