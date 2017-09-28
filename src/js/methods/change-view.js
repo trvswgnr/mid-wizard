@@ -25,6 +25,17 @@ Wizard.go_to_view = function (view_number) {
   section.n.addClass('active');
 }
 
+ /**
+   * Change the view from dev nav input
+   * @arg {string} view - The 'data-title' (string), or the 'data-view' (Number), of the desired view.
+   */
+Wizard.get_view = function(view) {
+    $(Wizard.settings.subsection_el).removeClass('in-review');
+    let is_integer = isNaN(view);
+    let view_num = !is_integer ? $data('view', view).data('view') : $data('title', view).data('view');
+    Wizard.go_to_view(view_num);
+  };
+
 view.activate = function () {
   view.c.removeClass("active slide-in-left").addClass("done");
   view.n.removeClass("done").addClass("active");
