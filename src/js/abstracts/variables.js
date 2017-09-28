@@ -4,7 +4,7 @@
 
 /**
  * Primary Wizard Object
- * @class
+ * @namespace
  */
 var Wizard = {
   settings: {
@@ -14,23 +14,16 @@ var Wizard = {
   }
 };
 
-/**
- * Input Object (stores in cookie)
- */
 let input = {},
-  /** @namespace */
   section = {
     count: 1
   },
-  /** @namespace */
   subsection = {
     count: 1
   },
-  /** @namespace */
   view = {
     count: 1
   },
-
   btns = $("button");
 
 let animation_time = 400;
