@@ -21,6 +21,7 @@
     "get_form_data": false,
     "dynamic_text": false,
     "$data": false,
+    "$attr": false,
     "Cookies": false,
     "subsection": true,
     "view": true,
