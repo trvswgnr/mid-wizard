@@ -1,9 +1,9 @@
 /**
- * Store and get input object in a cookie.
+ * Store and get variables in cookies.
  */
-Wizard.cookies = function () {
+function cookie_storage () {
 
-  let cookie_name_inputs = 'input_taw',
+  let cookie_name_inputs = 'input_fields',
     cookie_name_view_count = 'view_count';
 
   /**
@@ -14,8 +14,7 @@ Wizard.cookies = function () {
     Cookies.set(cookie_name_view_count, view.count);
   }
   // store the view count on view change
-  $(document).on('click', '.get-next-view, .get-prev-view, .get-next-subsection', function () {
-    view.count = $(Wizard.settings.view_el+'.active').data('view');
+  $(document).on('click', '.get-next-view, .get-prev-view, .get-next-subsection, .review-subsection', function () {
     set_view_count()
   });
 
@@ -27,7 +26,8 @@ Wizard.cookies = function () {
     if (!view_count) {
       return;
     } else {
-      Wizard.dev_view(view_count);
+      Wizard.go_to_view(view_count);
+      console.log(view_count);
     }
   }
   // go to most recent view on page load
