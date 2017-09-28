@@ -13,6 +13,16 @@ function $data(data, val = '') {
 }
 
 /**
+ * Get element(s) using jQuery by any attribute and value.
+ * @arg {string} attr - The attribute to look for.
+ * @arg {string} [val=''] = the value for the data attribute.
+ */
+function $attr(attr, val = '') {
+  var x = val === '' ? $("[" + attr + "]") : $("[" + attr + '="' + val + '"]');
+  return x;
+}
+
+/**
  * Change text inside an element with a matching 'name' attribute from input tag
  * @arg {string} [data_attribute='dynamic-text'] - the data-attribute to look for a matching name attribute for and replace text (don't include 'data-', just the attribute.)
  * @example
