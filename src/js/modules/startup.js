@@ -97,7 +97,7 @@ Wizard.startup = function () {
     ".wizard__nav .nav-subsection:first," +
     ".wizard__nav .nav-section-title:first").addClass("active is-first");
 
-  Wizard.cookies();
+ cookie_storage();
 
   // initialize select2
   $('select').each(function () {
