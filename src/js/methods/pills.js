@@ -55,7 +55,7 @@ custom_checkboxes('pills');
  * @arg {Object} $this - Pass $(this) from jQuery event.
  */
 function pills_to_select2($this) {
-  let closest_subsection = $this.closest(Wizard.settings.subsection_el),
+  let closest_subsection = $this.closest(subsection.el),
     selects_in_subsection = closest_subsection.find('.js-pills-select2');
   $.each(selects_in_subsection, function () {
     let el = $(this),

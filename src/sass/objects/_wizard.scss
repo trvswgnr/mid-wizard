@@ -97,7 +97,9 @@ fieldset,
 }
 
 .in-review {
-
+  .introduction {
+    display: none;
+  }
   .edit-field {
     display: inline-block;
   }

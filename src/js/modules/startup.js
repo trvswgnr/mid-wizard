@@ -1,16 +1,15 @@
 /**
  * Add classes, data-attributes, navigation and other automated startup functions.
  */
-
 Wizard.startup = function () {
 
   // add data-attribute matching the order of sections,
   // subsections in each section, and views(fieldsets) in each subsection
-  $(Wizard.settings.section_el).each(function (i) {
-    var subsections = $(this).find(Wizard.settings.subsection_el);
+  $(section.el).each(function (i) {
+    var subsections = $(this).find(subsection.el);
     $(this).attr("data-section", i + 1);
     subsections.each(function (i) {
-      var fieldsets = $(this).find(Wizard.settings.view_el);
+      var fieldsets = $(this).find(view.el);
       $(this).attr("data-subsection", i + 1);
       fieldsets.each(function (i) {
         $(this).attr("data-fieldset", i + 1);
@@ -43,7 +42,7 @@ Wizard.startup = function () {
 
   /* ADD NAV
   ------------------------------------------------- */
-  $(Wizard.settings.section_el).each(function () {
+  $(section.el).each(function () {
 
     // @TODO: these variable names suck
     var s = $(this),
@@ -52,7 +51,7 @@ Wizard.startup = function () {
       ss,
       ss_d,
       ss_n,
-      ss_in_s = $(this).find(Wizard.settings.subsection_el);
+      ss_in_s = $(this).find(subsection.el);
 
     // match section data attr in nav
     $(".wizard__nav").append(
@@ -83,7 +82,7 @@ Wizard.startup = function () {
   });
 
   // add fieldset title for in-review
-  $(Wizard.settings.view_el).each(function () {
+  $(view.el).each(function () {
     var this_title = $(this).data('title');
     this_title = this_title != undefined ? this_title : false;
 
@@ -97,7 +96,9 @@ Wizard.startup = function () {
     ".wizard__nav .nav-subsection:first," +
     ".wizard__nav .nav-section-title:first").addClass("active is-first");
 
+
  cookie_storage();
+
 
   // initialize select2
   $('select').each(function () {
@@ -106,5 +107,7 @@ Wizard.startup = function () {
     });
   });
 
+  // fill "Add a Merchant" selects with options from first section
+  add_mid_inputs();
 
 }
