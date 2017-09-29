@@ -8,22 +8,25 @@
  * @arg {string} [options.elements.view=fieldset] - Tag or class name for targeting 'views' in the DOM.
  */
 let init = function (options = {}) {
-  let settings = {
+  Wizard.settings = {
     elements: {
       section: "section",
       subsection: ".subsection",
-      view: "fieldset"
+      view: "fieldset",
+      form: '#wizard_form'
     }
   }
-  $.extend(true, settings, options);
-  section.el = settings.elements.section;
-  subsection.el = settings.elements.subsection;
-  view.el = settings.elements.view;
+  $.extend(true, Wizard.settings, options);
+  section.el = Wizard.settings.elements.section;
+  subsection.el = Wizard.settings.elements.subsection;
+  view.el = Wizard.settings.elements.view;
 
   Wizard.startup();
 
   Wizard.events();
 
+
 };
 
 init();
+console.log(Wizard.settings);
