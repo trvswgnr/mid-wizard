@@ -9,36 +9,35 @@ function cookie_storage () {
   /**
    * Set the current view count as cookie to keep track of form progress.
    */
-  function set_view_count() {
+  function view_count_set() {
     // store the input as a cookie
     Cookies.set(cookie_name_view_count, view.count);
   }
   // store the view count on view change
   $(document).on('click', '.get-next-view, .get-prev-view, .get-next-subsection, .review-subsection', function () {
-    set_view_count()
+    view_count_set()
   });
 
   /**
    * Get the current view count from cookie
    */
-  function get_view_count() {
+  function view_count_get() {
     let view_count = Cookies.get(cookie_name_view_count);
     if (!view_count) {
       return;
     } else {
       Wizard.go_to_view(view_count);
-      console.log(view_count);
     }
   }
   // go to most recent view on page load
   $(document).ready(function () {
-    get_view_count();
+    view_count_get();
   });
 
   /**
    * Set/update values of input object from form and store in cookie.
    */
-  function set_input() {
+  function input_set() {
     input = get_form_data(document.getElementById('wizard_form'));
 
     for (let key in input) {
@@ -53,13 +52,13 @@ function cookie_storage () {
 
   // set cookie on input change
   $(document).on('change', 'input, select', function () {
-    set_input();
+    input_set();
   });
 
   /**
    * Get the stored cookie and prepopulate input fields.
    */
-  function get_input() {
+  function input_get() {
 
     let arr_length = 0,
       matching_checkbox = '',
@@ -95,5 +94,10 @@ function cookie_storage () {
   }
 
   // get cookie and pre-fill form on page ready
-  $(document).ready(get_input());
+  $(document).ready(input_get());
+
+  return {
+   input_get: input_get
+  }
+
 }
