@@ -38,7 +38,7 @@ function cookie_storage() {
    * Set/update values of input object from form and store in cookie.
    */
   function input_set() {
-    input = get_form_data(document.getElementById('wizard_form'));
+    input = get_form_data($(Wizard.settings.elements.form));
 
     for (let key in input) {
       if ($.isEmptyObject(input[key])) {
