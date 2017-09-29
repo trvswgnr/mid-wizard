@@ -35,6 +35,6 @@ let input = {},
   btns = $("button");
 
 /**
- * Match animation time to css animation transition.
+ * Use with setTimeout() to match animation time with css animation transition.
  */
 let animation_time = 400;
