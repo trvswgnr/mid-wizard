@@ -5,32 +5,32 @@ Wizard.go_to_view = function (view_number) {
   let this_view = $data('view', view_number);
 
   // fieldset
-  $(Wizard.settings.view_el).removeClass('active');
+  $(view.el).removeClass('active');
   view.count = view_number;
   view.n = $data('view', view.count);
   view.n.addClass('active').removeClass('done');
   view.count = view.n.data('view');
 
   // subsection
-  $(Wizard.settings.subsection_el).removeClass('active');
-  subsection.count = this_view.closest(Wizard.settings.subsection_el).data('subsection-order');
+  $(subsection.el).removeClass('active');
+  subsection.count = this_view.closest(subsection.el).data('subsection-order');
   subsection.n = $data('subsection-order', subsection.count);
   subsection.n.addClass('active').removeClass('subsection-done');
 
   //section
-  $(Wizard.settings.section_el).removeClass('active');
-  section.count = this_view.closest(Wizard.settings.section_el).data('section');
-  section.c = $(Wizard.settings.section_el + '.active');
+  $(section.el).removeClass('active');
+  section.count = this_view.closest(section.el).data('section');
+  section.c = $(section.el + '.active');
   section.n = $data('section', section.count);
   section.n.addClass('active');
 }
 
  /**
    * Change the view from dev nav input
-   * @arg {string} view - The 'data-title' (string), or the 'data-view' (Number), of the desired view.
+   * @arg {(string|number)} view - The 'data-title' (string), or the 'data-view' (number), of the desired view.
    */
 Wizard.get_view = function(view) {
-    $(Wizard.settings.subsection_el).removeClass('in-review');
+    $(subsection.el).removeClass('in-review');
     let is_integer = isNaN(view);
     let view_num = !is_integer ? $data('view', view).data('view') : $data('title', view).data('view');
     Wizard.go_to_view(view_num);
@@ -39,7 +39,7 @@ Wizard.get_view = function(view) {
 view.activate = function () {
   view.c.removeClass("active slide-in-left").addClass("done");
   view.n.removeClass("done").addClass("active");
-}
+};
 
 /**
  * Change the current view
@@ -66,8 +66,8 @@ Wizard.change_view = function () {
   $("button.get-prev-view").click(function () {
     view.c = $data('view', view.count);
     view.p = $data('view', (view.count - 1));
-    $(Wizard.settings.view_el).removeClass('active');
+    $(view.el).removeClass('active');
     view.p.addClass("active slide-in-left");
     view.count = view.count - 1
   });
-}
+};
