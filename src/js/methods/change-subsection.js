@@ -18,13 +18,13 @@ Wizard.change_subsection = function () {
     }, animation_time);
 
     //subsection
-    subsection.c = $(Wizard.settings.subsection_el + '.active');
+    subsection.c = $(subsection.el + '.active');
     subsection.n = $data('subsection-order', (subsection.count + 1));
     subsection.activate();
     subsection.count = subsection.n.data("subsection-order");
 
     // view
-    view.c = subsection.c.find(Wizard.settings.view_el + ':last');
+    view.c = subsection.c.find(view.el + ':last');
     view.count = view.c.data("view");
     view.n = $data('view', (view.count + 1))
     view.activate();
