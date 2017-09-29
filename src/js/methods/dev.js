@@ -1,5 +1,6 @@
 /**
  * (For development purposes only.)
+ * @namespace
  */
 function dev_tools() {
 
@@ -9,24 +10,24 @@ function dev_tools() {
    */
   function devnav($this) {
     // section
-    $(Wizard.settings.section_el).removeClass('active');
-    section.c = $(Wizard.settings.section_el + '.active');
+    $(section.el).removeClass('active');
+    section.c = $(section.el + '.active');
     section.n = $data('section', $this.closest('[data-nav-section]').data('nav-section'));
     section.c.removeClass('active');
     section.n.addClass('active');
     section.count = section.n.data('section');
 
     // subsection
-    $(Wizard.settings.subsection_el).removeClass('active');
-    subsection.c = $(Wizard.settings.subsection_el + '.active');
+    $(subsection.el).removeClass('active');
+    subsection.c = $(subsection.el + '.active');
     subsection.n = $data('subsection-order', $this.data('nav-subsection'));
     subsection.c.removeClass("active in-review");
     subsection.n.addClass("active").removeClass('subsection-done');
     subsection.count = subsection.n.data("subsection-order");
 
     // view
-    $(Wizard.settings.view_el).removeClass('active');
-    view.n = subsection.n.find(Wizard.settings.view_el + ':first');
+    $(view.el).removeClass('active');
+    view.n = subsection.n.find(view.el + ':first');
     view.n.addClass('active').removeClass('done');
     view.count = view.n.data("view");
   }
