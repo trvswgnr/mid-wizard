@@ -88,3 +88,14 @@ function flatten_array(arr) {
     return [].concat(arr);
   }
 }
+
+/**
+ * Disable tabbing through form.
+ */
+$("#wizard_form").on('keydown', function(e) {
+  var keyCode = e.keyCode || e.which;
+
+  if (keyCode == 9) {
+    e.preventDefault();
+  }
+});
