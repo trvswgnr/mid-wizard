@@ -96,18 +96,24 @@ Wizard.startup = function () {
     ".wizard__nav .nav-subsection:first," +
     ".wizard__nav .nav-section-title:first").addClass("active is-first");
 
+  // load cookies
+  cookie_storage();
 
- cookie_storage();
+  // document ready functions
+  $(document).ready(function () {
+    // fill "Add a Merchant" selects with options from first section
+    add_mid_inputs();
 
+    for (let key in input) {
+      $('select[name="' + key + '"]').val(input[key]);
+    }
 
-  // initialize select2
-  $('select').each(function () {
-    $(this).select2({
-      placeholder: $(this).attr('placeholder')
+    // initialize select2
+    $('select').each(function () {
+      $(this).select2({
+        placeholder: $(this).attr('placeholder')
+      });
     });
   });
-
-  // fill "Add a Merchant" selects with options from first section
-  add_mid_inputs();
 
 }

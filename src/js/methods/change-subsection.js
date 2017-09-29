@@ -32,10 +32,10 @@ Wizard.change_subsection = function () {
 
     // nav
     $data('nav-subsection', subsection.count).addClass("active");
-    $data('nav-subsection', (subsection.count - 1)).addClass("done");
+    $data('nav-subsection', (subsection.count - 1)).addClass("done").removeClass('active');
 
     // change label texts back to normal
-    change_label_text(false);
+    setTimeout(change_label_text(false), animation_time);
   });
 
 }

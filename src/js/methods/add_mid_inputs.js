@@ -22,9 +22,6 @@ function add_mid_inputs() {
     this_select.html(output_html);
   });
 
-  for (let key in input) {
-    $('select[name="' + key + '"]').val(input[key]);
-  }
 }
 
 $('.get-next-section, .nav-section').click(function () {

@@ -1,7 +1,7 @@
 /**
  * Store and get variables in cookies.
  */
-function cookie_storage () {
+function cookie_storage() {
 
   let cookie_name_inputs = 'input_fields',
     cookie_name_view_count = 'view_count';
@@ -63,7 +63,6 @@ function cookie_storage () {
     let arr_length = 0,
       matching_checkbox = '',
       matching_radio = '';
-
     input = Cookies.get(cookie_name_inputs);
     input = !input ? {} : JSON.parse(input);
 
@@ -94,10 +93,22 @@ function cookie_storage () {
   }
 
   // get cookie and pre-fill form on page ready
-  $(document).ready(input_get());
-
-  return {
-   input_get: input_get
-  }
+  $(document).ready(function () {
+    input_get();
+    /**
+     * track position from cookie in nav
+     */
+    function nav_track_cookie() {
+      let active_subsection_number = $('.subsection.active').data('subsection-order'),
+        active_section_number = $('section.active').data('section');
+      console.log(active_subsection_number);
+      for (let i = 0; i < active_subsection_number; i++) {
+        $data('nav-subsection', i).addClass('done');
+        $data('nav-subsection', i + 1).addClass('active');
+        $data('nav-section', active_section_number).addClass('active');
+      }
+    }
+    nav_track_cookie();
+  });
 
 }

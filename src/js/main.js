@@ -23,6 +23,7 @@ let init = function (options = {}) {
   Wizard.startup();
 
   Wizard.events();
+
 };
 
 init();

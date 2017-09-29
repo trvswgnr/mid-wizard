@@ -90,7 +90,7 @@
     margin-bottom: 0px;
   }
   &:first-of-type {
-    &.active {
+    &.done {
       &:after {
       height: 20px;
       transition: height 0.2s;
@@ -124,7 +124,7 @@
     border-radius: 50%;
     transform: scale(0);
   }
-  &.active {
+  &.done,&.active {
     position: relative;
     color: grey(base);
     font-weight: bold;
