@@ -30,6 +30,9 @@ function dev_tools() {
     view.n = subsection.n.find(view.el + ':first');
     view.n.addClass('active').removeClass('done');
     view.count = view.n.data("view");
+
+    nav_track_cookie();
+
   }
 
   // go to section/subsection from nav
@@ -43,6 +46,7 @@ function dev_tools() {
     let el = $(this),
       this_section = el.closest('.nav-section').data('nav-section');
     Wizard.go_section(this_section);
+    nav_track_cookie();
 
   });
 

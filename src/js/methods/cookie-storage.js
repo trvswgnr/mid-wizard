@@ -3,8 +3,8 @@
  */
 function cookie_storage() {
 
-  let cookie_name_inputs = 'input_fields',
-    cookie_name_view_count = 'view_count';
+  let cookie_name_inputs = Wizard.settings.cookies.input,
+    cookie_name_view_count = Wizard.settings.cookies.view;
 
   /**
    * Set the current view count as cookie to keep track of form progress.
@@ -38,7 +38,8 @@ function cookie_storage() {
    * Set/update values of input object from form and store in cookie.
    */
   function input_set() {
-    input = get_form_data($(Wizard.settings.elements.form));
+    let form_data = get_form_data($(Wizard.settings.elements.form));
+    input = $.extend(true, input, form_data);
 
     for (let key in input) {
       if ($.isEmptyObject(input[key])) {
@@ -72,10 +73,10 @@ function cookie_storage() {
       input[key] = $.isEmptyObject(input[key]) ? '' : input[key];
 
       // all inputs except radios and checks get their values changed
-      $('[name="' + key + '"]').not('[type="radio"], [type="checkbox"]').val(input[key]);
+      $(`[name="${key}"]`).not('[type="radio"], [type="checkbox"], [type="file"]').val(input[key]);
 
       // radios get checked
-      matching_radio = $('[type="radio"][name="' + key + '"][value="' + input[key] + '"]');
+      matching_radio = $(`[type="radio"][name="${key}"][value="${input[key]}"]`);
       matching_radio.prop('checked', true);
 
       // pills get active class to represent input state
@@ -84,7 +85,7 @@ function cookie_storage() {
       // check if the variable is an array (we only want to affect checkboxes)
       arr_length = input[key].constructor === Array ? input[key].length : 0;
       for (let i = 0; i < arr_length; i++) {
-        matching_checkbox = $('[name="' + key + '"][value="' + input[key][i] + '"]');
+        matching_checkbox = $(`[name="${key}"][value="${input[key][i]}"]`);
         matching_checkbox.attr('checked', 'checked');
         matching_checkbox.next('.pills__option').addClass('is-active');
       }
@@ -92,22 +93,14 @@ function cookie_storage() {
     console.log(input);
   }
 
+
+
+
   // get cookie and pre-fill form on page ready
   $(document).ready(function () {
+
     input_get();
-    /**
-     * track position from cookie in nav
-     */
-    function nav_track_cookie() {
-      let active_subsection_number = $('.subsection.active').data('subsection-order'),
-        active_section_number = $('section.active').data('section');
-      console.log(active_subsection_number);
-      for (let i = 0; i < active_subsection_number; i++) {
-        $data('nav-subsection', i).addClass('done');
-        $data('nav-subsection', i + 1).addClass('active');
-        $data('nav-section', active_section_number).addClass('active');
-      }
-    }
+    // track the nav
     nav_track_cookie();
   });
 

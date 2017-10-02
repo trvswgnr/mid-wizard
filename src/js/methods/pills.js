@@ -5,29 +5,38 @@
  * Add element to checkbox for easy styling
  */
 function custom_checkboxes(block_class = 'pills') {
-  $('.' + block_class + '__input').each(function () {
+  $(`.${block_class}__input`).each(function () {
     let el = $(this),
       id = el.attr('id'),
-      label = $('label[for="' + id + '"]'),
+      label = $(`label[for="${id}"]`),
       next_el = el.next(),
       has_tooltip = next_el.attr('class') === 'tooltip' ? true : false,
       tooltip_content = has_tooltip ? next_el.html() : '',
-      tooltip_el = '<div class="tooltip">' + tooltip_content + '</div>',
-      tooltip = has_tooltip ? '<div class="tooltip__icon">' + tooltip_el + '</div>' : '';
+      tooltip = `<div class="tooltip__icon">
+                  <div class="tooltip">${tooltip_content}</div>
+                 </div>`;
+    tooltip = has_tooltip ? tooltip : '';
 
-    //display: none on original inputs
+    // display none on original inputs
     el.hide();
 
     if (has_tooltip) {
       next_el.remove();
     }
 
-    el.after('<div class="' + block_class + '__option">' + el.val() + '<p>' + label.text() + '</p>' + tooltip + '</div>');
+    // insert the markup after
+    el.after(`
+      <div class="${block_class}__option">
+        ${el.val()}
+        <p>${label.text()}</p>
+        ${tooltip}
+      </div>
+    `);
     label.remove();
   });
 
   // checkbox pills active toggle
-  $('.' + block_class + '--checkboxes .' + block_class + '__option').on('click', function () {
+  $(`.${block_class}--checkboxes .${block_class}__option`).on('click', function () {
     var el = $(this);
     el.toggleClass('is-active');
     var this_input = el.prev('input');
@@ -35,8 +44,8 @@ function custom_checkboxes(block_class = 'pills') {
   });
 
   // radio pills active toggle
-  $('.' + block_class + '--radios').each(function () {
-    let options_in_group = $(this).find('.' + block_class + '__option');
+  $(`.${block_class}--radios`).each(function () {
+    let options_in_group = $(this).find(`.${block_class}__option`);
     options_in_group.on('click', function () {
       var el = $(this);
       var this_input = el.prev('input');
@@ -49,6 +58,30 @@ function custom_checkboxes(block_class = 'pills') {
 
 custom_checkboxes('pills');
 
+
+(function custom_file_upload() {
+  let target = 'input[type="file"]';
+  $(target).each(function () {
+    let $this = $(this),
+      custom = (
+        `<div class="upload u-muted" data-upload="${$this.attr('id')}">+ Upload Document</div>`
+      );
+    $this.after(custom);
+    //hide actual input
+    $this.hide();
+  });
+  $('.upload').click(function(){
+    let $this = $(this),
+        linked_input = $(`#${$this.data('upload')}`);
+    linked_input.click();
+  });
+  $(target).on('change',function(){
+    let $this = $(this),
+        filename = $this.val();
+    filename = filename.match(/[^\/\\]+$/);
+    $data('upload',$this.attr('id')).text(filename).removeClass('u-muted').addClass('is-active');
+  });
+}());
 
 /**
  * Convert checkbox 'pills' to Select2 object.
@@ -65,16 +98,20 @@ function pills_to_select2($this) {
       placeholder = el.attr('placeholder'),
       i,
       options = '',
-      multiple = el.is('[multiple]') ? 'multiple="multiple"' : '';
+      multiple = el.is('[multiple]') ? ' multiple="multiple"' : '';
     $.each(inputs, function () {
       let el = $(this),
         selected = el.prop('checked') ? ' selected' : '';
-      options += '<option value="' + el.val() + '"' + selected + '>' + el.val() + '</option>'
+      options += `<option value="${el.val()}"${selected}>${el.val()}</option>`;
     });
-    el.replaceWith(
-      '<div id="' + name + '_select2_wrapper" class="js-select2-wrapper"><select class="js-select2" id="' + name + '_select2" name="' + name + '"' + multiple + '>' + options + '</select></div>'
-    );
-    $('label[for="' + name + '_select2"]').html(placeholder + ' <div class="edit-field"></div>');
+    el.replaceWith(`
+      <div id="${name}_select2_wrapper" class="js-select2-wrapper">
+        <select class="js-select2" id="${name}_select2" name="${name}"${multiple}>
+          ${options}
+        </select>
+      </div>
+    `);
+    $(`label[for=${name}_select2]`).html(`${placeholder} <div class="edit-field"></div>`);
   });
 
   /** Select2 Initialize */

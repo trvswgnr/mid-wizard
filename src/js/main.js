@@ -14,8 +14,12 @@ let init = function (options = {}) {
       subsection: ".subsection",
       view: "fieldset",
       form: '#wizard_form'
+    },
+    cookies: {
+      input: 'input_fields',
+      view: 'view_count'
     }
-  }
+  };
   $.extend(true, Wizard.settings, options);
   section.el = Wizard.settings.elements.section;
   subsection.el = Wizard.settings.elements.subsection;
@@ -29,4 +33,3 @@ let init = function (options = {}) {
 };
 
 init();
-console.log(Wizard.settings);

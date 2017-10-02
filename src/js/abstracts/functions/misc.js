@@ -33,12 +33,12 @@ function $attr(attr, val = '') {
  */
 function dynamic_text(data_attribute = 'dynamic-text') {
   var el, this_data, input_val;
-  $("[data-"+data_attribute+"]").each(function () {
+  $("[data-" + data_attribute + "]").each(function () {
     el = $(this);
     this_data = el.data(data_attribute);
     input_val = $('[name="' + this_data + '"]').val();
     if (input_val.length > 0) {
-    $data(data_attribute, this_data).text(input_val);
+      $data(data_attribute, this_data).text(input_val);
     }
   });
 }
@@ -56,14 +56,14 @@ function change_label_text(x) {
       el = $(this),
       attr_for = el.attr("for");
     if (x === true) {
-      (og_text = el.text()), (new_text = $("#" + attr_for).attr(
+      (og_text = el.html()), (new_text = $("#" + attr_for).attr(
         "placeholder"
       ));
       el.text(new_text).attr("data-guide-text", og_text);
       el.append('<div class="edit-field"></div>');
     } else {
       new_text = el.data("guide-text");
-      el.text(new_text);
+      el.html(new_text);
       $(".edit-field").remove();
     }
   });
@@ -90,12 +90,30 @@ function flatten_array(arr) {
 }
 
 /**
- * Disable tabbing through form.
+ * Disable tabbing off form.
  */
-$("#wizard_form").on('keydown', function(e) {
+$("#wizard_form button").on('keydown', function (e) {
   var keyCode = e.keyCode || e.which;
 
   if (keyCode == 9) {
     e.preventDefault();
   }
 });
+
+
+/**
+ * Track position in nav from cookie, or click
+ */
+function nav_track_cookie() {
+  let active_subsection_number = $('.subsection.active').data('subsection-order'),
+    active_section_number = $('section.active').data('section');
+    $data('nav-subsection').removeClass('done active');
+    $data('nav-section').removeClass('active');
+    $('.wizard__nav .is-first').addClass('active');
+  for (let i = 0; i < active_subsection_number; i++) {
+    $data('nav-subsection', i).addClass('done');
+    $data('nav-subsection', i + 1).addClass('active');
+    $data('nav-section', active_section_number).addClass('active');
+    $data('nav-section', active_section_number).find('.nav-section-title').addClass('active');
+  }
+}

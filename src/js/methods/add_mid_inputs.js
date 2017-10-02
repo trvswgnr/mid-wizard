@@ -11,13 +11,13 @@ function add_mid_inputs() {
     // create an option for each matching <option>
     $.each(option_matches, function () {
       let this_match = $(this);
-      output_html += '<option value=' + this_match.val() + '>' + this_match.text() + '</option>';
+      output_html += `<option value="${this_match.val()}">${this_match.text()}</option>`;
     });
 
     // create an option for each matching checkbox
     $.each(checkbox_matches, function () {
       let this_match = $(this);
-      output_html += '<option value=' + this_match.val() + '>' + this_match.val() + '</option>';
+      output_html += `<option value="${this_match.val()}">${this_match.val()}</option>`;
     });
     this_select.html(output_html);
   });

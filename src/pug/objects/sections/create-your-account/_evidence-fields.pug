@@ -1,10 +1,10 @@
 .subsection#evidence_fields(data-title="Evidence Fields")
-  fieldset(data-title="Basic")
+  fieldset(data-title="Basic Evidence")
     .guide-text
-      h3 Basic Evidence Fields
-      p What types of data do you have access to from your transactions?
+      h3 Transaction data (basic).
+      p What types of basic information are you receiving?
     .block
-      label.hidden-review Below are evidence fields for basic transaction information. Toggle the fields that are available to you:
+      label.hidden-review Here are some basic types of transaction data. Which ones are available to you (select all that apply)?
       .pills.pills--checkboxes.pills--inline.js-pills-select2(multiple)
         input#basic_evidence_first_name(type="checkbox" class="pills__input" name="evidence_basic" value="First Name")
         .tooltip Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur incidunt sed harum architecto modi aut repellat quae voluptatem quod iure minima quia quasi, beatae et alias obcaecati possimus quam, molestiae.
@@ -17,12 +17,12 @@
         .block
           button.get-next-view Continue
 
-  fieldset(data-title="Advanced")
+  fieldset(data-title="Advanced Evidence")
     .guide-text
-      h3 Advanced Evidence Fields
-      p What types of data do you have access to from your transactions?
+      h3 Transaction data (advanced).
+      p More complex types of information—which are you receiving?
     .block
-      label(for="evidence_advanced_select2") Below are evidence fields for advanced transaction information. Toggle the fields that are available to you:
+      label(for="evidence_advanced_select2") Which of the following types of transaction data are available to you (select all that apply)?
       .pills.pills--checkboxes.pills--inline.js-pills-select2(placeholder="Advanced Evidence Fields" multiple)
         input#advanced_evidence_location_address(type="checkbox" class="pills__input" name="evidence_advanced" value="Location Address")
         input#advanced_evidence_terminal_id(type="checkbox" class="pills__input" name="evidence_advanced" value="Terminal ID")
@@ -40,12 +40,12 @@
           button.get-prev-view
           button.get-next-view Continue
 
-  fieldset(data-title="Sales Method")
+  fieldset(data-title="Sales Method Evidence")
     .guide-text
-      h3 Sales Method Evidence Fields
-      p What types of data do you have access to from your transactions?
+      h3 Transaction data (sales-method-specific).
+      p Based on what we’ve learned so far, we’ve got more suggestions for available data.
     .block
-      label.hidden-review Using your sales method choices, we've selected a few more evidence fields that might be obtainable. Toggle the fields that are available to you:
+      label.hidden-review Which of the following are available to you (select all that apply)?
       .pills.pills--checkboxes.pills--inline.js-pills-select2(multiple)
         input#sales_evidence_address(type="checkbox" class="pills__input" name="evidence_sales" value="Digital Download")
         input#sales_evidence_last_name(type="checkbox" class="pills__input" name="evidence_sales" value="Last Name")
@@ -55,12 +55,12 @@
           button.get-prev-view
           button.get-next-view Continue
 
-  fieldset(data-title="Industry Specific").last-view-in-section
+  fieldset(data-title="Industry Specific Evidence").last-view-in-section
     .guide-text
-      h3 Industry Specific Evidence Fields
-      p What types of data do you have access to from your transactions?
+      h3 Transaction data (industry-specific).
+      p Based on your business’ industry, we’ve got more suggestions for available data.
     .block
-      label.hidden-review Below are specific evidence fields that could be on hand due to your business' industry. Toggle the fields that are available to you:
+      label.hidden-review Do you have access to any of the following (select all that apply)?
       .pills.pills--checkboxes.pills--inline.js-pills-select2(multiple)
         input#industry_evidence_address(type="checkbox" class="pills__input" name="evidence_industry" value="Location Address")
         input#industry_evidence_last_name(type="checkbox" class="pills__input" name="evidence_industry" value="Last Name")

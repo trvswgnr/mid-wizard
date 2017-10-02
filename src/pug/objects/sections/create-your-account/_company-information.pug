@@ -17,15 +17,11 @@
   fieldset(data-title="Company Location")
     .guide-text
       h3 Where is <span data-dynamic-text="company_name">your company</span> located?
-      p Where is the primary headquarters for your company?
+      p Where is the primary headquarters for <span data-dynamic-text="company_name">your company</span>?
     .block
       //- not adding every country...
       label(for="company_country") What country is <span data-dynamic-text="company_name">your company</span> in?
-      select#company_country(name="company_country" placeholder='Company Country')
-        option
-        option(value="United States") United States
-        option(value="Afghanistan") Afghanistan
-        option(value="Albania") Albania
+      select.country-select#company_country(name="company_country" placeholder='Company Country')
       .field
         label(for="company_street_address") What is the street address?
         input#company_street_address(type="text" name="company_street_address" placeholder="Street Address")

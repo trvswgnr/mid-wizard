@@ -1,13 +1,13 @@
 .subsection#user_details(data-title="User Details")
   fieldset#intro.introduction
     h3 Welcome! Let's start recovering your revenue.
-    p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis ipsum exercitationem illum voluptatem animi. Illo nulla libero praesentium blanditiis eveniet rerum tempore ea sequi quo, ducimus, voluptatibus. At, quis, nesciunt!
+    p This section requires some potentially complex information. You may find it easier to access that data before we actually begin. Where are you first notified of chargebacks? Whether through your banking portal (typical) or some other venue, you’ll need to refer to that information—so locate it and open it on another monitor, window, or tab.
     button.get-next-view Let's Begin
 
   fieldset#about(data-title="You")
     .guide-text
       h3 Tell us about yourself.
-      p Let us know your name and preferred email address.
+      p As the account administrator, tell us your name and preferred email address.
     .field
       label(for="user_first_name") What is your first name?
       input#user_first_name(type="text" name='user_first_name' placeholder='First Name')
@@ -21,7 +21,7 @@
 
   fieldset#primary_and_billing
     .guide-text
-      h3 Who should we contact?
+      h3 Whom should we contact?
       p <span data-dynamic-text="user_first_name">Ok</span>, should we contact you directly with any account issues, status reports, and billing inquiries?
     .radios.hidden-review
       label Are you the <strong>primary</strong> contact for your company?
@@ -53,8 +53,8 @@
 
   fieldset#billing_contact(data-title="Billing Contact")
     .guide-text
-      h3 Who should we contact with billing inquiries?
-      p Let us know who we should send invoices and notify about any billing issues.
+      h3 Who will be our contact for billing inquiries?
+      p To whom should we send invoices and notify about any billing issues?
     .field
       label(for="billing_contact_firstname") What is their first name?
       input#billing_contact_firstname(type="text" name="billing_contact_firstname" placeholder="First Name")

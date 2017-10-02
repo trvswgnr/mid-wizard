@@ -32,6 +32,8 @@
     "dev_tools": true,
     "btns": true,
     "animation_time": true,
-    "add_mid_inputs": true
+    "add_mid_inputs": true,
+    "nav_track_cookie": true,
+    "COUNTRY_NAMES": true
   }
 }

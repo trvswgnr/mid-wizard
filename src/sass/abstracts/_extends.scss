@@ -1,0 +1,21 @@
+/* SASS EXTENDS
+---------------------------------- */
+
+%border {
+  border: 1px solid grey(x-light);
+}
+
+%table {
+  width: 100%;
+  display: table;
+}
+
+%table-fixed {
+  width: 100%;
+  display: table;
+  table-layout: fixed;
+}
+
+%table-cell {
+  display: table-cell;
+}

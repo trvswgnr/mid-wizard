@@ -1,0 +1,73 @@
+/* TEMPLATE SELECTOR
+---------------------------------- */
+
+.template-select {
+  $padding: 12px;
+  margin: ($padding / 2) ($padding * -1);
+  &__inner {
+    @extend %border;
+    padding: $padding;
+    min-height: 304px;
+  }
+  &__heading {
+    margin: 0 0 ($padding + $padding / 3);
+    font-weight: 300;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    color: grey();
+    padding-bottom: ($padding / 4 * 3);
+    border-bottom: 1px solid grey(x-light);
+  }
+  &__templates-wrapper {
+    margin: ($padding * -1);
+    overflow: hidden;
+  }
+  &__row {
+    @extend %table-fixed;
+  }
+  &__col {
+    @extend %table-cell;
+    padding: 0 $padding;
+  }
+  &__template {
+    padding: $padding;
+    width: 125px;
+    height: 125px;
+    float: left;
+    position: relative;
+    &.is-active {
+      &:after {
+        content: '\f00c';
+        font-family: FontAwesome;
+        position: absolute;
+        bottom: 14px;
+        right: 14px;
+        background: $color_primary;
+        text-align: center;
+        color: white;
+        line-height: 1.2;
+        font-size: 10px;
+        padding: 0.3em 0.3em 0.3em 0.5em;
+      }
+      img {
+        border-color: $color_primary;
+      }
+    }
+  }
+  &__template img {
+    @extend %border;
+    padding: 2px;
+    display: block;
+    width: 100%;
+    pointer-events: none;
+    height: 100%; // @TODO remove this height at production
+  }
+  &__preview {
+    @extend %border;
+    height: 236px;
+    width: 100%;
+    background: white;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}

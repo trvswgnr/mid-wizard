@@ -6,7 +6,7 @@
  * Primary Wizard Object
  * @namespace
  */
-var Wizard = function() {
+var Wizard = function () {
 
 };
 

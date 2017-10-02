@@ -13,15 +13,15 @@
   fieldset(data-title="MID Sales Methods and Offers")
     .guide-text
       h3 MID Sales Methods and Offers
-      p Let's find out how your sales are made for this MID.
+      p What are the authorized sales methods for this MID?
     label(for="mid_sales_methods") What authorized Sales Methods are used on this MID?
     select#mid_sales_methods(name="mid_sales_methods" placeholder="Sales Methods" multiple)
       option
       option(value="phone") Phone
       option(value="web") Web
       option(value="online") Online
-    label(for="mid_offer_types") What authorized Offer Types are used on this MID?
+    label(for="mid_offer_types") What are the authorized offer types for this MID?
     select#mid_offer_types(name="mid_offer_types" data-values="offers" placeholder="Offer Types" multiple)
     .controls-wrapper
       button.get-prev-view
-      button.get-next-view Continue
+      button.review-subsection Review

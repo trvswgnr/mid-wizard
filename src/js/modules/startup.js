@@ -54,30 +54,30 @@ Wizard.startup = function () {
       ss_in_s = $(this).find(subsection.el);
 
     // match section data attr in nav
-    $(".wizard__nav").append(
-      '<ul class="nav-section" data-nav-section="' + s_d + '">' +
-      '<h4 class="nav-section-title">' + s_n + "</h4>" +
-      "</ul>"
-    );
+    $(".wizard__nav").append(`
+      <ul class="nav-section" data-nav-section="${s_d}">
+        <h4 class="nav-section-title">${s_n}</h4>
+      </ul>
+    `);
 
     ss_in_s.each(function () {
-      ss = $(this);
-      ss_d = ss.data("subsection-order");
-      ss_n = ss.data('title');
+      ss    = $(this);
+      ss_d  = ss.data("subsection-order");
+      ss_n  = ss.data('title');
+
       // add subsection review text
-      ss.prepend(
-        '<div class="review-guide-text">' +
-        '<h3>Verify ' + ss.data('title') + '.</h3>' +
-        '</div>'
-      );
+      ss.prepend(`
+        <div class="review-guide-text">
+          <h3>Verify ${ss.data('title')}.</h3>
+        </div>
+      `);
       // match subsection data attr in nav
-      $data('nav-section', s_d).append(
-        '<li class="nav-subsection" data-nav-subsection="' +
-        ss_d +
-        '">' +
-        ss_n +
-        "<div class='nav-active-dot'></div></li>"
-      );
+      $data('nav-section', s_d).append(`
+        <li class="nav-subsection" data-nav-subsection="${ss_d}">
+          ${ss_n}
+          <div class="nav-active-dot"></div>
+        </li>
+      `);
     });
   });
 
@@ -87,7 +87,7 @@ Wizard.startup = function () {
     this_title = this_title != undefined ? this_title : false;
 
     if (this_title) {
-      $(this).prepend('<div class="review-fieldset-label">' + this_title + '</div>');
+      $(this).prepend(`<div class="review-fieldset-label">${this_title}</div>`);
     }
   });
 
@@ -99,13 +99,23 @@ Wizard.startup = function () {
   // load cookies
   cookie_storage();
 
+  // populate selects from APIs or variables
+  function populate_select_object() {
+    let options = '<option></option>';
+    for (let key in COUNTRY_NAMES) {
+      options += `<option value="${COUNTRY_NAMES[key]}">${COUNTRY_NAMES[key]}</option>`
+    }
+    $('.country-select').html(options);
+  }
+  populate_select_object();
+
   // document ready functions
   $(document).ready(function () {
     // fill "Add a Merchant" selects with options from first section
     add_mid_inputs();
 
     for (let key in input) {
-      $('select[name="' + key + '"]').val(input[key]);
+      $(`select[name="${key}"]`).val(input[key]);
     }
 
     // initialize select2
@@ -114,6 +124,8 @@ Wizard.startup = function () {
         placeholder: $(this).attr('placeholder')
       });
     });
+    dynamic_text();
   });
+
 
 }
