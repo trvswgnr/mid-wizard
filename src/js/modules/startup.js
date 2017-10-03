@@ -96,44 +96,11 @@ Wizard.startup = function () {
     ".wizard__nav .nav-subsection:first," +
     ".wizard__nav .nav-section-title:first").addClass("active is-first");
 
-  /**
-   * Replace checks with toggles
-   */
-  $(".js-toggle").each(function() {
-    let el = $(this),
-      id = el.attr("id");
-    el.replaceWith(`
-      <div class="toggle">
-        <input id="${id}" type="checkbox" name="${id}" value="no"/>
-        <label class="toggle__label" for="${id}">
-          <div class="toggle__text"></div>
-          <div class="toggle__switch"></div>
-        </label>
-      </div>
-    `);
-  });
-
-
-
-  $(".toggle__label").click(function () {
-    let el = $(this),
-      input = el.prev("input");
-    el.toggleClass("toggle--active");
-    if (input.is(":checked")) {
-      input.val("no");
-      input.prop('checked',false);
-    } else {
-      input.val("yes");
-      input.prop('checked',true);
-    }
-    console.log(input.val());
-  });
-
+  // toggles
+  toggles();
 
   // load cookies
   cookie_storage();
-
-
 
   // populate select elements with object data
   populate_select_object('.js-country-select', COUNTRY_NAMES);

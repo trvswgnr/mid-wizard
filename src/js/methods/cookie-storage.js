@@ -62,7 +62,7 @@ function cookie_storage() {
   }
 
   // set cookie on input change
-  $(document).on('change', 'input, select', function () {
+  $(document).on('change', 'input, select, .toggle', function () {
     input_set();
   });
 
@@ -102,14 +102,11 @@ function cookie_storage() {
       }
 
       // toggles get... toggled.
-      $(`.toggle [name="${key}"]`).val(input[key][0]);
+      $(`[id="${key}"]`).attr('data-toggled', input[key]);
 
     }
     console.log(input);
   }
-
-
-
 
   // get cookie and pre-fill form on page ready
   $(document).ready(function () {
