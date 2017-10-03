@@ -28,6 +28,7 @@
 
 .select2-container--default .select2-selection--multiple .select2-selection__rendered {
   line-height: 20px;
+  margin-bottom: -4px;
   outline: none;
   &:focus {
     outline: none;
@@ -50,7 +51,7 @@
 .select2-container--default {
   .select2-selection--single,
   .select2-selection--multiple {
-    height: 33px;
+    height: auto;
     border-radius: 0;
     outline: none;
     border-color: grey(x-light);
@@ -63,7 +64,6 @@
       border-color: transparent;
     }
   }
-
 }
 
 .in-review .select2-container--open.select2-container--default .select2-selection--multiple {
@@ -84,4 +84,9 @@
 
 .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
   margin-right: 4px;
+}
+
+.select2-container--default .select2-search--inline .select2-search__field {
+  margin: 0;
+  line-height: 28px;
 }

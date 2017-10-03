@@ -1,7 +1,7 @@
 /**
- * @const
  * List of all country names and abbreviations.
  */
+
 let COUNTRY_NAMES = {
   "US": "United States",
   "BD": "Bangladesh",

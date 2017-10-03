@@ -1,0 +1,56 @@
+/* TOGGLE SWITCH
+---------------------------------- */
+
+.toggle {
+  $h: 24px;
+  input {
+    display: none;
+  }
+  &__label {
+    height: $h;
+    width: $h * 3;
+    display: block;
+    background: grey;
+    border-radius: $h;
+    position: relative;
+    &.toggle--active {
+      background: $color_primary;
+    }
+  }
+
+  &__text {
+    position: absolute;
+    right: $h / 3;
+    font-size: $h / 3;
+    font-family: sans-serif;
+    color: #fff;
+    line-height: $h;
+
+    .toggle--active & {
+      left: 8px;
+    }
+  }
+
+  &__text:before {
+    content: "NO";
+
+    .toggle--active & {
+      content: "YES";
+    }
+  }
+
+  &__switch {
+    height: $h;
+    width: $h;
+    border-radius: 50%;
+    background: #eeeeee;
+    position: absolute;
+    left: 0;
+    transition: left 0.15s;
+
+    .toggle--active & {
+      left: 48px;
+      transition: left 0.15s;
+    }
+  }
+}

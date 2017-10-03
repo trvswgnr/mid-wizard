@@ -25,10 +25,7 @@
       p <span data-dynamic-text="user_first_name">Ok</span>, should we contact you directly with any account issues, status reports, and billing inquiries?
     .radios.hidden-review
       label Are you the <strong>primary</strong> contact for your company?
-      input#primary_contact_no(type="radio" name='is_primary_contact' value='no' checked='')
-      label(for="primary_contact_no") No
-      input#primary_contact_yes(type="radio" name='is_primary_contact' value='yes')
-      label(for="primary_contact_yes") Yes
+      .js-toggle#primary_contact
     .radios.hidden-review
       label Are you the <strong>billing</strong> contact for your company?
       input#billing_contact_no(type="radio" name='is_billing_contact' value='no' checked='')

@@ -70,7 +70,7 @@
         margin-bottom: 0.8em;
       }
     &:after {
-      font-family: FontAwesome;
+      font-family: Chargeicons;
       position: absolute;
       content: '';
       right: 1em;
@@ -93,7 +93,8 @@
       border-color: $color_primary;
       transition: 0.1s ease-in-out;
       &:after {
-        content: '\F046';
+//        content: '\e908';
+        @extend .icon-check-square:before;
         background: transparent;
         color: $color_primary;
         animation: pop 0.2s ease-in-out normal 1 forwards;

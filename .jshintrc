@@ -34,6 +34,8 @@
     "animation_time": true,
     "add_mid_inputs": true,
     "nav_track_cookie": true,
-    "COUNTRY_NAMES": true
+    "COUNTRY_NAMES": true,
+    "CURRENCIES": true,
+    "populate_select_object": true
   }
 }

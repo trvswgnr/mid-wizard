@@ -22,10 +22,12 @@ button {
 .get-prev-view {
   background: grey(x-light);
   color: grey(base);
-  font-weight: normal;
-  padding: 0 1.5em 0 1.4em;
+  font-weight: bold;
+  padding: 0 1.5em;
+  line-height: 0.8;
   &:before {
-    font-family: FontAwesome;
-    content: '\f053';
+    font-family: Chargeicons;
+//    content: '\f053';
+    @extend .icon-chevron-left:before;
   }
 }

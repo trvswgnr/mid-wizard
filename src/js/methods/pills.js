@@ -12,8 +12,8 @@ function custom_checkboxes(block_class = 'pills') {
       next_el = el.next(),
       has_tooltip = next_el.attr('class') === 'tooltip' ? true : false,
       tooltip_content = has_tooltip ? next_el.html() : '',
-      tooltip = `<div class="tooltip__icon">
-                  <div class="tooltip">${tooltip_content}</div>
+      tooltip = `<div class="tooltip">
+                  <div class="tooltip__content">${tooltip_content}</div>
                  </div>`;
     tooltip = has_tooltip ? tooltip : '';
 
@@ -61,25 +61,30 @@ custom_checkboxes('pills');
 
 (function custom_file_upload() {
   let target = 'input[type="file"]';
+
   $(target).each(function () {
     let $this = $(this),
-      custom = (
-        `<div class="upload u-muted" data-upload="${$this.attr('id')}">+ Upload Document</div>`
-      );
+      custom = (`<div class="upload u-muted" data-upload="${$this.attr('id')}">+ Upload Document</div>`);
     $this.after(custom);
     //hide actual input
     $this.hide();
   });
   $('.upload').click(function(){
-    let $this = $(this),
-        linked_input = $(`#${$this.data('upload')}`);
+    let this_upload = $(this),
+        linked_input = $(`#${this_upload.data('upload')}`);
+
     linked_input.click();
   });
   $(target).on('change',function(){
-    let $this = $(this),
-        filename = $this.val();
+    let this_input = $(this),
+        filename = this_input.val(),
+         wrapper = this_input.closest('.upload-document');
     filename = filename.match(/[^\/\\]+$/);
-    $data('upload',$this.attr('id')).text(filename).removeClass('u-muted').addClass('is-active');
+    $data('upload',this_input.attr('id'))
+      .text(filename)
+      .removeClass('u-muted')
+      .addClass('is-active');
+    wrapper.addClass('upload-document--active');
   });
 }());
 

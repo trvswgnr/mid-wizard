@@ -61,9 +61,9 @@ Wizard.startup = function () {
     `);
 
     ss_in_s.each(function () {
-      ss    = $(this);
-      ss_d  = ss.data("subsection-order");
-      ss_n  = ss.data('title');
+      ss = $(this);
+      ss_d = ss.data("subsection-order");
+      ss_n = ss.data('title');
 
       // add subsection review text
       ss.prepend(`
@@ -96,18 +96,48 @@ Wizard.startup = function () {
     ".wizard__nav .nav-subsection:first," +
     ".wizard__nav .nav-section-title:first").addClass("active is-first");
 
+  /**
+   * Replace checks with toggles
+   */
+  $(".js-toggle").each(function() {
+    let el = $(this),
+      id = el.attr("id");
+    el.replaceWith(`
+      <div class="toggle">
+        <input id="${id}" type="checkbox" name="${id}" value="no"/>
+        <label class="toggle__label" for="${id}">
+          <div class="toggle__text"></div>
+          <div class="toggle__switch"></div>
+        </label>
+      </div>
+    `);
+  });
+
+
+
+  $(".toggle__label").click(function () {
+    let el = $(this),
+      input = el.prev("input");
+    el.toggleClass("toggle--active");
+    if (input.is(":checked")) {
+      input.val("no");
+      input.prop('checked',false);
+    } else {
+      input.val("yes");
+      input.prop('checked',true);
+    }
+    console.log(input.val());
+  });
+
+
   // load cookies
   cookie_storage();
 
-  // populate selects from APIs or variables
-  function populate_select_object() {
-    let options = '<option></option>';
-    for (let key in COUNTRY_NAMES) {
-      options += `<option value="${COUNTRY_NAMES[key]}">${COUNTRY_NAMES[key]}</option>`
-    }
-    $('.country-select').html(options);
-  }
-  populate_select_object();
+
+
+  // populate select elements with object data
+  populate_select_object('.js-country-select', COUNTRY_NAMES);
+  populate_select_object('.js-currency-select', CURRENCIES, 'code', ['name', 'symbol'], ' (', ')');
 
   // document ready functions
   $(document).ready(function () {

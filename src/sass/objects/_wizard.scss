@@ -85,8 +85,8 @@ fieldset,
   margin-left: 8px;
   cursor: pointer;
   &:before {
-    content: '\f040';
-    font-family: FontAwesome;
+    @extend .icon-pencil:before;
+    font-family: Chargeicons;
     color: grey(light);
   }
 }

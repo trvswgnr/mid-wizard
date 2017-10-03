@@ -61,8 +61,10 @@ function dev_tools() {
    * Remove the cookies for input fields and view count
    */
   function remove_cookies() {
-    Cookies.remove('input_fields');
-    Cookies.remove('view_count');
+    Cookies.remove(Wizard.settings.cookies.input);
+    Cookies.remove(Wizard.settings.cookies.view);
+    localStorage.removeItem(Wizard.settings.cookies.input);
+    localStorage.removeItem(Wizard.settings.cookies.view);
   }
 
   $('#dev_nav_delete_cookies').click(function (e) {

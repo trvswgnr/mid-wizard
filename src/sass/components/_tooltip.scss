@@ -2,6 +2,39 @@
 ---------------------------------- */
 
 .tooltip {
+  .in-review &,
+  .is-active & {
+    display: none;
+  }
+  &:after {
+    @extend .icon-question:before;
+    font-family: Chargeicons;
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    font-size: 0.8em;
+    line-height: 1.7;
+  }
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  right: 0.5em;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  border-radius: 3px;
+  z-index: 1;
+  &:hover {
+    color: $color_primary;
+    .tooltip__content {
+      display: block;
+      animation: tooltip-in 0.2s ease-in-out normal 1 forwards
+    }
+  }
+}
+
+.tooltip__content {
   display: none;
   position: absolute;
   z-index: 1;
@@ -29,40 +62,8 @@
     margin: 0 auto;
     @include triangle($color: $tt-bg);
   }
-
 }
 
-.tooltip__icon {
-  .in-review &, .is-active & {
-    display: none;
-  }
-  &:after {
-    content: '\f128';
-    font-family: FontAwesome;
-    position: absolute;
-    width: 18px;
-    height: 18px;
-    text-align: center;
-    font-size: 1.2em;
-    line-height: 1;
-  }
-  width: 18px;
-  height: 18px;
-  position: absolute;
-  right: 0.5em;
-  top: 0;
-  bottom: 0;
-  margin: auto 0;
-  border-radius: 3px;
-  z-index: 1;
-  &:hover {
-    color: $color_primary;
-    .tooltip {
-      display: block;
-      animation: tooltip-in 0.2s ease-in-out normal 1 forwards
-    }
-  }
-}
 
 @keyframes tooltip-in {
   0% {

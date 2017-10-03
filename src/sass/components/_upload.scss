@@ -1,0 +1,62 @@
+/* UPLOAD DOCUMENTS
+---------------------------------- */
+
+.upload-document {
+  padding: 0.5em 0;
+  &__inner {
+    @extend %table-fixed;
+  padding: 6px;
+  padding-left: 8px;
+  border: 1px solid grey(x-light);
+    .upload-document--active & {
+      border-color: $color_primary;
+    }
+  }
+  &__col-left, &__col-right {
+    @extend %table-cell;
+    position: relative;
+    vertical-align: middle;
+  }
+  &__col-left {
+    width: 30%;
+  }
+  &__col-right {
+    text-align: right;
+  }
+  &__icon {
+    position: absolute;
+    font-size: 2em;
+    top: 0;
+    left: 0;
+    line-height: 1.25;
+    color: grey(light);
+    .upload-document--active & {
+      color: $color_primary;
+    }
+  }
+  &__label {
+    margin-left: 3em;
+    color: grey();
+    .upload-document--active & {
+      color: $color_primary;
+    }
+  }
+  .upload {
+    margin-bottom: 0;
+  }
+  .tooltip:after {
+    color: grey(light);
+  }
+}
+
+.upload {
+  border: 1px dashed grey;
+  display: inline-block;
+  padding: 0.5em 2.5em;
+  color: $color_primary;
+  cursor: pointer;
+  margin-bottom: 1em;
+  &.is-active {
+    border-color: transparent;
+  }
+}

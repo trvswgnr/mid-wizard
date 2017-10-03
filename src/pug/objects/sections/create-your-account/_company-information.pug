@@ -19,9 +19,8 @@
       h3 Where is <span data-dynamic-text="company_name">your company</span> located?
       p Where is the primary headquarters for <span data-dynamic-text="company_name">your company</span>?
     .block
-      //- not adding every country...
       label(for="company_country") What country is <span data-dynamic-text="company_name">your company</span> in?
-      select.country-select#company_country(name="company_country" placeholder='Company Country')
+      select.js-country-select#company_country(name="company_country" placeholder='Company Country')
       .field
         label(for="company_street_address") What is the street address?
         input#company_street_address(type="text" name="company_street_address" placeholder="Street Address")

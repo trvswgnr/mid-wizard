@@ -32,6 +32,7 @@ CONTENTS:
 /* 2.) BASE
 ---------------------------------- */
 @import 'base/dom';
+@import 'base/icons';
 @import 'base/utility';
 @import 'base/typography';
 
@@ -52,6 +53,8 @@ CONTENTS:
 @import 'components/tooltip';
 @import 'components/select2-custom';
 @import 'components/template-select';
+@import 'components/upload';
+@import 'components/toggle';
 
 /* 6.) THEMES
 ---------------------------------- */

@@ -5,12 +5,7 @@
       p List all the currencies that you use for processing transactions.
     .field
       label(for="currencies") Select currencies you accept:
-      select#currencies(name="currencies" placeholder="Currencies" multiple)
-        //- include empty <option> for Select2 placeholder
-        option
-        option(value="usd") USD ($)
-        option(value="eur") EUR (€)
-        option(value="jpy") JPY (¥)
+      select.js-currency-select#currencies(name="currencies" placeholder="Currencies" multiple)
     .controller-wrapper
       button.get-next-view Continue
 

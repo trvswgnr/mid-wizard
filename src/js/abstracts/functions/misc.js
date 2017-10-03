@@ -107,13 +107,43 @@ $("#wizard_form button").on('keydown', function (e) {
 function nav_track_cookie() {
   let active_subsection_number = $('.subsection.active').data('subsection-order'),
     active_section_number = $('section.active').data('section');
-    $data('nav-subsection').removeClass('done active');
-    $data('nav-section').removeClass('active');
-    $('.wizard__nav .is-first').addClass('active');
+  $data('nav-subsection').removeClass('done active');
+  $data('nav-section').removeClass('active');
+  $('.wizard__nav .is-first').addClass('active');
   for (let i = 0; i < active_subsection_number; i++) {
     $data('nav-subsection', i).addClass('done');
     $data('nav-subsection', i + 1).addClass('active');
     $data('nav-section', active_section_number).addClass('active');
     $data('nav-section', active_section_number).find('.nav-section-title').addClass('active');
   }
+}
+
+/**
+ * Populate selects from APIs or variables
+ * @arg {string} target - Target &lt;select&gt; element (e.g. '.js-currencies')
+ * @arg {string} object - Object to pull data from for &lt;option&gt; elements
+ * @arg {string} [val] - Object key to be used for  value
+ * @arg {string|array} [text] - Object key(s) to be used for &lt;option&gt; text
+ * @arg {string} [join=' '] - Text to join 'text' array with (defaults to single space)
+ * @arg {string} [suffix=''] - Text to append to end of &lt;option&gt;
+ */
+function populate_select_object(target, object, val = false, text = false, join = ' ', suffix = '') {
+  let options = '<option></option>',
+    option_value = '',
+    option_text = [];
+  for (let key in object) {
+    option_value = val ? object[key][val] : object[key];
+    if (text) {
+      text = typeof text === 'string' ? [text] : text;
+      for (let i = 0; i < text.length; i++) {
+        option_text.push(object[key][text[i]]);
+      }
+      option_text = option_text.join(join);
+    } else {
+      option_text = object[key];
+    }
+    options += `<option value="${option_value}">${option_text}${suffix}</option>`;
+    option_text = [];
+  }
+  $(target).html(options);
 }

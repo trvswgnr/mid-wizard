@@ -1,11 +1,62 @@
 .subsection#user_details(data-title="Upload Documents")
-  fieldset(data-title="")
+  fieldset(data-title="Upload Sample Documents")
     .guide-text
-      h3 Sed quasi earum consequatur laborum, ex laudantium velit eveniet.
-      p Blanditiis error quasi ratione, unde architecto adipisci ab nostrum esse.
-    label(for="some_id3") Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-    input#some_id3(type="text" name="some_id3")
-    label(for="some_id4") Reiciendis amet animi quod, inventore voluptatum ducimus autem, voluptas.
-    input#some_id4(type="text" name="some_id4")
+      h3 Upload sample documents.
+      p For the following items, we'll need a copy of documents you should have in your possesion. If you have physical copies of the documents, simply take a photo of all pages (higher resolution is best). Upload the image to the corresponding document upload in .jpg, .png, .gif, or .pdf below.
+    .upload-document
+      .upload-document__inner
+        .upload-document__col-left
+          .upload-document__icon.icon-packing
+          span.upload-document__label Packing Slip
+          .tooltip
+            .tooltip__content Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur incidunt sed harum architecto modi aut repellat quae voluptatem quod iure minima quia quasi, beatae et alias obcaecati possimus quam, molestiae.
+        .upload-document__col-right
+          input#mid_document_packing_slip(type="file" name="mid_document_packing_slip")
+    .upload-document
+      .upload-document__inner
+        .upload-document__col-left
+          .upload-document__icon.icon-receipt
+          span.upload-document__label Delivery Receipt
+          .tooltip
+            .tooltip__content Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur incidunt sed harum architecto modi aut repellat quae voluptatem quod iure minima quia quasi, beatae et alias obcaecati possimus quam, molestiae.
+        .upload-document__col-right
+          input#mid_document_delivery_receipt(type="file" name="mid_document_delivery_receipt")
+    .upload-document
+      .upload-document__inner
+        .upload-document__col-left
+          .upload-document__icon.icon-refund
+          span.upload-document__label Refund Policy
+          .tooltip
+            .tooltip__content Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur incidunt sed harum architecto modi aut repellat quae voluptatem quod iure minima quia quasi, beatae et alias obcaecati possimus quam, molestiae.
+        .upload-document__col-right
+          input#mid_document_refund_policy(type="file" name="mid_document_refund_policy")
+    .upload-document
+      .upload-document__inner
+        .upload-document__col-left
+          .upload-document__icon.icon-checkout
+          span.upload-document__label Order Checkout
+          .tooltip
+            .tooltip__content Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur incidunt sed harum architecto modi aut repellat quae voluptatem quod iure minima quia quasi, beatae et alias obcaecati possimus quam, molestiae.
+        .upload-document__col-right
+          input#mid_document_order_checkout(type="file" name="mid_document_order_checkout")
+    .upload-document
+      .upload-document__inner
+        .upload-document__col-left
+          .upload-document__icon.icon-script
+          span.upload-document__label Disclosure Script
+          .tooltip
+            .tooltip__content Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur incidunt sed harum architecto modi aut repellat quae voluptatem quod iure minima quia quasi, beatae et alias obcaecati possimus quam, molestiae.
+        .upload-document__col-right
+          input#mid_document_disclosure_script(type="file" name="mid_document_disclosure_script")
+    .upload-document
+      .upload-document__inner
+        .upload-document__col-left
+          .upload-document__icon.icon-terms
+          span.upload-document__label Terms & Conditions
+          .tooltip
+            .tooltip__content Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur incidunt sed harum architecto modi aut repellat quae voluptatem quod iure minima quia quasi, beatae et alias obcaecati possimus quam, molestiae.
+        .upload-document__col-right
+          input#mid_document_terms_conditions(type="file" name="mid_document_terms_conditions")
+
     .controls-wrapper
-      button.get-next-view Continue
+      button.get-next-subsection Review

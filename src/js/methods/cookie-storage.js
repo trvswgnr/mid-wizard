@@ -1,5 +1,5 @@
 /**
- * Store and get variables in cookies.
+ * Store and get variables in localStorage/cookies.
  */
 function cookie_storage() {
 
@@ -10,8 +10,12 @@ function cookie_storage() {
    * Set the current view count as cookie to keep track of form progress.
    */
   function view_count_set() {
-    // store the input as a cookie
-    Cookies.set(cookie_name_view_count, view.count);
+    // store the input as a cookie if localStorage isn't supported
+    if (!window.localStorage) {
+      Cookies.set(cookie_name_view_count, view.count);
+    } else {
+      localStorage.setItem(cookie_name_view_count, view.count);
+    }
   }
   // store the view count on view change
   $(document).on('click', '.get-next-view, .get-prev-view, .get-next-subsection, .review-subsection', function () {
@@ -22,13 +26,15 @@ function cookie_storage() {
    * Get the current view count from cookie
    */
   function view_count_get() {
-    let view_count = Cookies.get(cookie_name_view_count);
+    let view_count = !window.localStorage ? Cookies.get(cookie_name_view_count) : localStorage.getItem(cookie_name_view_count);
+
     if (!view_count) {
       return;
     } else {
       Wizard.go_to_view(view_count);
     }
   }
+
   // go to most recent view on page load
   $(document).ready(function () {
     view_count_get();
@@ -47,8 +53,12 @@ function cookie_storage() {
       }
     }
 
-    // store the input as a cookie
-    Cookies.set(cookie_name_inputs, JSON.stringify(input));
+    // store the input as a cookie if localStorage not available
+    if (!window.localStorage) {
+      Cookies.set(cookie_name_inputs, JSON.stringify(input));
+    } else {
+      localStorage.setItem(cookie_name_inputs, JSON.stringify(input));
+    }
   }
 
   // set cookie on input change
@@ -64,10 +74,10 @@ function cookie_storage() {
     let arr_length = 0,
       matching_checkbox = '',
       matching_radio = '';
-    input = Cookies.get(cookie_name_inputs);
+    input = !window.localStorage ? Cookies.get(cookie_name_inputs) : localStorage.getItem(cookie_name_inputs);
     input = !input ? {} : JSON.parse(input);
 
-    for (var key in input) {
+    for (let key in input) {
 
       // check if empty object (avoid errors)
       input[key] = $.isEmptyObject(input[key]) ? '' : input[key];
@@ -82,13 +92,18 @@ function cookie_storage() {
       // pills get active class to represent input state
       matching_radio.next('.pills__option').addClass('is-active');
 
-      // check if the variable is an array (we only want to affect checkboxes)
+
+      // check if the variable is an array (we only want to affect checkboxes in the .pills class)
       arr_length = input[key].constructor === Array ? input[key].length : 0;
       for (let i = 0; i < arr_length; i++) {
-        matching_checkbox = $(`[name="${key}"][value="${input[key][i]}"]`);
+        matching_checkbox = $(`.pills [name="${key}"][value="${input[key][i]}"]`);
         matching_checkbox.attr('checked', 'checked');
         matching_checkbox.next('.pills__option').addClass('is-active');
       }
+
+      // toggles get... toggled.
+      $(`.toggle [name="${key}"]`).val(input[key][0]);
+
     }
     console.log(input);
   }
@@ -102,6 +117,15 @@ function cookie_storage() {
     input_get();
     // track the nav
     nav_track_cookie();
+
+    // @NOTE: messy add active class to toggles
+      $('[value="yes"]').each(function(){
+    let el = $(this),
+        id = el.attr('id'),
+        label = $(`label[for="${id}"]`);
+    label.addClass('toggle--active');
+  });
+
   });
 
 }
