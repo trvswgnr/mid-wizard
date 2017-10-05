@@ -1,7 +1,8 @@
   /**
    * Replace checks with toggles
    */
-function toggles() {  $(".js-toggle").each(function() {
+function toggles() {
+  $(".js-toggle").each(function() {
     let el = $(this),
       id = el.attr("id");
     el.replaceWith(`

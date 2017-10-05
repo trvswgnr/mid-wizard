@@ -56,7 +56,7 @@ function custom_checkboxes(block_class = 'pills') {
   });
 }
 
-custom_checkboxes('pills');
+
 
 
 (function custom_file_upload() {

@@ -33,9 +33,14 @@
     "btns": true,
     "animation_time": true,
     "add_mid_inputs": true,
+    "toggles": true,
     "nav_track_cookie": true,
+    "custom_checkboxes": true,
+    "populate_from_source": true,
+    "populate_checkboxes": true,
     "COUNTRY_NAMES": true,
     "CURRENCIES": true,
-    "populate_select_object": true
+    "INDUSTRIES": true,
+    "EVIDENCE_FIELDS": true
   }
 }

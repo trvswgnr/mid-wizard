@@ -25,7 +25,7 @@
     // set different asset paths for development and production
     assets: {
       dev: 'http://localhost:3000/',
-      pro: 'http://test.chargebacks911.com/mid-wizard/',
+      pro: 'https://test.chargebacks911.com/mid-wizard/',
       // this tag will be replaced throughout the files with the appropriate asset path
       tag: '{{path}}'
     },
@@ -59,7 +59,7 @@
       name: 'main',
       vendor: 'vendor/**/*.js',
       files: [
-        'abstracts/variables.js',
+        'abstracts/variables/**/*.js',
         'abstracts/functions/**/*.js',
         'abstracts/**/*.js',
         'methods/**/*.js',

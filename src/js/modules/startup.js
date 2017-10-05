@@ -40,6 +40,8 @@ Wizard.startup = function () {
     '<button class="get-next-section">Next Section</button>'
   );
 
+
+
   /* ADD NAV
   ------------------------------------------------- */
   $(section.el).each(function () {
@@ -103,8 +105,29 @@ Wizard.startup = function () {
   cookie_storage();
 
   // populate select elements with object data
-  populate_select_object('.js-country-select', COUNTRY_NAMES);
-  populate_select_object('.js-currency-select', CURRENCIES, 'code', ['name', 'symbol'], ' (', ')');
+  populate_from_source({
+    target: '.js-country-select',
+    source: COUNTRY_NAMES,
+  });
+
+  populate_from_source({
+    target: '.js-currency-select',
+    source: CURRENCIES,
+    val: 'code',
+    text: ['name', 'symbol'],
+    join: ' (',
+    suffix: ')'
+  });
+  populate_from_source({
+    target: '.js-industry-select',
+    source: INDUSTRIES
+  });
+
+  // populate checkboxes
+  populate_checkboxes('.js-evidence-advanced', EVIDENCE_FIELDS.advanced, 'evidence_advanced');
+
+  // turn checkboxes into pills
+  custom_checkboxes('pills');
 
   // document ready functions
   $(document).ready(function () {

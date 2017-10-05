@@ -23,22 +23,10 @@
       p More complex types of information—which are you receiving?
     .block
       label(for="evidence_advanced_select2") Which of the following types of transaction data are available to you (select all that apply)?
-      .pills.pills--checkboxes.pills--inline.js-pills-select2(placeholder="Advanced Evidence Fields" multiple)
-        input#advanced_evidence_location_address(type="checkbox" class="pills__input" name="evidence_advanced" value="Location Address")
-        input#advanced_evidence_terminal_id(type="checkbox" class="pills__input" name="evidence_advanced" value="Terminal ID")
-        input#advanced_evidence_auth_number(type="checkbox" class="pills__input" name="evidence_advanced" value="Authorization Number")
-        input#advanced_evidence_avs_code(type="checkbox" class="pills__input" name="evidence_advanced" value="AVS Code")
-        input#advanced_evidence_customer_notes(type="checkbox" class="pills__input" name="evidence_advanced" value="Customer Notes")
-        input#advanced_evidence_order_number(type="checkbox" class="pills__input" name="evidence_advanced" value="Order Number")
-        input#advanced_evidence_phone_number(type="checkbox" class="pills__input" name="evidence_advanced" value="Phone Number")
-        input#advanced_evidence_login_name(type="checkbox" class="pills__input" name="evidence_advanced" value="Profile/Login Name")
-        input#advanced_evidence_chat_log(type="checkbox" class="pills__input" name="evidence_advanced" value="Profile Chat Log")
-        input#advanced_evidence_somed_account(type="checkbox" class="pills__input" name="evidence_advanced" value="Social Media Account")
-        input#advanced_evidence_transaction_number(type="checkbox" class="pills__input" name="evidence_advanced" value="Transaction Number")
-        input#advanced_evidence_visa_verified(type="checkbox" class="pills__input" name="evidence_advanced" value="Verified by Visa")
-        .block
-          button.get-prev-view
-          button.get-next-view Continue
+      .pills.pills--checkboxes.pills--inline.js-pills-select2.js-evidence-advanced(placeholder="Advanced Evidence Fields" multiple)
+      .block
+        button.get-prev-view
+        button.get-next-view Continue
 
   fieldset(data-title="Sales Method Evidence")
     .guide-text
@@ -47,7 +35,7 @@
     .block
       label.hidden-review Which of the following are available to you (select all that apply)?
       .pills.pills--checkboxes.pills--inline.js-pills-select2(multiple)
-        input#sales_evidence_address(type="checkbox" class="pills__input" name="evidence_sales" value="Digital Download")
+        input#sales_evidence_digital_download(type="checkbox" class="pills__input" name="evidence_sales" value="Digital Download")
         input#sales_evidence_last_name(type="checkbox" class="pills__input" name="evidence_sales" value="Last Name")
         input#sales_evidence_email(type="checkbox" class="pills__input" name="evidence_sales" value="Email Address")
         input#sales_evidence_billing(type="checkbox" class="pills__input" name="evidence_sales" value="Billing")
