@@ -35,7 +35,7 @@ Wizard.change_subsection = function () {
     $data('nav-subsection', (subsection.count - 1)).addClass("done").removeClass('active');
 
     // change label texts back to normal
-    setTimeout(change_label_text(false), animation_time);
+//    setTimeout(change_label_text(false), animation_time);
   });
 
 }

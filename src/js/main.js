@@ -18,6 +18,10 @@ let init = function (options = {}) {
     cookies: {
       input: 'input_fields',
       view: 'view_count'
+    },
+    input_defaults: {
+      is_primary_contact: 'true',
+      is_billing_contact: 'true'
     }
   };
   $.extend(true, Wizard.settings, options);

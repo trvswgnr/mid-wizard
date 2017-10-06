@@ -38,7 +38,7 @@
     &.is-active {
       &:after {
         content: '\f00c';
-        font-family: FontAwesome;
+        font-family: FontAwesome; //booooo
         position: absolute;
         bottom: 14px;
         right: 14px;

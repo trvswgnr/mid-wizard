@@ -75,7 +75,7 @@ function cookie_storage() {
       matching_checkbox = '',
       matching_radio = '';
     input = !window.localStorage ? Cookies.get(cookie_name_inputs) : localStorage.getItem(cookie_name_inputs);
-    input = !input ? {} : JSON.parse(input);
+    input = !input ? Wizard.settings.input_defaults : JSON.parse(input);
 
     for (let key in input) {
 

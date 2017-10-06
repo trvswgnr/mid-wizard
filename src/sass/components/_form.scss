@@ -16,7 +16,7 @@ input[type="radio"] + label[for] {
 
 input,select {
   border: 1px solid grey(x-light);
-  padding: 6px 12px;
+  padding: 10px 12px;
   display: block;
   width: 100%;
   margin-bottom: 1.5em;
@@ -42,7 +42,7 @@ input,select {
 input {
   .in-review &:focus {
     border-bottom-color: grey(x-light);
-    padding: 6px 12px;
+    padding: 10px 12px;
     transition: 0.2s;
     cursor: initial;
   }
@@ -70,7 +70,7 @@ option {
 }
 
 .checkboxes,.radios {
-  overflow: hidden;
+//  overflow: hidden;
   width: 100%;
   margin-bottom: 12px;
 }

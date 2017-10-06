@@ -1,3 +1,12 @@
 /* SHAME (hacks and quick fixes)
 ---------------------------------- */
 // @TODO: Refactor or replace
+
+// no LastPass bgimage
+input {
+  background-image: none !important;
+}
+
+[id*="__lpform"] {
+  display: none;
+}

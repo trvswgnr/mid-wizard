@@ -21,28 +21,28 @@ function dev_tools() {
     $(subsection.el).removeClass('active');
     subsection.c = $(subsection.el + '.active');
     subsection.n = $data('subsection-order', $this.data('nav-subsection'));
-    subsection.c.removeClass("active in-review");
+    subsection.c.removeClass("active");
     subsection.n.addClass("active").removeClass('subsection-done');
     subsection.count = subsection.n.data("subsection-order");
 
     // view
     $(view.el).removeClass('active');
     view.n = subsection.n.find(view.el + ':first');
-    view.n.addClass('active').removeClass('done');
+    view.n.addClass('active').removeClass('');
     view.count = view.n.data("view");
 
     nav_track_cookie();
 
   }
 
-  // go to section/subsection from nav
-  $(document).on('click', '.nav-subsection', function () {
+  // go to subsection from nav
+  $(document).on('click', '.nav-subsection.done, .nav-subsection.active', function () {
     let el = $(this);
     devnav(el);
   });
 
   // go to section in nav
-  $(document).on('click', '.nav-section-title', function () {
+  $(document).on('click', '.nav-section-title.active', function () {
     let el = $(this),
       this_section = el.closest('.nav-section').data('nav-section');
     Wizard.go_section(this_section);

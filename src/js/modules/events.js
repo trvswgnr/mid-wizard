@@ -10,7 +10,7 @@ Wizard.events = function () {
   Wizard.review_subsection();
   Wizard.change_subsection();
   Wizard.change_section();
-  Wizard.nav();
-//  dev_tools(); // remove at production
+//  Wizard.nav();
+  dev_tools(); // remove at production
   conditionals();
 }

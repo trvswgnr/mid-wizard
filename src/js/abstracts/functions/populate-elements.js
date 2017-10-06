@@ -1,11 +1,12 @@
 /**
- * Populate selects from APIs or variables
- * @arg {string} target - Target &lt;select&gt; element (e.g. '.js-currencies')
- * @arg {string} object - Object to pull data from for &lt;option&gt; elements
- * @arg {string} [val] - Object key to be used for  value
- * @arg {string|array} [text] - Object key(s) to be used for &lt;option&gt; text
- * @arg {string} [join=' '] - Text to join 'text' array with (defaults to single space)
- * @arg {string} [suffix=''] - Text to append to end of &lt;option&gt;
+ * Populate selects and other elements from API or variable
+ * @arg {Object} config - Options to override default settings and configure elements
+ * @arg {string} config.target - Target &lt;select&gt; element (e.g. '.js-currencies')
+ * @arg {string} config.object - Object to pull data from for &lt;option&gt; elements
+ * @arg {string} [config.val] - Object key to be used for  value
+ * @arg {string|array} [config.text] - Object key(s) to be used for &lt;option&gt; text
+ * @arg {string} [config.join=' '] - Text to join 'text' array with (defaults to single space)
+ * @arg {string} [config.suffix=''] - Text to append to end of &lt;option&gt;
  */
 function populate_from_source(config) {
   let settings = {
@@ -19,21 +20,21 @@ function populate_from_source(config) {
   };
   $.extend(true, settings, config);
   let elements = settings.element === 'option' ? '<option></option>' : '',
-    option_value = '',
-    option_text = [];
+    element_value = '',
+    element_text = [];
   for (let key in settings.source) {
-    option_value = settings.val ? settings.source[key][settings.val] : settings.source[key];
+    element_value = settings.val ? settings.source[key][settings.val] : settings.source[key];
     if (settings.text) {
       settings.text = typeof settings.text === 'string' ? [settings.text] : settings.text;
       for (let i = 0; i < settings.text.length; i++) {
-        option_text.push(settings.source[key][settings.text[i]]);
+        element_text.push(settings.source[key][settings.text[i]]);
       }
-      option_text = option_text.join(settings.join);
+      element_text = element_text.join(settings.join);
     } else {
-      option_text = settings.source[key];
+      element_text = settings.source[key];
     }
-    elements += `<option value="${option_value}">${option_text}${settings.suffix}</option>`;
-    option_text = [];
+    elements += `<option value="${element_value}">${element_text}${settings.suffix}</option>`;
+    element_text = [];
   }
   $(settings.target).html(elements);
 }

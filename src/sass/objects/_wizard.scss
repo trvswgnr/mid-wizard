@@ -78,7 +78,6 @@ fieldset,
   }
 }
 
-
 // edit field input symbol
 .edit-field {
   display: none;
@@ -89,6 +88,24 @@ fieldset,
     font-family: Chargeicons;
     color: grey(light);
   }
+}
+
+.guide-text {
+  font-size: 1.2em;
+}
+
+.guide-text--alt {
+  font-size: 1em;
+  .guide-text__muted {
+    opacity: 0.6;
+    display:block;
+    margin-bottom: 12px;
+  }
+}
+
+// @TODO: @HACK: fix the real problem in JS
+.edit-field + .edit-field {
+  display: none !important;
 }
 
 // in review state

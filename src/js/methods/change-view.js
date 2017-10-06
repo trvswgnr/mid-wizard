@@ -30,7 +30,7 @@ Wizard.go_to_view = function (view_number) {
    * @arg {(string|number)} view - The 'data-title' (string), or the 'data-view' (number), of the desired view.
    */
 Wizard.get_view = function(view) {
-    $(subsection.el).removeClass('in-review');
+//    $(subsection.el).removeClass('in-review');
     let is_integer = isNaN(view);
     let view_num = !is_integer ? $data('view', view).data('view') : $data('title', view).data('view');
     Wizard.go_to_view(view_num);
