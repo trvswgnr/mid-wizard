@@ -35,10 +35,6 @@ fieldset,
   transform: translateX(1000%);
   transition: 1s;
   animation: fadeOut 0.6s ease-in-out normal 1 forwards;
-  z-index: 0;
-  &.active {
-    z-index: 3;
-  }
   &.active,
   .in-review & {
     transform: translateX(0%);
