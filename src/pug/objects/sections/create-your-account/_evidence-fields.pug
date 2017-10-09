@@ -6,10 +6,10 @@
     .block
       label(for="evidence_basic_select2") Here are some basic types of transaction data. Which ones are available to you (select all that apply)?
       .pills.pills--checkboxes.pills--inline.js-pills-select2(placeholder="Basic Evidence Fields" multiple)
-        each val, key in EVIDENCE_FIELDS.basic
-          - id = `evidence_basic_${key.toLowerCase().replace(/ /g, "_")}
-          input(type="checkbox" value=key class="pills__input" name="evidence_basic" id=id)
-          .tooltip= val
+        each description, field in EVIDENCE_FIELDS.basic
+          - id = `evidence_basic_${field.toLowerCase().replace(/ /g, "_")}`
+          input(type="checkbox" value=field class="pills__input" name="evidence_basic" id=id)
+          .tooltip= description
     .controller-wrapper
       button.get-next-view Continue
 
