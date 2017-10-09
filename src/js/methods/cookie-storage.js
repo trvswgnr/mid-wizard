@@ -4,7 +4,8 @@
 function cookie_storage() {
 
   let cookie_name_inputs = Wizard.settings.cookies.input,
-    cookie_name_view_count = Wizard.settings.cookies.view;
+    cookie_name_view_count = Wizard.settings.cookies.view,
+    cookie_name_subsection_nav = 'subsection_nav';
 
   /**
    * Set the current view count as cookie to keep track of form progress.
@@ -15,6 +16,7 @@ function cookie_storage() {
       Cookies.set(cookie_name_view_count, view.count);
     } else {
       localStorage.setItem(cookie_name_view_count, view.count);
+      localStorage.setItem(cookie_name_subsection_nav, $('.nav-subsection.active:last').data('nav-subsection'));
     }
   }
   // store the view count on view change

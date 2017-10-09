@@ -105,26 +105,28 @@ Wizard.startup = function () {
   cookie_storage();
 
   // populate select elements with object data
-  populate_from_source({
-    target: '.js-country-select',
-    source: COUNTRY_NAMES,
-  });
+//  populate_from_source({
+//    target: '.js-country-select',
+//    source: COUNTRY_NAMES,
+//  });
+//
+//  populate_from_source({
+//    target: '.js-currency-select',
+//    source: CURRENCIES,
+//    val: 'code',
+//    text: ['name', 'symbol'],
+//    join: ' (',
+//    suffix: ')'
+//  });
+//  populate_from_source({
+//    target: '.js-industry-select',
+//    source: INDUSTRIES
+//  });
 
-  populate_from_source({
-    target: '.js-currency-select',
-    source: CURRENCIES,
-    val: 'code',
-    text: ['name', 'symbol'],
-    join: ' (',
-    suffix: ')'
-  });
-  populate_from_source({
-    target: '.js-industry-select',
-    source: INDUSTRIES
-  });
-
-  // populate checkboxes
-  populate_checkboxes('.js-evidence-advanced', EVIDENCE_FIELDS.advanced, 'evidence_advanced');
+  // populate evidence fields from object
+//  for(let key in EVIDENCE_FIELDS) {
+//    populate_checkboxes(`.js-evidence-${key}`, EVIDENCE_FIELDS[key], `evidence_${key}`);
+//  }
 
   // turn checkboxes into pills
   custom_checkboxes('pills');

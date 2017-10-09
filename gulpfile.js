@@ -15,6 +15,9 @@
     png_quant = require('imagemin-pngquant'),
     del = require('del');
 
+  // local variables
+  var data = require('./data/data.js');
+
   /* SETTINGS
   ------------------------------------------------- */
   var settings = {
@@ -197,7 +200,7 @@
       .pipe(gulp.dest('./dist/js'))
       .pipe(browser_sync.stream());
   }
-  gulp.task('vendor-js',function(){
+  gulp.task('vendor-js', function () {
     concat_vendor_js();
   });
 
@@ -212,6 +215,12 @@
         pretty: true,
         filters: {
           md: pug_markdown_filter
+        },
+        data: {
+          EVIDENCE_FIELDS: data.EVIDENCE_FIELDS,
+          CURRENCIES: data.CURRENCIES,
+          COUNTRIES: data.COUNTRIES,
+          INDUSTRIES: data.INDUSTRIES
         },
         plugins: [pug_bemify()]
       })).on('error', settings.error)
@@ -337,7 +346,7 @@
 
   /* DEFAULT TASK
   ------------------------------------------------- */
-  gulp.task('default', ['vendor-js'],function () {
+  gulp.task('default', ['vendor-js'], function () {
     if (settings.production) {
       console.log($.util.colors.red('\nProduction Build.\n'));
       run();
@@ -350,7 +359,7 @@
       run();
       setTimeout(watch_files, 2000);
     }
-    setTimeout(function(){
+    setTimeout(function () {
       gulp.start('jsdoc');
     }, 3000);
 

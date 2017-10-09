@@ -6,6 +6,8 @@
     .field
       label(for="currencies") Select currencies you accept:
       select.js-currency-select#currencies(name="currencies" placeholder="Currencies" multiple)
+        each currency in CURRENCIES
+          option(value=currency.code)= `${currency.name} (${currency.symbol})`
     .controller-wrapper
       button.get-next-view Continue
 
@@ -16,12 +18,29 @@
     .field
       label.hidden-review Select all the offer types you may accept from the choices below.
       .pills.pills--checkboxes
-        input#offersFree(type="checkbox" class="pills__input" name="offers" value="Free Trial")
-        label(for="offersFree") Customers sign up for a free or discounted trial and are billed automatically if they do not cancel within a pre-set timeframe.
-        input#offersSingle(type="checkbox" class="pills__input" name="offers" value="Single Order")
-        label(for="offersSingle") Customers order products or services through a traditional single transaction.
-        input#offersRecurring(type="checkbox" class="pills__input" name="offers" value="Recurring")
-        label(for="offersRecurring") Customers are billed automatically on a recurring basis until they cancel or modify their subscription.
+        input#offers_free(type="checkbox" class="pills__input" name="offers" value="Free Trial")
+        label(for="offers_free") Customers sign up for a free or discounted trial and are billed automatically if they do not cancel within a pre-set timeframe.
+        input#offers_single(type="checkbox" class="pills__input" name="offers" value="Single Order")
+        label(for="offers_single") Customers order products or services through a traditional single transaction.
+        input#offers_recurring(type="checkbox" class="pills__input" name="offers" value="Recurring")
+        label(for="offers_recurring") Customers are billed automatically on a recurring basis until they cancel or modify their subscription.
+        .controller-wrapper
+          button.get-prev-view
+          button.get-next-view Continue
+
+  fieldset(data-title="Sales Methods")
+    .guide-text
+      h3 How do you accept credit card payments?
+      p What sales methods do you use?
+    .field
+      label.hidden-review Select all the ways you accept payments.
+      .pills.pills--checkboxes
+        input#sales_methods_phone(type="checkbox" class="pills__input" name="sales_methods" value="Phone")
+        label(for="sales_methods_phone") Customers give credit card information over the phone.
+        input#sales_methods_web(type="checkbox" class="pills__input" name="sales_methods" value="Web")
+        label(for="sales_methods_web") Customers fill out a form with credit card information on the internet.
+        input#sales_methods_mail(type="checkbox" class="pills__input" name="sales_methods" value="Mail")
+        label(for="sales_methods_mail") Customers send in their card information through the mail.
         .controller-wrapper
           button.get-prev-view
           button.get-next-view Continue

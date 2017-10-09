@@ -50,8 +50,6 @@ function dev_tools() {
 
   });
 
-
-
   $(document).on('click', '#dev_nav_btn', function () {
     var val = $('#dev_nav_input').val();
     Wizard.get_view(val);

@@ -48,13 +48,15 @@ function populate_from_source(config) {
  @arg {string} [name='pills__input'] - Class attribute for generated element
  */
 function populate_checkboxes(target, source, name, class_name = 'pills__input') {
-  let markup = '', val, text, id, val_id;
-  for (let i = 0; i < source.length; i++) {
-    val = source[i];
+  let markup = '', val, text, id, val_id, tooltip;
+  for (let key in source) {
+    val = key;
+    tooltip = !source[key] ? 'No information available.' : source[key];
     val_id = val.toLowerCase();
     val_id = val_id.replace(/ /g, "_");
     id = name + '_' + val_id;
-    markup += `<input type="checkbox" class="${class_name}" name="${name}" id="${id}" value="${val}"/>`;
+    markup += `<input type="checkbox" class="${class_name}" name="${name}" id="${id}" value="${val}"/>
+               <div class="tooltip">${tooltip}</div>`;
   }
   $(target).html(markup);
 }

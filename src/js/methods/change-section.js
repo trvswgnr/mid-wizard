@@ -46,6 +46,7 @@ Wizard.change_section = function () {
 
     // view
     view.n = subsection.n.find(view.el + ':first');
+    view.c = $(view.el + '.active');
     view.activate();
     view.count = view.n.data("view");
     change_label_text(false);

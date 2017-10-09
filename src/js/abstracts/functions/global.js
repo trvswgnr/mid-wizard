@@ -49,7 +49,6 @@ function dynamic_text(data_attribute = 'dynamic-text') {
  */
 function change_label_text(x) {
   var label = $("input, select").not('[type="radio"], [type="checkbox"]').prev("label");
-
   $.each(label, function () {
     var og_text,
       new_text,
@@ -82,7 +81,6 @@ function flatten_array(arr) {
   if (is_array && arr.length > 0) {
     var head = arr[0];
     var tail = arr.slice(1);
-
     return flatten_array(head).concat(flatten_array(tail));
   } else {
     return [].concat(arr);
@@ -108,15 +106,13 @@ $("#wizard_form").on('keydown', function (e) {
   }
 });
 
-
 /**
  * Track position in nav from cookie, or click
  */
 function nav_track_cookie() {
-  let active_subsection_number = $('.subsection.active').data('subsection-order'),
-    active_section_number = $('section.active').data('section');
-//  $data('nav-subsection').removeClass('done active');
-//  $data('nav-section').removeClass('active');
+  let active_subsection_number = localStorage.getItem('subsection_nav'),
+    active_section_number = $data('nav-subsection',active_subsection_number).closest('[data-nav-section]').data('nav-section');
+
   $('.wizard__nav .is-first').addClass('active');
   for (let i = 0; i < active_subsection_number; i++) {
     $data('nav-subsection', i).addClass('done');
@@ -125,4 +121,3 @@ function nav_track_cookie() {
     $data('nav-section', active_section_number).find('.nav-section-title').addClass('active');
   }
 }
-

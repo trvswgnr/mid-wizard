@@ -9,6 +9,8 @@
     .block
       label(for="company_type") Which industry best describes your business?
       select.js-industry-select#company_type(name="company_type" placeholder='Select Industry')
+        each industry in INDUSTRIES
+          option(value=industry)= industry
     button.get-next-view Next
 
   fieldset(data-title="Company Location")
