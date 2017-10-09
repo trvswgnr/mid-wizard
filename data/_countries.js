@@ -2,7 +2,7 @@
  * A comprehensive list of country names and abbreviations.
  * @const
  */
-const COUNTRY_NAMES = {
+export const COUNTRY_NAMES = {
   AD: "Andorra",
   AE: "United Arab Emirates",
   AF: "Afghanistan",
@@ -254,5 +254,3 @@ const COUNTRY_NAMES = {
   ZM: "Zambia",
   ZW: "Zimbabwe"
 };
-
-module.exports = { COUNTRIES };

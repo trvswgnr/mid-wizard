@@ -2,7 +2,7 @@
  * List of all currencies that would be accepted by a merchant.
  * @const
  */
-const CURRENCIES = {
+export const CURRENCIES = {
   USD: {
     symbol: "$",
     name: "US Dollar",
@@ -956,5 +956,3 @@ const CURRENCIES = {
     name_plural: "Zambian kwachas"
   }
 };
-
-module.exports = { CURRENCIES };

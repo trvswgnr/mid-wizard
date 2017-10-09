@@ -2,7 +2,7 @@
  * List of all industries, sorted alphabetically.
  * @const
  */
-const INDUSTRIES = [
+export const INDUSTRIES = [
   "Accounting",
   "Agriculture & Mining",
   "Airlines/Aviation",
@@ -153,5 +153,3 @@ const INDUSTRIES = [
   "Wireless",
   "Writing & Editing"
 ];
-
-module.exports = { INDUSTRIES };
