@@ -1,17 +1,18 @@
 .subsection#user_details(data-title="Merchant Details")
   fieldset#mid_intro.introduction
-    h3 Now we need your Merchant Account
-    p To add you to our system, we need at least one merchant account (you'll be able to add additional accounts later). This information can usually be found on your statement.
+    h3 Add Merchant Account Information
+    p To add you to our system, we’ll need at least one merchant account (you’ll be able to add more later). Accounts are referenced by your Merchant ID, or MID. The information you’ll need can normally be found on your statement or initial paperwork.
+    p If you’re unable to find the information or don’t understand the questions, feel free to skip this section for now. You can always come back later and fill in the blanks.
     button.get-next-view Let's Begin
   fieldset#mid_details(data-title="MID Details")
     .guide-text
-      h3 MID Details
+      h3 What is your primary Merchant Account Information?
       p What is the basic information for your Merchant ID?
     .field
-      label(for="merchant_id_number") What is your Mechant ID (MID) number?
+      label(for="merchant_id_number") Your Merchant ID, or MID, can normally be found on a bank statement, or any of the documentation you received when you set up your merchant account.
       input#merchant_id_number(type="text" name='merchant_id_number' placeholder='MID Number')
     .field
-      label(for="mid_alias") Create a nickname for this account.
+      label(for="mid_alias") This can be anything, but it should be something easily associated with this particular MID … think “Main” or “Perishables” or “Travel.”
       input#mid_alias(type="text" name='mid_alias' placeholder='MID Alias')
     button.get-next-view Continue
   fieldset#about(data-title="MID Currencies")
@@ -19,8 +20,8 @@
       h3 MID Currencies
       p Which currencies are used with this MID?
     .block
-      label(for="mid_currencies") Select the currencies you accept for this MID.
-      select#mid_currencies(name='mid_currencies' multiple placeholder='MID Currencies' data-values="currencies")
+      label(for="mid_currencies") Which currencies can you accept for this MID? Select all that apply.
+      select#mid_currencies(name='mid_currencies' multiple placeholder='MID Currencies' data-values='currencies')
     .controls-wrapper
       button.get-prev-view
       button.review-subsection Review
