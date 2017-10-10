@@ -1,6 +1,6 @@
 {
   "name": "mid-wizard",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Chargebacks 911 MID Wizard",
   "main": "main.js",
   "scripts": {
