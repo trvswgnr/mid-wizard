@@ -10,8 +10,8 @@ const gulp = require('gulp'),
   pug_markdown_filter = require('jstransformer-markdown-it'),
   pug_bemify = require('pug-bemify'),
   browser_sync = require('browser-sync').create(),
-  jpeg_recompress = require('imagemin-jpeg-recompress'),
-  png_quant = require('imagemin-pngquant'),
+//  jpeg_recompress = require('imagemin-jpeg-recompress'),
+//  png_quant = require('imagemin-pngquant'),
   del = require('del');
 
 /**
@@ -244,27 +244,27 @@ gulp.task('pug', function () {
 /* COMPRESS Images
 ------------------------------------------------- */
 function process_img() {
-  $.util.log($.util.colors.blue("Compressing images\n"));
+//  $.util.log($.util.colors.blue("Compressing images\n"));
   clean_img();
   var img_src = settings.img.src + '*';
   return gulp.src(img_src)
-    .pipe($.imagemin([
-      $.imagemin.gifsicle({
-        interlaced: true,
-        optimizationLevel: 3
-      }),
-      $.imagemin.svgo({
-        plugins: [{
-          removeViewBox: true
-        }]
-      }),
-      jpeg_recompress({
-        quality: 'low'
-      }),
-      png_quant({
-        quality: '50'
-      })
-    ])).on('error', settings.error)
+//    .pipe($.imagemin([
+//      $.imagemin.gifsicle({
+//        interlaced: true,
+//        optimizationLevel: 3
+//      }),
+//      $.imagemin.svgo({
+//        plugins: [{
+//          removeViewBox: true
+//        }]
+//      }),
+//      jpeg_recompress({
+//        quality: 'low'
+//      }),
+//      png_quant({
+//        quality: '50'
+//      })
+//    ])).on('error', settings.error)
     .pipe(gulp.dest('dist/img'))
     .pipe(browser_sync.stream());
 }
@@ -336,7 +336,7 @@ function watch_files() {
   gulp.watch(settings.js.dest + '**/*.js', ['jsdoc']);
   gulp.watch(settings.js.src + settings.js.vendor, ['vendor-js']);
   gulp.watch(settings.pug.src + '**/*.pug', ['pug']);
-  gulp.watch(settings.img.src + '*', ['img']);
+//  gulp.watch(settings.img.src + '*', ['img']);
   gulp.watch(["./dist/index.html"]).on('change', function () {
     browser_sync.reload;
   });
