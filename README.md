@@ -1,7 +1,7 @@
 ## MID Wizard
 
 ### Documentation
-[docs](https://test.chargebacks911.com/mid-wizard/docs)
+[https://test.chargebacks911.com/mid-wizard/docs](https://test.chargebacks911.com/mid-wizard/docs)
 
 ### Getting Started:
 Clone this repo & enter
