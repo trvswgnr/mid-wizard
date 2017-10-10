@@ -1,3 +1,5 @@
+// @NOTE: not used in favor of server side or pug templating
+
 /**
  * Populate selects and other elements from API or variable
  * @arg {Object} config - Options to override default settings and configure elements
